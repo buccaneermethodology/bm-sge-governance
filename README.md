@@ -13,10 +13,11 @@
 常用入口：
 
 ```bash
-python3 .codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py validate <context.json>
-python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate <lane-card.json> --repo .
-python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode closeout-language --file <closeout.md>
+python3 .codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py --stage full
+python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode sgc
 ```
+
+上面两条命令可以在公开候选根目录直接运行。维护者在已有实际文件时，再把自己的 Context、lane card 或 closeout 文件路径作为参数传给 `context_bootstrap.py validate`、`lane_task_card.py validate` 和 `guardrail_checklist.py --mode closeout-language`；这些路径不是可直接复制的公共示例，因此不放进 bash fence。
 
 面向第一次接触 SGE 的用户，请从[中文新手指南](docs/Beginner_Guide_CN.md)或[快速开始](docs/Quick_Start_CN.md)进入。公共候选可用以下命令进行 default-deny 检查和干净导出：
 
