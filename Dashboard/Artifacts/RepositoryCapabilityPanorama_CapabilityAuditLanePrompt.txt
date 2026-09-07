@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/RepositoryCapabilityPanorama_CapabilityAuditLaneTaskCard.json
-Card SHA-256: d30e00453ddf6e730affbb9adcef7f5a12f04a37aace25a7be004170f39fbe4e
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/RepositoryCapabilityPanorama_CapabilityAuditLaneTaskCard.json --repo . --expected-card-sha256 d30e00453ddf6e730affbb9adcef7f5a12f04a37aace25a7be004170f39fbe4e
-Lane: 能力与小白入口审计 | Session: ADHOC/REPOSITORY-CAPABILITY-PANORAMA | Role: validation
-Mode: full_baseline
-Working directory: .
-Execute: 只读审计能力清单和小白入口；返回证据化结果，不得编辑文件

@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/SP003_S022_PostCloseoutReconciliation_LaneTaskCard_V3.json
-Card SHA-256: d80c0d526e11e677787708a783ded3ed16c7d4911935e2f50f3e352cb53a2e2a
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/SP003_S022_PostCloseoutReconciliation_LaneTaskCard_V3.json --repo . --expected-card-sha256 d80c0d526e11e677787708a783ded3ed16c7d4911935e2f50f3e352cb53a2e2a
-Lane: S-022 final independent post-closeout reconciliation after terminal absorption | Session: SP-003/S-022 | Role: validation
-Mode: full_baseline
-Working directory: .
-Execute: python3 Dashboard/tools/session_registry.py reconcile --repo . --check && python3 Dashboard/tools/session_registry.py validate --repo . && python3 .codex/skills/sge-governed-checkpoints/scripts/goal_patch.py validate-goal Dashboard/Artifacts/SP003_OpenSourceDistributionArchitecture_GoalContract.json && python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode closeout-language --file Dashboard/Artifacts/SP003_S022_Closeout.md && git diff --check

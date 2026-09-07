@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/RepositoryCapabilityPanorama_DeltaValidationLaneTaskCard.json
-Card SHA-256: f903201e0130da2ffb4068ae5e9ec52e5cbaf55dcb1ee8d406a3eb723446a80a
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/RepositoryCapabilityPanorama_DeltaValidationLaneTaskCard.json --repo . --expected-card-sha256 f903201e0130da2ffb4068ae5e9ec52e5cbaf55dcb1ee8d406a3eb723446a80a
-Lane: 能力全景阻断项增量验证 | Session: ADHOC/REPOSITORY-CAPABILITY-PANORAMA | Role: validation
-Mode: delta
-Working directory: .
-Execute: 只读增量验证 B-01/B-02 修复及最终 package；只写 DeltaValidationReview 与 DeltaValidationStateSnapshot

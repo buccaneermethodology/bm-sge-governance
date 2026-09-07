@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/RepositoryCapabilityPanorama_ClosureLaneTaskCard.json
-Card SHA-256: 67640e8810c8092798d95f5bf98ad28015f836285aef31ac452ae26af53ababb
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/RepositoryCapabilityPanorama_ClosureLaneTaskCard.json --repo . --expected-card-sha256 67640e8810c8092798d95f5bf98ad28015f836285aef31ac452ae26af53ababb
-Lane: 全景任务收束草案 | Session: ADHOC/REPOSITORY-CAPABILITY-PANORAMA | Role: closure
-Mode: full_baseline
-Working directory: .
-Execute: 写入 RepositoryCapabilityPanorama_Closeout.md 草案；不得编辑其他文件；最终 verdict 保持 pending independent validation

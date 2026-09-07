@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/SP003_S022_ClosureLaneTaskCard_V2.json
-Card SHA-256: e6e18994571df680675b9d0200a8ffcb9bf64665f96fac669efb9e7263690d8e
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/SP003_S022_ClosureLaneTaskCard_V2.json --repo . --expected-card-sha256 e6e18994571df680675b9d0200a8ffcb9bf64665f96fac669efb9e7263690d8e
-Lane: S-022 semantic-scope absorption closure | Session: SP-003/S-022 | Role: closure
-Mode: full_baseline
-Working directory: .
-Execute: python3 Dashboard/tools/session_registry.py reconcile --repo . --check && python3 Dashboard/tools/session_registry.py validate --repo . && python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode closeout-language --file Dashboard/Artifacts/SP003_S022_Closeout.md && git diff --check

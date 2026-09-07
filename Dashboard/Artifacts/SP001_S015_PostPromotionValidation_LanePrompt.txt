@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/SP001_S015_PostPromotionValidation_LaneTaskCard.json
-Card SHA-256: 6787cec2affb37f2fca6869a6a1fc4293bcfa6ac371080fc434f1482e9a3ae32
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/SP001_S015_PostPromotionValidation_LaneTaskCard.json --repo . --expected-card-sha256 6787cec2affb37f2fca6869a6a1fc4293bcfa6ac371080fc434f1482e9a3ae32
-Lane: SP-001 post-promotion independent delta validation | Session: SP-001/S-015 | Role: validation
-Mode: delta
-Working directory: .
-Execute: python3 Dashboard/tools/doctor.py --repo .

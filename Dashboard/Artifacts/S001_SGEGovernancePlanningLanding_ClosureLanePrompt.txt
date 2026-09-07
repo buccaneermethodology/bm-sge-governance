@@ -1,9 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/S001_SGEGovernancePlanningLanding_ClosureLaneTaskCard.json
-Card SHA-256: 3af2d5c151b47eed233613400e5f3dd5d63fcce01db474a2ee8c9d3ed25cc5ea
-Verify: python3 /Users/xiaomei/Documents/projects/semx-cli/.codex/skills/semx-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/S001_SGEGovernancePlanningLanding_ClosureLaneTaskCard.json --repo . --expected-card-sha256 3af2d5c151b47eed233613400e5f3dd5d63fcce01db474a2ee8c9d3ed25cc5ea
-Lane: S-001 planning landing closure draft | Session: SP-001/S-001 | Role: closure
-Mode: full_baseline
-Working directory: .
-Execute: git diff -- Dashboard
-
-Bootstrap boundary: repo-local renderer 尚未迁入，因此这里只把 canonical renderer 生成的验证命令中的工具路径适配到固定 semx-cli source revision；其余 lane authority 只来自上述 card。先验证 card，再按 card 写入其 write_scope。不得启动 S-002，不得给最终独立 Validation verdict。

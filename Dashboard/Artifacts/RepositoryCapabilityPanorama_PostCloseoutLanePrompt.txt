@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/RepositoryCapabilityPanorama_PostCloseoutLaneTaskCard.json
-Card SHA-256: c9cff7c072aaabf146bec692bc91d071a7ec0a6ed6713920639570c4bd463b55
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/RepositoryCapabilityPanorama_PostCloseoutLaneTaskCard.json --repo . --expected-card-sha256 c9cff7c072aaabf146bec692bc91d071a7ec0a6ed6713920639570c4bd463b55
-Lane: 能力全景最终收束复核 | Session: ADHOC/REPOSITORY-CAPABILITY-PANORAMA | Role: validation
-Mode: delta
-Working directory: .
-Execute: 只读复核更新后的 closeout、最终 Dashboard/KB 与 diff；只写 PostCloseoutReconciliation.md

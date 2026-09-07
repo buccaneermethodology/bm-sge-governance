@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/SP001_S014_ToolchainDesign_LaneTaskCard.json
-Card SHA-256: 7903e41fbbdc1de43511ea1e77d4820fe41ab6451ee825ad3d7e0d72de1a6bc8
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/SP001_S014_ToolchainDesign_LaneTaskCard.json --repo . --expected-card-sha256 7903e41fbbdc1de43511ea1e77d4820fe41ab6451ee825ad3d7e0d72de1a6bc8
-Lane: 引用、KB-DKG 与 doctor 工具链设计 | Session: SP-001/S-014 | Role: design
-Mode: full_baseline
-Working directory: .
-Execute: python3 -m unittest discover -s tests -p 'test_*.py'

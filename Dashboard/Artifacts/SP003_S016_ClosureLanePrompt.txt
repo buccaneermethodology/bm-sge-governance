@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/SP003_S016_ClosureLaneTaskCard.json
-Card SHA-256: 9ef9ebf6c6ac1fedf048c6d6b4dfebf03ef275312746ec79e965702907fc125b
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/SP003_S016_ClosureLaneTaskCard.json --repo . --expected-card-sha256 9ef9ebf6c6ac1fedf048c6d6b4dfebf03ef275312746ec79e965702907fc125b
-Lane: S-016 bounded closeout | Session: SP-003/S-016 | Role: closure
-Mode: delta
-Working directory: .
-Execute: git diff -- Dashboard/Artifacts/SP003_S016_Closeout.md

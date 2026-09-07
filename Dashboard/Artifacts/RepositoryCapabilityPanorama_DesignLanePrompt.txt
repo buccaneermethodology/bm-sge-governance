@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/RepositoryCapabilityPanorama_DesignLaneTaskCard.json
-Card SHA-256: de6945410e516e0d3005e478cbb5c37885ab3fd128e6d0dff6de0c858f8f1673
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/RepositoryCapabilityPanorama_DesignLaneTaskCard.json --repo . --expected-card-sha256 de6945410e516e0d3005e478cbb5c37885ab3fd128e6d0dff6de0c858f8f1673
-Lane: 全景与审计设计 | Session: ADHOC/REPOSITORY-CAPABILITY-PANORAMA | Role: design
-Mode: full_baseline
-Working directory: .
-Execute: 设计并写入 Dashboard/Artifacts/RepositoryCapabilityPanorama_Design.md；不得编辑其他文件

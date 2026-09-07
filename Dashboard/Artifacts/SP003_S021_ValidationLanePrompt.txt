@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/SP003_S021_ValidationLaneTaskCard.json
-Card SHA-256: 3dce341776a00c557ee7c6eb1777cb7c344a75f61bd81dd5b25ffe5d271f6951
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/SP003_S021_ValidationLaneTaskCard.json --repo . --expected-card-sha256 3dce341776a00c557ee7c6eb1777cb7c344a75f61bd81dd5b25ffe5d271f6951
-Lane: S-021 clean-room and UAT independent validation | Session: SP-003/S-021 | Role: validation
-Mode: full_baseline
-Working directory: .
-Execute: python3 -m unittest tests.test_public_candidate tests.test_public_projection && python3 tools/sge_public.py doctor && python3 -m py_compile tools/sge_public.py && git diff --check

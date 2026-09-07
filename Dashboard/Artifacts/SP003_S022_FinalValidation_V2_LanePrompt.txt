@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/SP003_S022_FinalValidation_V2_LaneTaskCard.json
-Card SHA-256: 997f6a8936354e296c66b5fe4914f94235f013825be33c7502d7a5bee7d8d965
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/SP003_S022_FinalValidation_V2_LaneTaskCard.json --repo . --expected-card-sha256 997f6a8936354e296c66b5fe4914f94235f013825be33c7502d7a5bee7d8d965
-Lane: S-022 final independent validation after closure absorption | Session: SP-003/S-022 | Role: validation
-Mode: full_baseline
-Working directory: .
-Execute: python3 -m unittest tests.test_public_candidate tests.test_public_projection && python3 tools/sge_public.py doctor && python3 Dashboard/tools/session_registry.py reconcile --repo . --check && python3 Dashboard/tools/session_registry.py validate --repo . && python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode closeout-language --file Dashboard/Artifacts/SP003_S022_Closeout.md && git diff --check

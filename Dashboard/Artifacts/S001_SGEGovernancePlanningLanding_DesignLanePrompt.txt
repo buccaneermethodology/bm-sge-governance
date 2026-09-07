@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/S001_SGEGovernancePlanningLanding_DesignLaneTaskCard.json
-Card SHA-256: b6a069522559d40cdb172a19f656bb131ff86e9f0ae8a7c55b25aa4207d0abf2
-Verify: python3 /Users/xiaomei/Documents/projects/semx-cli/.codex/skills/semx-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/S001_SGEGovernancePlanningLanding_DesignLaneTaskCard.json --repo . --expected-card-sha256 b6a069522559d40cdb172a19f656bb131ff86e9f0ae8a7c55b25aa4207d0abf2
-Lane: S-001 planning landing design review | Session: SP-001/S-001 | Role: design
-Mode: full_baseline
-Working directory: .
-Execute: git diff -- Dashboard

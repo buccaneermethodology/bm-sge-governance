@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/RepositoryCapabilityPanorama_PublicAuditLaneTaskCard.json
-Card SHA-256: 4c4af5fe8fae2ebaae20375a599a56ea950d4977fd3629a4d3e5b88691f71d94
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/RepositoryCapabilityPanorama_PublicAuditLaneTaskCard.json --repo . --expected-card-sha256 4c4af5fe8fae2ebaae20375a599a56ea950d4977fd3629a4d3e5b88691f71d94
-Lane: 公共残留与发布缺口审计 | Session: ADHOC/REPOSITORY-CAPABILITY-PANORAMA | Role: validation
-Mode: full_baseline
-Working directory: .
-Execute: 只读审计公共残留、质量与发布缺口；返回证据化结果，不得编辑文件

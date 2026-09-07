@@ -30,6 +30,7 @@
     {"path":"public_export_manifest_v1.json","source":"repository","license":"MIT","provenance":"default-deny public file inventory","public":true,"execution_context":false},
     {"path":"docs/Beginner_Guide_CN.md","source":"repository","license":"MIT","provenance":"newcomer companion","public":true,"execution_context":false},
     {"path":"docs/Quick_Start_CN.md","source":"repository","license":"MIT","provenance":"newcomer companion","public":true,"execution_context":false},
+    {"path":"docs/Agent_Setup_Prompt_CN.md","source":"repository","license":"MIT","provenance":"cross-agent and product-neutral setup prompt","public":true,"execution_context":false},
     {"path":"examples/minimal-project/README.md","source":"repository","license":"MIT","provenance":"minimal consumer example","public":true,"execution_context":false},
     {"path":"examples/minimal-project/AGENTS.md","source":"repository","license":"MIT","provenance":"minimal consumer example","public":true,"execution_context":false},
     {"path":"extensions/registry_v1.json","source":"repository","license":"MIT","provenance":"optional extension contract","public":true,"execution_context":false},

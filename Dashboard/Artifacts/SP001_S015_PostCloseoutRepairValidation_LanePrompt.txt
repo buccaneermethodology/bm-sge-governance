@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/SP001_S015_PostCloseoutRepairValidation_LaneTaskCard.json
-Card SHA-256: 538cb828573523364fc4f7656c4e2a749a29668b82f3253702f2b363a8ef6518
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/SP001_S015_PostCloseoutRepairValidation_LaneTaskCard.json --repo . --expected-card-sha256 538cb828573523364fc4f7656c4e2a749a29668b82f3253702f2b363a8ef6518
-Lane: SP-001 post-closeout blocker repair delta validation | Session: SP-001/S-015 | Role: validation
-Mode: delta
-Working directory: .
-Execute: python3 Dashboard/tools/quality_recovery_erbe.py --phase full

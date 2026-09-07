@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/RepositoryCapabilityPanorama_DeltaBuilderLaneTaskCard.json
-Card SHA-256: 6a73ad68248c1707df32b48378e482b7b063142bee70dc0552500ee903eb12a2
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/RepositoryCapabilityPanorama_DeltaBuilderLaneTaskCard.json --repo . --expected-card-sha256 6a73ad68248c1707df32b48378e482b7b063142bee70dc0552500ee903eb12a2
-Lane: 全景阻断项修复 | Session: ADHOC/REPOSITORY-CAPABILITY-PANORAMA | Role: builder
-Mode: delta
-Working directory: .
-Execute: 仅修复 Validation B-01/B-02 并重生成五个派生产物；不得修改核心 Skill、KB、Dashboard registry、README、docs、tests 或发布状态

@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/SP003_S017_BuilderLaneTaskCard.json
-Card SHA-256: a910e7645f7decfbe7b210b390801adaff3383a37235bde7b31e5454676e636d
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/SP003_S017_BuilderLaneTaskCard.json --repo . --expected-card-sha256 a910e7645f7decfbe7b210b390801adaff3383a37235bde7b31e5454676e636d
-Lane: S-017 maintainer deterministic projection | Session: SP-003/S-017 | Role: builder
-Mode: full_baseline
-Working directory: .
-Execute: python3 -m unittest tests.test_public_candidate tests.test_public_projection && python3 tools/sge_public.py doctor

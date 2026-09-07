@@ -1,9 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/S001_SGEGovernancePlanningLanding_ValidationLaneTaskCard.json
-Card SHA-256: fdcb6167b68595517f1a20e01bd2deb75214eb485ef2f81f153c044211ea2cb6
-Verify: python3 /Users/xiaomei/Documents/projects/semx-cli/.codex/skills/semx-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/S001_SGEGovernancePlanningLanding_ValidationLaneTaskCard.json --repo . --expected-card-sha256 fdcb6167b68595517f1a20e01bd2deb75214eb485ef2f81f153c044211ea2cb6
-Lane: S-001 planning landing independent validation | Session: SP-001/S-001 | Role: validation
-Mode: full_baseline
-Working directory: .
-Execute: git status --short
-
-Bootstrap boundary: repo-local checkpoint 尚未迁入。card 验证后，完整读取并执行固定来源 `/Users/xiaomei/Documents/projects/semx-cli/.codex/skills/semx-governed-checkpoints/references/checklists.md` 的 `Validation Agent Prompt Quality Checklist` 与 `Reusable Validation Agent Prompt`。保持 read-mostly，只写 card 的 write_scope。不得修复 producer 产物，不得启动 S-002，不得把关闭前 verdict 冒充关闭后最终 reconciliation。

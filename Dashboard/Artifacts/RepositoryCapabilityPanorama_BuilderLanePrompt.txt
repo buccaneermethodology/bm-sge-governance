@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/RepositoryCapabilityPanorama_BuilderLaneTaskCard.json
-Card SHA-256: 5e479090a1f2e5015ed6f1a60e3a7d448be87497e9ec56a6adfd305ebe3eb361
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/RepositoryCapabilityPanorama_BuilderLaneTaskCard.json --repo . --expected-card-sha256 5e479090a1f2e5015ed6f1a60e3a7d448be87497e9ec56a6adfd305ebe3eb361
-Lane: 能力全景与指南生成 | Session: ADHOC/REPOSITORY-CAPABILITY-PANORAMA | Role: builder
-Mode: full_baseline
-Working directory: .
-Execute: 按设计 B1-B5 生成并验证 RepositoryCapabilityPanorama_Data.json、Markdown、HTML、Audit Report 与 Generator；不得编辑其他文件

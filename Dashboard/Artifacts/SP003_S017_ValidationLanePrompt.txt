@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/SP003_S017_ValidationLaneTaskCard.json
-Card SHA-256: 401785639e6bed9e796e5aff2a40993899e2212103c92f71a7c5ae2dd57ff769
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/SP003_S017_ValidationLaneTaskCard.json --repo . --expected-card-sha256 401785639e6bed9e796e5aff2a40993899e2212103c92f71a7c5ae2dd57ff769
-Lane: S-017 independent projection validation | Session: SP-003/S-017 | Role: validation
-Mode: delta
-Working directory: .
-Execute: python3 -m unittest tests.test_public_candidate tests.test_public_projection && python3 tools/sge_public.py doctor && python3 -m py_compile tools/sge_public.py && git diff --check

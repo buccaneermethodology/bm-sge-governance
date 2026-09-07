@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/RepositoryCapabilityPanorama_ValidationLaneTaskCard.json
-Card SHA-256: 29c1f32019a98847b08ce680fc7e6ba4cb8587226af532930028653a3ef1f5a7
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/RepositoryCapabilityPanorama_ValidationLaneTaskCard.json --repo . --expected-card-sha256 29c1f32019a98847b08ce680fc7e6ba4cb8587226af532930028653a3ef1f5a7
-Lane: 能力全景独立最终验证 | Session: ADHOC/REPOSITORY-CAPABILITY-PANORAMA | Role: validation
-Mode: full_baseline
-Working directory: .
-Execute: 只读验证最终全景 package 与 closeout，写 ValidationReview 和 snapshot；不得修复 Builder/Closure 产物

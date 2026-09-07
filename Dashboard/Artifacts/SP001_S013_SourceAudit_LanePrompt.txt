@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/SP001_S013_SourceAudit_LaneTaskCard.json
-Card SHA-256: 77809f4c9f6e3c488d3640d654b8c8a4b85180d4428853697538c55268879e66
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/SP001_S013_SourceAudit_LaneTaskCard.json --repo . --expected-card-sha256 77809f4c9f6e3c488d3640d654b8c8a4b85180d4428853697538c55268879e66
-Lane: semantic-governance canonical 来源逐节审计 | Session: SP-001/S-013 | Role: design
-Mode: full_baseline
-Working directory: .
-Execute: python3 -m json.tool /Users/xiaomei/Documents/projects/semx-cli/semx-kb/data/strategy/strategy_human_ai_development.json

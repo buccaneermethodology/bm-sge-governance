@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/RepositoryQualityPanorama_FinalValidation_Delta_LaneTaskCard.json
-Card SHA-256: 5e77463d737197aedf52f08a5b61f0d56d35f1e08d4a91ef9e80c521fdd03b45
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/RepositoryQualityPanorama_FinalValidation_Delta_LaneTaskCard.json --repo . --expected-card-sha256 5e77463d737197aedf52f08a5b61f0d56d35f1e08d4a91ef9e80c521fdd03b45
-Lane: 全景筛选与 Source model 修复 delta validation | Session: ADHOC/REPOSITORY-QUALITY-AUDIT | Role: validation
-Mode: delta
-Working directory: .
-Execute: python3 -m json.tool Dashboard/Artifacts/RepositoryQualityPanorama_Data.json

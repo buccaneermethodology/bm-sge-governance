@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/SP003_S022_ClosureLaneTaskCard.json
-Card SHA-256: ce3b31124f4027de04c11e8a7153a5a7e27b3b675d017cc8c21c07b67de1c8b8
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/SP003_S022_ClosureLaneTaskCard.json --repo . --expected-card-sha256 ce3b31124f4027de04c11e8a7153a5a7e27b3b675d017cc8c21c07b67de1c8b8
-Lane: S-022 final closure state absorption | Session: SP-003/S-022 | Role: closure
-Mode: full_baseline
-Working directory: .
-Execute: python3 Dashboard/tools/session_registry.py reconcile --repo . --check && python3 Dashboard/tools/session_registry.py validate --repo . && python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode closeout-language --file Dashboard/Artifacts/SP003_S022_Closeout.md && git diff --check

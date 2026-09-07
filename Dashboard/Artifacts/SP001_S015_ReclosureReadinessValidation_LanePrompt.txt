@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/SP001_S015_ReclosureReadinessValidation_LaneTaskCard.json
-Card SHA-256: 6ec00772e26e9253f0f79d5e5b3152a596bec7f1ead4ee688af8759631e99bee
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/SP001_S015_ReclosureReadinessValidation_LaneTaskCard.json --repo . --expected-card-sha256 6ec00772e26e9253f0f79d5e5b3152a596bec7f1ead4ee688af8759631e99bee
-Lane: SP-001 RB-01 RB-02 reclosure readiness validation | Session: SP-001/S-015 | Role: validation
-Mode: delta
-Working directory: .
-Execute: python3 Dashboard/tools/quality_recovery_erbe.py --phase full

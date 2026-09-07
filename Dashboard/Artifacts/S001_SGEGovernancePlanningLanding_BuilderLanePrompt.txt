@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/S001_SGEGovernancePlanningLanding_BuilderLaneTaskCard.json
-Card SHA-256: 1bf2a9fd86e3bb0c4cad73c280070ef6c6db1905ae8c034a14fd38275859375f
-Verify: python3 /Users/xiaomei/Documents/projects/semx-cli/.codex/skills/semx-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/S001_SGEGovernancePlanningLanding_BuilderLaneTaskCard.json --repo . --expected-card-sha256 1bf2a9fd86e3bb0c4cad73c280070ef6c6db1905ae8c034a14fd38275859375f
-Lane: S-001 planning landing blocker repair | Session: SP-001/S-001 | Role: builder
-Mode: full_baseline
-Working directory: .
-Execute: git diff -- Dashboard/Artifacts/SP001_SGEGovernanceMigration_LoopGoal.md Dashboard/Decisions.md Dashboard/Exceptions.md

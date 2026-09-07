@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/SP003_S016_SemanticLaneTaskCard.json
-Card SHA-256: c41f7b2f1a21c5791499a21697dd313b2268107f48c466b909e310aa9d7ead30
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/SP003_S016_SemanticLaneTaskCard.json --repo . --expected-card-sha256 c41f7b2f1a21c5791499a21697dd313b2268107f48c466b909e310aa9d7ead30
-Lane: S-016 semantic architecture review | Session: SP-003/S-016 | Role: semantic
-Mode: full_baseline
-Working directory: .
-Execute: git diff -- Dashboard/Artifacts/SP003_S016_SemanticReview.md

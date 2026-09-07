@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/SP001_S015_FinalIntegratedValidation_LaneTaskCard.json
-Card SHA-256: 4078453f8b91c34118a8577bf2658f401d468b3e6a951c47707973db347a47f8
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/SP001_S015_FinalIntegratedValidation_LaneTaskCard.json --repo . --expected-card-sha256 4078453f8b91c34118a8577bf2658f401d468b3e6a951c47707973db347a47f8
-Lane: SP-001 final integrated validation before state closure | Session: SP-001/S-015 | Role: validation
-Mode: delta
-Working directory: .
-Execute: python3 Dashboard/tools/doctor.py --repo .

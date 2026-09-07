@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/SP003_S016_DesignLaneTaskCard.json
-Card SHA-256: 58749fcc40dfd08bca5340aa09c7757009a9c2a30c05af5bd55bb585e22411c7
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/SP003_S016_DesignLaneTaskCard.json --repo . --expected-card-sha256 58749fcc40dfd08bca5340aa09c7757009a9c2a30c05af5bd55bb585e22411c7
-Lane: S-016 dual-repository contract design | Session: SP-003/S-016 | Role: design
-Mode: full_baseline
-Working directory: .
-Execute: git diff -- Dashboard/Artifacts/SP003_S016_Design.md Dashboard/Artifacts/SP003_S016_ERBE_Contract.json Dashboard/Artifacts/SP003_S016_ERBE_Cases.json

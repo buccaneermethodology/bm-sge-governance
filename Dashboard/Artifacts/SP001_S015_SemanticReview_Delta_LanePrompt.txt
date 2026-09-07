@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/SP001_S015_SemanticReview_Delta_LaneTaskCard.json
-Card SHA-256: 8513d8cb8656db1a03bfe6c8f96c59bc1a0b10a8db81d5dfa984d3bd1c763526
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/SP001_S015_SemanticReview_Delta_LaneTaskCard.json --repo . --expected-card-sha256 8513d8cb8656db1a03bfe6c8f96c59bc1a0b10a8db81d5dfa984d3bd1c763526
-Lane: SP-001 Semantic blocker-fix delta review | Session: SP-001/S-015 | Role: semantic
-Mode: delta
-Working directory: .
-Execute: python3 kb/tools/render_kb.py --check

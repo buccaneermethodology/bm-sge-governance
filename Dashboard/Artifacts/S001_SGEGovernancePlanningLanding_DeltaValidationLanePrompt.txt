@@ -1,9 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/S001_SGEGovernancePlanningLanding_DeltaValidationLaneTaskCard.json
-Card SHA-256: aac4f679da58864209c9d2bc77dcf23ecb520265d8bc184fc172034e48b3a485
-Verify: python3 /Users/xiaomei/Documents/projects/semx-cli/.codex/skills/semx-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/S001_SGEGovernancePlanningLanding_DeltaValidationLaneTaskCard.json --repo . --expected-card-sha256 aac4f679da58864209c9d2bc77dcf23ecb520265d8bc184fc172034e48b3a485
-Lane: S-001 planning landing blocker-fix delta validation | Session: SP-001/S-001 | Role: validation
-Mode: delta
-Working directory: .
-Execute: git diff -- Dashboard/Artifacts/SP001_SGEGovernanceMigration_ContextBootstrap.json Dashboard/Artifacts/SP001_SGEGovernanceMigration_Plan.md Dashboard/Artifacts/S001_SGEGovernancePlanningLanding_Closeout.md
-
-Bootstrap boundary: repo-local checkpoint 尚未迁入。按固定 Validation Agent Prompt 复用首轮 baseline，只读 card 指定 delta 与最终 inventory。保持 read-mostly，只写 card write_scope；不得修 producer 文件，不得启动 S-002。只决定是否授权状态收束，不得冒充关闭后 reconciliation。

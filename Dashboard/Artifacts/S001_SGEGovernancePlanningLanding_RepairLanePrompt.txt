@@ -1,9 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/S001_SGEGovernancePlanningLanding_RepairLaneTaskCard.json
-Card SHA-256: 0a61106634fd10c5942e2cd4ed24ae1d8c6b2af38abb9adcfb1dae74440f16fb
-Verify: python3 /Users/xiaomei/Documents/projects/semx-cli/.codex/skills/semx-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/S001_SGEGovernancePlanningLanding_RepairLaneTaskCard.json --repo . --expected-card-sha256 0a61106634fd10c5942e2cd4ed24ae1d8c6b2af38abb9adcfb1dae74440f16fb
-Lane: S-001 validation blocker repair | Session: SP-001/S-001 | Role: builder
-Mode: delta
-Working directory: .
-Execute: git diff -- Dashboard/Artifacts/SP001_SGEGovernanceMigration_ContextBootstrap.json Dashboard/Artifacts/SP001_SGEGovernanceMigration_Plan.md Dashboard/Artifacts/S001_SGEGovernancePlanningLanding_Closeout.md
-
-Bootstrap boundary: repo-local checkpoint 尚未迁入。只修复 Validation Review 中 B-01..B-03，并只写 card 的 write_scope。Raw User Intent 必须逐字保存用户本轮 `PLEASE IMPLEMENT THIS PLAN:` 完整消息，从标题到最后一个“假设”条目均不得摘要或改写。保持 S-001=Doing、BI/SP=To do，不启动 S-002，不修改 Validation Review。

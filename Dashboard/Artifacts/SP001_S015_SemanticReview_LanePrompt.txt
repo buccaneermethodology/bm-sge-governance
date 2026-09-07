@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/SP001_S015_SemanticReview_LaneTaskCard.json
-Card SHA-256: 080bb527444d98712618a88a1bb382c92dd9bf0422b2b59430dba74e9b3972d0
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/SP001_S015_SemanticReview_LaneTaskCard.json --repo . --expected-card-sha256 080bb527444d98712618a88a1bb382c92dd9bf0422b2b59430dba74e9b3972d0
-Lane: SP-001 final Semantic Review | Session: SP-001/S-015 | Role: semantic
-Mode: full_baseline
-Working directory: .
-Execute: python3 kb/tools/render_kb.py --check

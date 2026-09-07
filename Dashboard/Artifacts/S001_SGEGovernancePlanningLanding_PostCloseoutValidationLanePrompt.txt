@@ -1,9 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/S001_SGEGovernancePlanningLanding_PostCloseoutValidationLaneTaskCard.json
-Card SHA-256: 1b0368ab583b0384c122eab9a7558dcd21f940bb8b7d2817a5d472bcbe9f5053
-Verify: python3 /Users/xiaomei/Documents/projects/semx-cli/.codex/skills/semx-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/S001_SGEGovernancePlanningLanding_PostCloseoutValidationLaneTaskCard.json --repo . --expected-card-sha256 1b0368ab583b0384c122eab9a7558dcd21f940bb8b7d2817a5d472bcbe9f5053
-Lane: S-001 final-state post-closeout reconciliation | Session: SP-001/S-001 | Role: validation
-Mode: delta
-Working directory: .
-Execute: git status --short
-
-Bootstrap boundary: repo-local checkpoint 尚未迁入。按固定 Validation Agent Prompt 复用首轮与 delta baseline，独立读取 card 指定的最终状态、实际 closeout 和完整 inventory。保持 read-mostly，只写 reconciliation artifact 与本 lane log；不得修 producer 文件，不启动 S-002。该 artifact 必须给出唯一 final-state verdict，并在写入后自检其链接与实际 git diff，避免把关闭前 verdict 冒充最终证据。

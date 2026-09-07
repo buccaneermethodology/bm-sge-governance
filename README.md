@@ -19,7 +19,11 @@ python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --
 
 上面两条命令可以在公开候选根目录直接运行。维护者在已有实际文件时，再把自己的 Context、lane card 或 closeout 文件路径作为参数传给 `context_bootstrap.py validate`、`lane_task_card.py validate` 和 `guardrail_checklist.py --mode closeout-language`；这些路径不是可直接复制的公共示例，因此不放进 bash fence。
 
-面向第一次接触 SGE 的用户，请从[中文新手指南](docs/Beginner_Guide_CN.md)或[快速开始](docs/Quick_Start_CN.md)进入。公共候选可用以下命令进行 default-deny 检查和干净导出：
+面向第一次接触 SGE 的用户，可以直接复制[通过 Agent 安装和初始化的 Prompt](docs/Agent_Setup_Prompt_CN.md)。先准备一个空的产品项目目录、Git、Python 3 和公开仓库访问权限，再把 Prompt 交给你使用的 coding agent；它不依赖 Codex、特定模型或具体产品类型。也可以阅读[中文新手指南](docs/Beginner_Guide_CN.md)或[快速开始](docs/Quick_Start_CN.md)。
+
+Prompt 使用前唯一的项目准备是：建立一个空目录并把 Agent 的工作目录设为该目录。目录中不要放入产品代码；macOS 的 `.DS_Store` 也应先移走。Prompt 中的 `OFFICIAL_SGE_REPOSITORY_URL` 必须由维护者替换为真实公开仓地址，Agent 不应猜测仓库身份。
+
+公共候选可用以下命令进行 default-deny 检查和干净导出：
 
 ```bash
 python3 tools/sge_public.py doctor
@@ -42,5 +46,6 @@ python3 tools/sge_public.py export /tmp/sge-public-candidate
 - `kb/data/strategy/`：SGE canonical strategy contracts 与 generic profile。
 - `Dashboard/`：执行记忆、Validation、closeout 和 provenance 记录。
 - `docs/`：面向新手的公共 companion 文档。
+- `docs/Agent_Setup_Prompt_CN.md`：跨 Agent、跨产品的安装与初始化 Prompt。
 - `tools/sge_public.py`：可恢复的 doctor/export/bootstrap/install/upgrade/uninstall 入口。
 - `extensions/registry_v1.json`：默认关闭的 domain extension 接口；core 不依赖这些扩展。

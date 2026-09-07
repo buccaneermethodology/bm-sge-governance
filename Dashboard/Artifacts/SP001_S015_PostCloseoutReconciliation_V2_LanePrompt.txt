@@ -1,7 +1,0 @@
-Lane Task Card: Dashboard/Artifacts/SP001_S015_PostCloseoutReconciliation_V2_LaneTaskCard.json
-Card SHA-256: 33dbebfc4e77360398296ac80c309719537775c73aeaa195412742dd6699608e
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/SP001_S015_PostCloseoutReconciliation_V2_LaneTaskCard.json --repo . --expected-card-sha256 33dbebfc4e77360398296ac80c309719537775c73aeaa195412742dd6699608e
-Lane: SP-001 final post-closeout evidence reconciliation v2 | Session: SP-001/S-015 | Role: validation
-Mode: delta
-Working directory: .
-Execute: python3 Dashboard/tools/quality_recovery_erbe.py --phase full --output Dashboard/Artifacts/SP001_QualityRecovery_ERBE_Report.json
