@@ -21,7 +21,7 @@ python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --
 
 面向第一次接触 SGE 的用户，可以直接复制[通过 Agent 安装和初始化的 Prompt](docs/Agent_Setup_Prompt_CN.md)。先准备一个空的产品项目目录、Git、Python 3 和公开仓库访问权限，再把 Prompt 交给你使用的 coding agent；它不依赖 Codex、特定模型或具体产品类型。也可以阅读[中文新手指南](docs/Beginner_Guide_CN.md)或[快速开始](docs/Quick_Start_CN.md)。
 
-Prompt 使用前唯一的项目准备是：建立一个空目录并把 Agent 的工作目录设为该目录。目录中不要放入产品代码；macOS 的 `.DS_Store` 也应先移走。Prompt 中的 `OFFICIAL_SGE_REPOSITORY_URL` 必须由维护者替换为真实公开仓地址，Agent 不应猜测仓库身份。
+Prompt 使用前唯一的项目准备是：建立一个空目录并把 Agent 的工作目录设为该目录。目录中不要放入产品代码；macOS 的 `.DS_Store` 也应先移走。Prompt 已内置官方公开仓地址 `https://github.com/buccaneermethodology/bm-sge-governance.git`，Agent 不应猜测或替换仓库身份。
 
 公共候选可用以下命令进行 default-deny 检查和干净导出：
 

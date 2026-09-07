@@ -10,7 +10,7 @@
 2. 建立一个产品项目目录。
 3. 将 Agent 的工作目录设置为这个项目目录。
 4. 该目录必须为空。若 macOS 自动生成了 `.DS_Store`，应先移走它；不要让 Agent 删除真实项目文件。
-5. Agent 需要能够访问官方公开 SGE 仓库；将下方 Prompt 中的 `OFFICIAL_SGE_REPOSITORY_URL` 替换为该仓库地址。
+5. Agent 需要能够访问官方公开 SGE 仓库：`https://github.com/buccaneermethodology/bm-sge-governance.git`。
 
 ## 可复制 Prompt
 
@@ -22,7 +22,7 @@
 本次只做安装、初始化、检查和交接，不实现任何具体产品功能。
 
 外部输入：
-- 官方公开 SGE 仓库地址：OFFICIAL_SGE_REPOSITORY_URL
+- 官方公开 SGE 仓库地址：https://github.com/buccaneermethodology/bm-sge-governance.git
 - 目标项目目录：当前工作目录
 
 安全边界：
@@ -72,4 +72,4 @@
 
 ## 这段 Prompt 的能力边界
 
-它只能建立治理骨架并完成有界的本地安装检查。它不证明具体产品正确、不替代独立 Validation、不授予发布权限，也不保证所有操作系统和所有 Agent 产品的兼容性。公开仓地址必须由维护者在发布时填入真实地址，不能由 Agent 猜测。
+它只能建立治理骨架并完成有界的本地安装检查。它不证明具体产品正确、不替代独立 Validation、不授予发布权限，也不保证所有操作系统和所有 Agent 产品的兼容性。公开仓地址已经固定为本 Prompt 中列出的官方地址；Agent 不应自行猜测或替换为其他仓库。
