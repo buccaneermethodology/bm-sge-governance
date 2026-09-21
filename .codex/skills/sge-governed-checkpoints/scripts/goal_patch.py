@@ -18,6 +18,7 @@ from typing import Any, Iterable, Mapping, Sequence
 GOAL_SCHEMA_VERSION = "goal_contract_v1"
 PATCH_SCHEMA_VERSION = "goal_patch_v1"
 APPROVAL_TOKEN_PREFIX = "SGE_GOAL_PATCH_APPROVAL_V1 "
+APPROVAL_RECEIPT_SCHEMA_VERSION = "approval_receipt_v1"
 REPO_ROOT = Path(__file__).resolve().parents[4]
 DEFAULT_APPROVAL_SOURCE_ROOTS = (
     Path.home() / ".codex" / "sessions",
@@ -261,27 +262,47 @@ def _validate_approval_registry(goal: Mapping[str, Any]) -> None:
         if len(item["allowed_patch_ids"]) != 1 or len(item["allowed_targets"]) != 1:
             _fail(path, "approval must bind exactly one patch id and one target")
         provenance = _expect_dict(item["provenance"], f"{path}.provenance")
-        _require_exact_keys(
-            provenance,
-            {
-                "source_kind",
-                "rollout_path",
-                "source_thread_id",
-                "turn_id",
-                "message_sha256",
-                "approval_token",
-            },
-            set(),
-            f"{path}.provenance",
+        source_kind = _expect_string(
+            provenance.get("source_kind"), f"{path}.provenance.source_kind"
         )
-        if provenance["source_kind"] != "codex_user_message_v1":
-            _fail(f"{path}.provenance.source_kind", "must be codex_user_message_v1")
-        for field in ("rollout_path", "source_thread_id", "turn_id", "approval_token"):
-            _expect_string(provenance[field], f"{path}.provenance.{field}")
-        if not re.fullmatch(r"[a-f0-9]{64}", str(provenance["message_sha256"])):
+        if source_kind == "codex_user_message_v1":
+            _require_exact_keys(
+                provenance,
+                {
+                    "source_kind",
+                    "rollout_path",
+                    "source_thread_id",
+                    "turn_id",
+                    "message_sha256",
+                    "approval_token",
+                },
+                set(),
+                f"{path}.provenance",
+            )
+            for field in ("rollout_path", "source_thread_id", "turn_id", "approval_token"):
+                _expect_string(provenance[field], f"{path}.provenance.{field}")
+            if not re.fullmatch(r"[a-f0-9]{64}", str(provenance["message_sha256"])):
+                _fail(
+                    f"{path}.provenance.message_sha256",
+                    "must be a lowercase SHA-256 digest",
+                )
+        elif source_kind == "approval_receipt_v1":
+            _require_exact_keys(
+                provenance,
+                {"source_kind", "receipt_path", "receipt_sha256"},
+                set(),
+                f"{path}.provenance",
+            )
+            _expect_string(provenance["receipt_path"], f"{path}.provenance.receipt_path")
+            if not re.fullmatch(r"[a-f0-9]{64}", str(provenance["receipt_sha256"])):
+                _fail(
+                    f"{path}.provenance.receipt_sha256",
+                    "must be a lowercase SHA-256 digest",
+                )
+        else:
             _fail(
-                f"{path}.provenance.message_sha256",
-                "must be a lowercase SHA-256 digest",
+                f"{path}.provenance.source_kind",
+                "must be codex_user_message_v1 or approval_receipt_v1",
             )
 
 
@@ -608,16 +629,86 @@ def _parse_approval_token(message: str) -> dict[str, Any]:
     return token
 
 
+def _load_approval_receipt(
+    provenance: Mapping[str, Any], trusted_receipt_roots: Sequence[Path]
+) -> dict[str, Any]:
+    """Load a provider-neutral receipt from an explicitly trusted external root."""
+
+    receipt_path = Path(provenance["receipt_path"])
+    if not receipt_path.is_absolute():
+        receipt_path = REPO_ROOT / receipt_path
+    try:
+        resolved_path = receipt_path.resolve(strict=True)
+    except OSError as exc:
+        _fail("approval.provenance.receipt_path", f"cannot read source: {exc}")
+    resolved_roots = [Path(root).expanduser().resolve() for root in trusted_receipt_roots]
+    if not any(_is_within(resolved_path, root) for root in resolved_roots):
+        _fail(
+            "approval.provenance.receipt_path",
+            "source is outside explicitly trusted approval receipt roots",
+        )
+    try:
+        raw = resolved_path.read_bytes()
+    except OSError as exc:
+        _fail("approval.provenance.receipt_path", f"cannot read source: {exc}")
+    if hashlib.sha256(raw).hexdigest() != provenance["receipt_sha256"]:
+        _fail("approval.provenance.receipt_sha256", "receipt content hash mismatch")
+    try:
+        receipt = json.loads(raw.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        _fail("approval.provenance.receipt_path", f"invalid UTF-8 JSON receipt: {exc}")
+    receipt = _expect_dict(receipt, "approval receipt")
+    _require_exact_keys(
+        receipt,
+        {
+            "schema_version",
+            "approval_id",
+            "authority_kind",
+            "authority_id",
+            "base_digest",
+            "revision",
+            "patch_id",
+            "target",
+            "scope_delta_ids",
+            "approval_statement",
+            "approved_at",
+        },
+        {"provider", "source_ref"},
+        "approval receipt",
+    )
+    if receipt["schema_version"] != APPROVAL_RECEIPT_SCHEMA_VERSION:
+        _fail("approval receipt.schema_version", f"must be {APPROVAL_RECEIPT_SCHEMA_VERSION}")
+    for field in (
+        "approval_id",
+        "authority_kind",
+        "authority_id",
+        "base_digest",
+        "revision",
+        "patch_id",
+        "target",
+        "approval_statement",
+        "approved_at",
+    ):
+        _expect_string(receipt[field], f"approval receipt.{field}")
+    if receipt["authority_kind"] != "human":
+        _fail("approval receipt.authority_kind", "must be human")
+    if not re.fullmatch(r"[a-f0-9]{64}", receipt["base_digest"]):
+        _fail("approval receipt.base_digest", "must be a lowercase SHA-256 digest")
+    scope_delta_ids = _expect_list(receipt["scope_delta_ids"], "approval receipt.scope_delta_ids")
+    if any(not isinstance(value, str) or not value for value in scope_delta_ids):
+        _fail("approval receipt.scope_delta_ids", "items must be non-empty strings")
+    if len(scope_delta_ids) != len(set(scope_delta_ids)):
+        _fail("approval receipt.scope_delta_ids", "items must be unique")
+    return receipt
+
+
 def _verify_approval_provenance(
     approval: Mapping[str, Any],
     patch: Mapping[str, Any],
     trusted_rollout_roots: Sequence[Path],
 ) -> None:
     provenance = approval["provenance"]
-    message = _load_approval_message(provenance, trusted_rollout_roots)
-    token = _parse_approval_token(message)
     expected = {
-        "approval_token": provenance["approval_token"],
         "approval_id": approval["approval_id"],
         "authority_id": approval["authority_id"],
         "base_digest": patch["base_digest"],
@@ -626,12 +717,18 @@ def _verify_approval_provenance(
         "target": patch["target_section"],
         "scope_delta_ids": approval["scope_delta_ids"],
     }
+    if provenance["source_kind"] == "codex_user_message_v1":
+        message = _load_approval_message(provenance, trusted_rollout_roots)
+        token = _parse_approval_token(message)
+        expected["approval_token"] = provenance["approval_token"]
+        source_label = "approval.provenance.approval_token"
+    else:
+        token = _load_approval_receipt(provenance, trusted_rollout_roots)
+        expected["authority_kind"] = "human"
+        source_label = "approval.provenance.receipt_path"
     for field, expected_value in expected.items():
         if token.get(field) != expected_value:
-            _fail(
-                "approval.provenance.approval_token",
-                f"token {field} binding mismatch",
-            )
+            _fail(source_label, f"approval source {field} binding mismatch")
 
 
 def _approval_for_patch(

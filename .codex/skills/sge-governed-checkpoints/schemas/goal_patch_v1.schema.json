@@ -13,7 +13,7 @@
     "approved_scope_delta_registry"
   ],
   "x-immutable-targets": ["goal_id"],
-  "x-approval-source-policy": "A non-null approval_ref is valid only when the referenced Goal registry entry has verified codex_user_message_v1 provenance",
+  "x-approval-source-policy": "A non-null approval_ref is valid only when the referenced Goal registry entry has verified codex_user_message_v1 or explicitly trusted approval_receipt_v1 provenance",
   "type": "object",
   "additionalProperties": false,
   "required": [

@@ -9,6 +9,8 @@ Use this repo-local skill when SGE work is substantial enough that a missed chec
 
 Read [references/checklists.md](references/checklists.md) first when you need the concrete prompts or output shape. For Goal layering、Goal Patch、Validation State Snapshot、Delta Validation、rebaseline triggers、adversarial levels 和 convergence rules，读取 [references/context-efficient-goal-validation.md](references/context-efficient-goal-validation.md)。
 
+`goal_patch.py` 默认验证 Codex 的 user-message provenance；非 Codex Agent 必须提供平台交付的 `approval_receipt_v1`，并通过 `--approval-source-root` 显式指定平台管理的 trusted root。项目内 Agent 自己写出的普通文件不能作为人类批准来源；缺少可验证 receipt 时保持 blocked。
+
 ## Core Intent
 
 ERBE specification-first acceptance is the pre-Builder contract layer for Goals

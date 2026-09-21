@@ -49,3 +49,7 @@ python3 tools/sge_public.py export /tmp/sge-public-candidate
 - `docs/Agent_Setup_Prompt_CN.md`：跨 Agent、跨产品的安装与初始化 Prompt。
 - `tools/sge_public.py`：可恢复的 doctor/export/bootstrap/install/upgrade/uninstall 入口。
 - `extensions/registry_v1.json`：默认关闭的 domain extension 接口；core 不依赖这些扩展。
+
+### 非 Codex Agent 的批准来源
+
+`goal_patch.py` 默认读取 Codex 的 session provenance；这只影响需要机器验证人类批准的 Goal Patch/Scope Delta，不影响普通 SGE 任务。其他 Agent 可以提供符合 `approval_receipt_v1` 的 JSON receipt，但必须通过 `--approval-source-root` 显式指定平台管理的 trusted root。项目内由 Agent 自己写出的普通文件不会被默认信任，也不能代替人类批准；没有可验证 receipt 时，Goal Patch 必须保持 blocked。

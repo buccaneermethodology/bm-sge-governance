@@ -158,7 +158,7 @@ Snapshot 可以放在 closeout 的短 section 中；只有预计多轮修补时�
 - `scripts/context_state.py collect`：从 git-observed facts、versioned semantic declarations 和 explicit generated registry 建立 snapshot。三种 authority 不得互相猜测。
 - `scripts/context_state.py compare`：只在 snapshot 结构完整、semantic refs 未变、generated registry 完整、final drift 全部进入 Delta Read Set 时返回 `delta_safe`；该状态不是 Validation verdict。
 - `scripts/context_state.py usage`：只接受 fresh single-turn、matching terminal task、单调 token events 的 rollout；输出 model-reported usage、prompt/tool payload derived metrics 和 source digest。
-- `scripts/goal_patch.py`：验证 canonical Goal/patch、source-verified human-owned Codex thread user-message approval provenance、immutable Goal identity、protected claim carriers、deterministic resolution 和 Markdown round-trip；这不等于通用身份认证或外部签名。
+- `scripts/goal_patch.py`：验证 canonical Goal/patch、source-verified human-owned Codex thread user-message approval provenance，或显式配置 trusted root 下的 provider-neutral `approval_receipt_v1`、immutable Goal identity、protected claim carriers、deterministic resolution 和 Markdown round-trip。receipt 只是外部 Agent/平台交付的绑定凭证，不是脚本自行生成的批准，也不等于通用身份认证或外部签名；没有可验证来源时必须 fail closed。
 - `scripts/goal_patch.py audit-duplication`：exact stable copy 是 blocker，near duplicate 是 advisory；exact blocker 不允许用无 authority suppression 消失。
 - `scripts/lane_task_card.py validate/render/audit`：验证 lane contract、生成最小 delegation prompt，并对实际 prompt artifact/rollout user message 做重复审计。它不执行 lane、不授予 human approval，也不把低重复率翻译成质量通过。
 - `scripts/context_bootstrap.py validate/render`：校验 profile packet 的结构与 fail-closed 不变量，并生成不复制稳定规则正文的启动提示。它不验证路径/digest 真实性、不证明读取已发生、不授予 authority，也不输出质量 verdict。
