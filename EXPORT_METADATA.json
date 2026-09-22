@@ -2,12 +2,12 @@
   "schema_version": "sge_projection_metadata_v1",
   "claim_ceiling": "仅支持 maintainer local deterministic projection candidate evidence；不支持独立 Validation、批准、公开仓、远端 mutation、release 或 production。",
   "identity": {
-    "source_revision": "fce0859912701dff39f87ce7d6acc300dc353e0a",
-    "manifest_revision": "f22248d104abce925f8a76c401a4af659b7c95f0a52ab079206da593567b4ad2",
-    "export_tool_revision": "c75a3b0e075fdb83c034aa5ab96b9bb9c2f5688de408f7bd436325cc55a7b7f8",
-    "export_run_id": "run-20260922T081700709703Z-b23341732978",
-    "candidate_id": "sge-governance-public-candidate-v1.1.0",
-    "candidate_fingerprint": "7f7788adb3756ca81476284b62e3581db5fc4dbbb5f7f64c5e3bc66c19a75345",
+    "source_revision": "dd76f310ba20b55caeea1706f89a920514efbc4e",
+    "manifest_revision": "7c0654b2f3b506a580dcb1f361a8b805a63688cf4e35dd548e6f3e5fd4d404ab",
+    "export_tool_revision": "a1888bf2ac5aee1e07cb9a5aabb0100436a2cedaf26ffae19c406431cd2a96a3",
+    "export_run_id": "run-20260922T090447434629Z-9867e4e5613e",
+    "candidate_id": "sge-governance-public-candidate-v1.1.1",
+    "candidate_fingerprint": "8590a403b44742009ff09e5625c017086f96c50335359541fa3fef5073049755",
     "projection_commit": null,
     "release_tag": null
   },
@@ -122,6 +122,114 @@
       "sha256": "a6fabcc27cd36333290c27d92a8164a4525c6236e4463144bc84a708894cb152"
     },
     {
+      "path": ".codex/skills/sge-governed-checkpoints/references/context-routing-manifest-v1.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "machine-readable Skill routing closure",
+      "execution_context": false,
+      "bytes": 6979,
+      "sha256": "e36b896a08b9902cef2ba2c1e95218219709643ddb4e1ec21c4d3216db58860f"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/initial-kb-bootstrap.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "initial KB bootstrap recipe",
+      "execution_context": false,
+      "bytes": 716,
+      "sha256": "5a3ca72952ce2d2c8f9e1479d9711ce55d1232495717164a7c1ab778cb142691"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/recipes/closeout.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "routed closeout recipe",
+      "execution_context": false,
+      "bytes": 933,
+      "sha256": "7272cf11c8c9564687d222c139b18f69e26cd95a310f302e6126bdcf68c0bb0e"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/recipes/delta-validation.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "routed delta validation recipe",
+      "execution_context": false,
+      "bytes": 862,
+      "sha256": "64df136dae5698baace7924247966fa2ec2b025b3be700ada71800bdb3f69f7c"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/recipes/design-and-builder.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "routed design and builder recipe",
+      "execution_context": false,
+      "bytes": 928,
+      "sha256": "d523fbe9606225062d48c607fa9857aa03c50adb17f56698d5b996e184082537"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/recipes/goal-and-loop.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "routed Goal and Loop recipe",
+      "execution_context": false,
+      "bytes": 827,
+      "sha256": "99ad215fcd698740a0584b014fd26756f61dbd71d0e90b18ca06d590449c7e56"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/recipes/intake-and-first-task.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "routed intake recipe",
+      "execution_context": false,
+      "bytes": 839,
+      "sha256": "0a6926506e1f8da86ecf9ea64f279b5d752d5d3e9e0fbc79999c0785ebb9d25d"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/recipes/semantic-review.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "routed semantic review recipe",
+      "execution_context": false,
+      "bytes": 778,
+      "sha256": "7f4326d3b63c128076cef4c735c9e33faa8bc7f051ba62ab8663b4f28cb409ce"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/recipes/validation.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "routed validation recipe",
+      "execution_context": false,
+      "bytes": 941,
+      "sha256": "ac52cf56cc6644742f743da7c01c1056a40bce4bdd0b44d3382ec07819b7e860"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/capability_preflight_v1.schema.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "runtime-linked capability schema",
+      "execution_context": false,
+      "bytes": 1070,
+      "sha256": "063ea76cf2cda40bba6455b242bb2edb04ff0c1fd67bd22b7e5641491bdaa1ea"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/conformance_receipt_v1.schema.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "runtime-linked conformance receipt schema",
+      "execution_context": false,
+      "bytes": 1310,
+      "sha256": "e4b863b21b25505ab47992f8edde12b07c6ac3978c86c94f92ae5f755a70cbf9"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/first_task_route_v1.schema.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "runtime-linked first task route schema",
+      "execution_context": false,
+      "bytes": 1023,
+      "sha256": "4f76135b5673bf1ccc628a626496b3d62104986b00d3d849d88f05ca314c95f4"
+    },
+    {
       "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json",
       "source": "repository",
       "license": "MIT",
@@ -138,6 +246,24 @@
       "execution_context": false,
       "bytes": 3993,
       "sha256": "0b3040f16cbc3c95d108892c307a9f9c2c0aac383afb1485fe6855bbbdc457e8"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/initial_kb_bootstrap_v1.schema.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "runtime-linked initial KB bootstrap schema",
+      "execution_context": false,
+      "bytes": 1612,
+      "sha256": "2ae932a3c8ef3e7c75396419d40c1b257a831f3ad77024b8b0c129350d8a1fb2"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_lifecycle_v1.schema.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "runtime-linked lane lifecycle schema",
+      "execution_context": false,
+      "bytes": 714,
+      "sha256": "7404a7e2e621b0534dab52d0f7d0656165f1a952dcea8afae01b01f69fe358a2"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json",
@@ -194,6 +320,24 @@
       "sha256": "7bf99314f198d3930b72603bc4f247a1cf472d0f1bdaa94f2b49ba22b27d264e"
     },
     {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/capability_preflight.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "Skill hard-stop capability entrypoint",
+      "execution_context": false,
+      "bytes": 6195,
+      "sha256": "73189d7dfb5a764e7533430977d8f75e6e3d0941363f39bfc46498ce2efc63ce"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/conformance_receipt.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "Skill hard-stop conformance receipt entrypoint",
+      "execution_context": false,
+      "bytes": 4933,
+      "sha256": "7bf82f1559f10dc099fea411fe0d638ba48e158f07d774a6a3bf3d5c389c6c75"
+    },
+    {
       "path": ".codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py",
       "source": "repository",
       "license": "MIT",
@@ -221,6 +365,15 @@
       "sha256": "c002c7b5801cbecabd1a813a5e3a4b0c9c4817a438ba1ff6d43f3cd530bd3030"
     },
     {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/first_task_router.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "Skill first-task routing entrypoint",
+      "execution_context": false,
+      "bytes": 6752,
+      "sha256": "dee3daeaa93a2102fd57e94fdcc2ab2113cbf77f1a185cf49aaa947fdd018ae3"
+    },
+    {
       "path": ".codex/skills/sge-governed-checkpoints/scripts/goal_patch.py",
       "source": "repository",
       "license": "MIT",
@@ -237,6 +390,24 @@
       "execution_context": false,
       "bytes": 43507,
       "sha256": "d67b4b7b9f22f901c2a15b5b86878f526370bee469eac27e57a7303758314a01"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/initial_kb_bootstrap.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "initial KB bootstrap entrypoint",
+      "execution_context": false,
+      "bytes": 5877,
+      "sha256": "55ff8336602961581b2c901af6930e5fb84f052b89eebf9bee427a3ea32ce518"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/lane_lifecycle.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "Skill hard-stop lane lifecycle entrypoint",
+      "execution_context": false,
+      "bytes": 8636,
+      "sha256": "c78b7fba37fd2255f73890331b57895b656813596bfdbb9947c6044ba0601c7d"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
@@ -568,8 +739,8 @@
       "license": "MIT",
       "provenance": "default-deny public file inventory",
       "execution_context": false,
-      "bytes": 16236,
-      "sha256": "f22248d104abce925f8a76c401a4af659b7c95f0a52ab079206da593567b4ad2"
+      "bytes": 26522,
+      "sha256": "7c0654b2f3b506a580dcb1f361a8b805a63688cf4e35dd548e6f3e5fd4d404ab"
     },
     {
       "path": "tools/public_ci_smoke.py",
@@ -577,8 +748,8 @@
       "license": "MIT",
       "provenance": "self-contained public package layout, compile and v1.1 runtime smoke gate",
       "execution_context": false,
-      "bytes": 4319,
-      "sha256": "d248f17aa94b4cf806905161e57ab30f2bebcdebfebf5eac844bb9f916ede215"
+      "bytes": 4499,
+      "sha256": "803eb3a2f52cc484390feec4e9ba0f628f51192fbb880f06897eac19b9c5f279"
     },
     {
       "path": "tools/run_sge_loop_goal_cycle.py",
@@ -595,19 +766,19 @@
       "license": "MIT",
       "provenance": "public lifecycle utility",
       "execution_context": false,
-      "bytes": 37847,
-      "sha256": "c75a3b0e075fdb83c034aa5ab96b9bb9c2f5688de408f7bd436325cc55a7b7f8"
+      "bytes": 42801,
+      "sha256": "a1888bf2ac5aee1e07cb9a5aabb0100436a2cedaf26ffae19c406431cd2a96a3"
     }
   ],
-  "file_set_sha256": "a8b18a5b6e99c613da1157ee45e10a8dd0a9e6498ab9f39ff21fa62d5fda7761",
-  "tree_sha256": "da172ce159e3e30c0fde4a612fcacb2e050633d98e1d61c5eca2f086e1c7453e",
+  "file_set_sha256": "cfb7ee95769135bb2bc934cb34fc0f4dd747025e45620e4b0a1e624488d77b80",
+  "tree_sha256": "e9d88db179cf691346e8a3ed9a1449aa483beea73a53bf0415644fcbc8edb6bb",
   "source_inventory": {
     "complete": true,
-    "entry_count": 890,
-    "allowlisted_entry_count": 64,
-    "excluded_entry_count": 826,
+    "entry_count": 904,
+    "allowlisted_entry_count": 83,
+    "excluded_entry_count": 821,
     "excluded_counts": {
-      "default_deny": 825,
+      "default_deny": 820,
       "source_control_metadata": 1
     },
     "private_paths_omitted_from_public_metadata": true

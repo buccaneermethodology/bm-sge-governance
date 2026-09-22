@@ -9,6 +9,7 @@ tag, release, or remote repository.
 from __future__ import annotations
 
 import argparse
+import ast
 import datetime
 import hashlib
 import json
@@ -85,6 +86,114 @@ def _safe_relative(path_value: Any, label: str = "path") -> str:
     if normalized != path_value:
         _fail("manifest_path_invalid", path_value)
     return normalized
+
+
+_SKILL_PREFIX = ".codex/skills/sge-governed-checkpoints/"
+_RUNTIME_PATH = re.compile(
+    r"(?<![A-Za-z0-9_.-])((?:\.\./|\./)*(?:(?:\.codex/skills/sge-governed-checkpoints/)?(?:references|scripts|schemas|fixtures|agents)/)[A-Za-z0-9_./-]+\.(?:md|json|py|ya?ml))"
+)
+
+
+def _resolve_skill_ref(skill_root: Path, source: Path, token: str) -> Path | None:
+    clean = token.split("#", 1)[0].strip("`'\"()[]{}<>,:;")
+    if clean.startswith(_SKILL_PREFIX):
+        candidate = skill_root / clean[len(_SKILL_PREFIX):]
+    elif clean.startswith(("./", "../")):
+        candidate = source.parent / clean
+    elif clean.startswith(("references/", "scripts/", "schemas/", "fixtures/", "agents/")):
+        candidate = skill_root / clean
+    else:
+        return None
+    try:
+        resolved = candidate.resolve(strict=False)
+        resolved.relative_to(skill_root.resolve())
+    except (OSError, ValueError):
+        _fail("skill_runtime_reference_escape", f"{source}:{token}")
+    return resolved
+
+
+def _version_literals(path: Path) -> set[str]:
+    if path.suffix != ".py":
+        return set()
+    try:
+        tree = ast.parse(path.read_text(encoding="utf-8"))
+    except (OSError, SyntaxError) as exc:
+        _fail("skill_runtime_python_invalid", f"{path}:{exc}")
+    versions: set[str] = set()
+    for node in ast.walk(tree):
+        if not isinstance(node, (ast.Assign, ast.AnnAssign)):
+            continue
+        targets = node.targets if isinstance(node, ast.Assign) else [node.target]
+        if any(isinstance(target, ast.Name) and "VERSION" in target.id for target in targets):
+            if isinstance(node.value, ast.Constant) and isinstance(node.value.value, str):
+                versions.add(node.value.value)
+    return versions
+
+
+def skill_runtime_closure(source_root: Path | str) -> list[str]:
+    root = _root(source_root).resolve()
+    skill_root = root / _SKILL_PREFIX.rstrip("/")
+    start = skill_root / "SKILL.md"
+    if not start.is_file():
+        _fail("skill_runtime_root_missing", _SKILL_PREFIX + "SKILL.md")
+    schemas = sorted((skill_root / "schemas").glob("*.json")) if (skill_root / "schemas").is_dir() else []
+    queue = [start]
+    visited: set[Path] = set()
+    while queue:
+        current = queue.pop(0).resolve()
+        if current in visited:
+            continue
+        if not current.is_file():
+            _fail("skill_runtime_reference_missing", current.relative_to(root).as_posix())
+        visited.add(current)
+        try:
+            text = current.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError) as exc:
+            _fail("skill_runtime_reference_invalid", f"{current}:{exc}")
+        tokens = set(_RUNTIME_PATH.findall(text))
+        if current.suffix == ".json":
+            try:
+                payload = json.loads(text)
+            except json.JSONDecodeError as exc:
+                _fail("skill_runtime_json_invalid", f"{current}:{exc}")
+            stack = [payload]
+            while stack:
+                value = stack.pop()
+                if isinstance(value, dict):
+                    stack.extend(value.values())
+                elif isinstance(value, list):
+                    stack.extend(value)
+                elif isinstance(value, str):
+                    tokens.update(_RUNTIME_PATH.findall(value))
+        for token in sorted(tokens):
+            resolved = _resolve_skill_ref(skill_root, current, token)
+            if resolved is not None and resolved not in visited:
+                queue.append(resolved)
+        versions = _version_literals(current)
+        for schema in schemas:
+            if any(version in schema.read_text(encoding="utf-8") for version in versions):
+                queue.append(schema.resolve())
+    return sorted(path.relative_to(root).as_posix() for path in visited)
+
+
+def _validate_skill_runtime_closure(data: dict[str, Any], source_root: Path, allowlisted: set[str]) -> None:
+    contract = data.get("skill_runtime_closure")
+    if not isinstance(contract, dict):
+        _fail("skill_runtime_closure_contract_missing")
+    if contract.get("roots") != [_SKILL_PREFIX + "SKILL.md"]:
+        _fail("skill_runtime_closure_roots_invalid")
+    declared = contract.get("files")
+    if not isinstance(declared, list) or not declared or declared != sorted(set(declared)):
+        _fail("skill_runtime_closure_files_invalid")
+    recomputed = skill_runtime_closure(source_root)
+    if declared != recomputed:
+        _fail("skill_runtime_closure_drift", json.dumps({"missing": sorted(set(recomputed) - set(declared)), "extra": sorted(set(declared) - set(recomputed))}, sort_keys=True))
+    runtime = set(data.get("runtime_dependencies", []))
+    for path in recomputed:
+        if path not in allowlisted:
+            _fail("skill_runtime_allowlist_missing", path)
+        if path not in runtime:
+            _fail("skill_runtime_dependency_missing", path)
 
 
 def _lstat(path: Path, failure: str = "source_object_invalid") -> os.stat_result:
@@ -326,6 +435,7 @@ def validate(data: dict[str, Any], source_root: Path | str | None = None) -> set
     _validate_boundary_policies(data)
     items = _validate_manifest_shape(data)
     allowlisted = {item["path"] for item in items}
+    _validate_skill_runtime_closure(data, root, allowlisted)
     inventory, nested_repos = _walk_inventory(root, allowlisted)
     if nested_repos:
         _fail("nested_repo_forbidden", nested_repos[0])

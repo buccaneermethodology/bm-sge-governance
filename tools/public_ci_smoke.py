@@ -9,6 +9,8 @@ import sys
 import tempfile
 from pathlib import Path
 
+import sge_public
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILL = ROOT / ".codex/skills/sge-governed-checkpoints"
@@ -32,6 +34,9 @@ def run_json(*args: str, expected_codes: tuple[int, ...] = (0,)) -> dict[str, ob
 
 
 def main() -> None:
+    manifest = sge_public.load(ROOT)
+    sge_public.validate(manifest, ROOT)
+    closure = sge_public.skill_runtime_closure(ROOT)
     required = [
         WORKFLOW,
         ROOT / "tools/sge_public.py",
@@ -108,7 +113,7 @@ def main() -> None:
         if activation.get("activation_verdict") != "blocked":
             fail("public_ci_activation_fail_closed_smoke_failed")
 
-    print(f"public_ci_smoke:pass:compiled={len(python_files)}")
+    print(f"public_ci_smoke:pass:compiled={len(python_files)}:runtime_closure={len(closure)}")
 
 
 if __name__ == "__main__":

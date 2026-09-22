@@ -1,0 +1,219 @@
+{
+  "schema_version": "context_routing_manifest_v1",
+  "revision": "SP-005-R8-current-v1",
+  "coverage": [
+    {
+      "id": "G01",
+      "gate": "Task Intake",
+      "kernel_anchor": "G01",
+      "kernel_recipe_route": "references/recipes/intake-and-first-task.md",
+      "kernel_trigger_terms": ["每个请求"],
+      "recipe": "references/recipes/intake-and-first-task.md",
+      "trigger": "every request; explicit for persistent or governed work"
+    },
+    {
+      "id": "G02",
+      "gate": "Context Bootstrap",
+      "kernel_anchor": "G02",
+      "kernel_trigger_terms": ["Intake", "read_only"],
+      "kernel_recipe_route": "intake recipe",
+      "recipe": "references/recipes/intake-and-first-task.md",
+      "trigger": "after Intake using read_only, implementation, or validation profile"
+    },
+    {
+      "id": "G03",
+      "gate": "ERBE",
+      "kernel_anchor": "G03",
+      "kernel_recipe_route": "references/recipes/design-and-builder.md",
+      "kernel_trigger_terms": ["终态谓词", "authority"],
+      "recipe": "references/recipes/design-and-builder.md",
+      "trigger": "terminal predicates, state, authority, acceptance, promotion, write boundary, or high semantic risk"
+    },
+    {
+      "id": "G04",
+      "gate": "SGC v1",
+      "kernel_anchor": "G04",
+      "kernel_recipe_route": "所有 non-trivial recipes",
+      "kernel_trigger_terms": ["non-trivial", "truth placement"],
+      "recipe": "references/recipes/design-and-builder.md",
+      "trigger": "non-trivial completion, validation, promotion, runtime widening, or truth placement"
+    },
+    {
+      "id": "G05",
+      "gate": "Goal Conformance",
+      "kernel_anchor": "G05",
+      "kernel_recipe_route": "references/recipes/goal-and-loop.md",
+      "kernel_trigger_terms": ["Goal", "tracked Session"],
+      "recipe": "references/recipes/goal-and-loop.md",
+      "trigger": "non-trivial Goal, Stage Plan, tracked Session, or approved plan"
+    },
+    {
+      "id": "G06",
+      "gate": "Loop Continuation",
+      "kernel_anchor": "G06",
+      "kernel_recipe_route": "goal recipe",
+      "kernel_trigger_terms": ["Loop Goal", "Stage Plan"],
+      "recipe": "references/recipes/goal-and-loop.md",
+      "trigger": "goal or multi-session stage plan is active"
+    },
+    {
+      "id": "G07",
+      "gate": "Goal Agent Quality",
+      "kernel_anchor": "G07",
+      "kernel_recipe_route": "goal recipe",
+      "kernel_trigger_terms": ["Goal Prompt"],
+      "recipe": "references/recipes/goal-and-loop.md",
+      "trigger": "draft, review, patch, or finalize a Goal Prompt"
+    },
+    {
+      "id": "G08",
+      "gate": "Context Efficiency",
+      "kernel_anchor": "G08",
+      "kernel_recipe_route": "references/recipes/delta-validation.md",
+      "kernel_trigger_terms": ["delta", "rebaseline"],
+      "recipe": "references/recipes/delta-validation.md",
+      "trigger": "layered context, repair round, snapshot, delta validation, or rebaseline"
+    },
+    {
+      "id": "G09",
+      "gate": "Validation Agent Quality",
+      "kernel_anchor": "G09",
+      "kernel_recipe_route": "references/recipes/validation.md",
+      "kernel_trigger_terms": ["Validation verdict"],
+      "recipe": "references/recipes/validation.md",
+      "trigger": "before independent Validation verdict"
+    },
+    {
+      "id": "G10",
+      "gate": "Semantic Reviewer Quality",
+      "kernel_anchor": "G10",
+      "kernel_recipe_route": "references/recipes/semantic-review.md",
+      "kernel_trigger_terms": ["semantic-risk", "final review"],
+      "recipe": "references/recipes/semantic-review.md",
+      "trigger": "semantic-risk or pre/final semantic review required"
+    },
+    {
+      "id": "G11",
+      "gate": "Multi-Agent and Lane Card",
+      "kernel_anchor": "G11",
+      "kernel_trigger_terms": ["non-trivial", "委派"],
+      "kernel_recipe_route": "design recipe",
+      "recipe": "references/recipes/design-and-builder.md",
+      "trigger": "tracked or non-trivial governed work, and every delegated non-trivial lane"
+    },
+    {
+      "id": "G12",
+      "gate": "Closeout, KB-Dashboard, BDD",
+      "kernel_anchor": "G12",
+      "kernel_recipe_route": "references/recipes/closeout.md",
+      "kernel_trigger_terms": ["tracked closeout", "final claim"],
+      "recipe": "references/recipes/closeout.md",
+      "trigger": "tracked closeout, stable truth, maintained behavior gate, or final claim"
+    }
+  ],
+  "fixtures": [
+    {
+      "fixture_id": "F-FIRST-NO-GOAL",
+      "baseline_bytes": 146320,
+      "baseline_default_reads": 3,
+      "default_reads": [
+        ".codex/skills/sge-governed-checkpoints/SKILL.md",
+        ".codex/skills/sge-governed-checkpoints/references/recipes/intake-and-first-task.md"
+      ],
+      "conditional_reads": [],
+      "coverage_ids": [
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09",
+        "G10",
+        "G11",
+        "G12"
+      ]
+    },
+    {
+      "fixture_id": "F-TRACKED-IMPLEMENT",
+      "baseline_bytes": 146320,
+      "baseline_default_reads": 3,
+      "default_reads": [
+        ".codex/skills/sge-governed-checkpoints/SKILL.md",
+        ".codex/skills/sge-governed-checkpoints/references/recipes/design-and-builder.md"
+      ],
+      "conditional_reads": [
+        ".codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md"
+      ],
+      "coverage_ids": [
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09",
+        "G10",
+        "G11",
+        "G12"
+      ]
+    },
+    {
+      "fixture_id": "F-VALIDATE",
+      "baseline_bytes": 146320,
+      "baseline_default_reads": 3,
+      "default_reads": [
+        ".codex/skills/sge-governed-checkpoints/SKILL.md",
+        ".codex/skills/sge-governed-checkpoints/references/recipes/validation.md"
+      ],
+      "conditional_reads": [
+        ".codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md"
+      ],
+      "coverage_ids": [
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09",
+        "G10",
+        "G11",
+        "G12"
+      ]
+    },
+    {
+      "fixture_id": "F-DELTA",
+      "baseline_bytes": 146320,
+      "baseline_default_reads": 3,
+      "default_reads": [
+        ".codex/skills/sge-governed-checkpoints/SKILL.md",
+        ".codex/skills/sge-governed-checkpoints/references/recipes/delta-validation.md"
+      ],
+      "conditional_reads": [
+        ".codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md"
+      ],
+      "coverage_ids": [
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09",
+        "G10",
+        "G11",
+        "G12"
+      ]
+    }
+  ],
+  "fallback": "unknown or conflicting trigger expands to references/checklists.md and rebaseline"
+}
