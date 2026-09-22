@@ -1,0 +1,367 @@
+{
+  "schema_version": "stop_gate_smoke_fixture_v1",
+  "claim_ceiling": "synthetic fixture for package execution only; not real Goal acceptance",
+  "frozen_files": {
+    "goal.md": "# Generic Goal\n",
+    "completion-rule.md": "Complete only when the authority-bound executable predicate evaluates true.\n",
+    "goal-authority.json": "{\"authority_id\":\"generic-goal-authority\",\"provenance\":\"caller-managed-goal-authority\",\"role\":\"goal_owner\"}\n",
+    "approval-authority.json": "{\"authority_id\":\"generic-human-authority\",\"provenance\":\"caller-managed-approval-authority\",\"role\":\"human_authority\"}\n",
+    "completion-predicate.json": {
+      "schema_version": "stop_gate_completion_predicate_v1",
+      "predicate_id": "generic-goal-completion-v1",
+      "source_completion_rule_id": "completion-v1",
+      "source_completion_rule_ref": "{{ROOT}}/completion-rule.md",
+      "source_completion_rule_sha256": "{{SHA256:completion-rule.md}}",
+      "issued_by_authority_ref": "{{ROOT}}/goal-authority.json",
+      "issued_by_authority_sha256": "{{SHA256:goal-authority.json}}",
+      "issued_by_authority_id": "generic-goal-authority",
+      "expression": {
+        "all_of": [
+          {
+            "atom": {
+              "fact": "completion.remaining_must_have_ids",
+              "operator": "empty"
+            }
+          },
+          {
+            "atom": {
+              "fact": "scope_deltas",
+              "operator": "none_unapproved"
+            }
+          },
+          {
+            "atom": {
+              "fact": "completion.work_units",
+              "operator": "ids_terminal",
+              "required_ids": [
+                "work-final"
+              ]
+            }
+          },
+          {
+            "atom": {
+              "fact": "human_decisions",
+              "operator": "none_pending_admissible"
+            }
+          },
+          {
+            "atom": {
+              "fact": "final_evidence",
+              "operator": "required_kinds_bound",
+              "required_kinds": [
+                "goal",
+                "completion_rule",
+                "obligation_inventory",
+                "final_diff",
+                "independent_validation",
+                "closeout",
+                "dashboard_state",
+                "kb_disposition",
+                "original_plan_coverage",
+                "scope_delta_audit",
+                "post_closeout_reconciliation"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "evidence/obligation_inventory.json": "{\"evidence_kind\":\"obligation_inventory\"}\n",
+    "evidence/final_diff.json": "{\"evidence_kind\":\"final_diff\"}\n",
+    "evidence/independent_validation.json": "{\"evidence_kind\":\"independent_validation\"}\n",
+    "evidence/closeout.json": "{\"evidence_kind\":\"closeout\"}\n",
+    "evidence/dashboard_state.json": "{\"evidence_kind\":\"dashboard_state\"}\n",
+    "evidence/kb_disposition.json": "{\"evidence_kind\":\"kb_disposition\"}\n",
+    "evidence/original_plan_coverage.json": "{\"evidence_kind\":\"original_plan_coverage\"}\n",
+    "evidence/scope_delta_audit.json": "{\"evidence_kind\":\"scope_delta_audit\"}\n",
+    "evidence/post_closeout_reconciliation.json": "{\"evidence_kind\":\"post_closeout_reconciliation\"}\n",
+    "failure.log": "recoverable failure witness\n"
+  },
+  "base_state": {
+    "schema_version": "loop_state_v1",
+    "state_id": "{{CASE_ID}}",
+    "created_at": "2026-09-22T00:00:00Z",
+    "goal": {
+      "goal_id": "goal-generic",
+      "goal_ref": "{{ROOT}}/goal.md",
+      "goal_sha256": "{{SHA256:goal.md}}",
+      "completion_rule_id": "completion-v1",
+      "completion_rule_ref": "{{ROOT}}/completion-rule.md",
+      "completion_rule_sha256": "{{SHA256:completion-rule.md}}",
+      "completion_predicate_id": "generic-goal-completion-v1",
+      "completion_predicate_ref": "{{ROOT}}/completion-predicate.json",
+      "completion_predicate_sha256": "{{SHA256:completion-predicate.json}}",
+      "goal_authority_root_id": "trusted-goal-authority-root-v1",
+      "goal_authority_id": "generic-goal-authority",
+      "goal_authority_ref": "{{ROOT}}/goal-authority.json",
+      "goal_authority_sha256": "{{SHA256:goal-authority.json}}",
+      "goal_terminal": false
+    },
+    "current_work_unit": {
+      "work_unit_id": "work-current",
+      "work_unit_type": "milestone",
+      "parent_goal_id": "goal-generic",
+      "status": "done"
+    },
+    "completion": {
+      "original_must_haves": [
+        {
+          "must_have_id": "MH-base",
+          "source_ref": "{{ROOT}}/goal.md",
+          "observable_predicate": "base obligation is satisfied",
+          "status": "satisfied",
+          "evidence_refs": [
+            "{{ROOT}}/evidence/obligation_inventory.json"
+          ]
+        }
+      ],
+      "remaining_must_have_ids": [],
+      "work_units": [
+        {
+          "work_unit_id": "work-final",
+          "work_unit_type": "closeout",
+          "status": "closed",
+          "evidence_refs": [
+            "{{ROOT}}/evidence/closeout.json"
+          ]
+        }
+      ]
+    },
+    "next_work_unit": {
+      "work_unit_id": "none",
+      "work_unit_type": "closeout",
+      "ready": false,
+      "entry_materialized": true,
+      "dependency_ids": [
+        "work-final"
+      ],
+      "blocked_by_decision_id": null
+    },
+    "scope_deltas": [],
+    "human_decisions": [],
+    "approval_receipts": [],
+    "recoverable_failures": [],
+    "final_evidence": [
+      {
+        "evidence_kind": "goal",
+        "path": "{{ROOT}}/goal.md",
+        "sha256": "{{SHA256:goal.md}}",
+        "binding_status": "bound",
+        "covered_ids": [
+          "goal-generic"
+        ],
+        "authority_receipt_id": null
+      },
+      {
+        "evidence_kind": "completion_rule",
+        "path": "{{ROOT}}/completion-rule.md",
+        "sha256": "{{SHA256:completion-rule.md}}",
+        "binding_status": "bound",
+        "covered_ids": [
+          "completion-v1"
+        ],
+        "authority_receipt_id": null
+      },
+      {
+        "evidence_kind": "obligation_inventory",
+        "path": "{{ROOT}}/evidence/obligation_inventory.json",
+        "sha256": "{{SHA256:evidence/obligation_inventory.json}}",
+        "binding_status": "bound",
+        "covered_ids": [
+          "MH-base"
+        ],
+        "authority_receipt_id": null
+      },
+      {
+        "evidence_kind": "final_diff",
+        "path": "{{ROOT}}/evidence/final_diff.json",
+        "sha256": "{{SHA256:evidence/final_diff.json}}",
+        "binding_status": "bound",
+        "covered_ids": [
+          "goal-generic"
+        ],
+        "authority_receipt_id": null
+      },
+      {
+        "evidence_kind": "independent_validation",
+        "path": "{{ROOT}}/evidence/independent_validation.json",
+        "sha256": "{{SHA256:evidence/independent_validation.json}}",
+        "binding_status": "bound",
+        "covered_ids": [
+          "goal-generic"
+        ],
+        "authority_receipt_id": null
+      },
+      {
+        "evidence_kind": "closeout",
+        "path": "{{ROOT}}/evidence/closeout.json",
+        "sha256": "{{SHA256:evidence/closeout.json}}",
+        "binding_status": "bound",
+        "covered_ids": [
+          "goal-generic"
+        ],
+        "authority_receipt_id": null
+      },
+      {
+        "evidence_kind": "dashboard_state",
+        "path": "{{ROOT}}/evidence/dashboard_state.json",
+        "sha256": "{{SHA256:evidence/dashboard_state.json}}",
+        "binding_status": "bound",
+        "covered_ids": [
+          "goal-generic"
+        ],
+        "authority_receipt_id": null
+      },
+      {
+        "evidence_kind": "kb_disposition",
+        "path": "{{ROOT}}/evidence/kb_disposition.json",
+        "sha256": "{{SHA256:evidence/kb_disposition.json}}",
+        "binding_status": "bound",
+        "covered_ids": [
+          "goal-generic"
+        ],
+        "authority_receipt_id": null
+      },
+      {
+        "evidence_kind": "original_plan_coverage",
+        "path": "{{ROOT}}/evidence/original_plan_coverage.json",
+        "sha256": "{{SHA256:evidence/original_plan_coverage.json}}",
+        "binding_status": "bound",
+        "covered_ids": [
+          "MH-base"
+        ],
+        "authority_receipt_id": null
+      },
+      {
+        "evidence_kind": "scope_delta_audit",
+        "path": "{{ROOT}}/evidence/scope_delta_audit.json",
+        "sha256": "{{SHA256:evidence/scope_delta_audit.json}}",
+        "binding_status": "bound",
+        "covered_ids": [
+          "goal-generic"
+        ],
+        "authority_receipt_id": null
+      },
+      {
+        "evidence_kind": "post_closeout_reconciliation",
+        "path": "{{ROOT}}/evidence/post_closeout_reconciliation.json",
+        "sha256": "{{SHA256:evidence/post_closeout_reconciliation.json}}",
+        "binding_status": "bound",
+        "covered_ids": [
+          "goal-generic"
+        ],
+        "authority_receipt_id": null
+      }
+    ]
+  },
+  "authority_projection": {
+    "trusted_input_channel": "the test/orchestrator passes the trusted root path and its expected digest separately from loop_state",
+    "trusted_authority_root": {
+      "schema_version": "stop_gate_goal_authority_root_v1",
+      "authority_root_id": "trusted-goal-authority-root-v1",
+      "goal_binding": {
+        "goal_id": "goal-generic",
+        "goal_ref": "{{ROOT}}/goal.md",
+        "goal_sha256": "{{SHA256:goal.md}}",
+        "completion_rule_id": "completion-v1",
+        "completion_rule_ref": "{{ROOT}}/completion-rule.md",
+        "completion_rule_sha256": "{{SHA256:completion-rule.md}}",
+        "completion_predicate_id": "generic-goal-completion-v1",
+        "completion_predicate_ref": "{{ROOT}}/completion-predicate.json",
+        "completion_predicate_sha256": "{{SHA256:completion-predicate.json}}",
+        "predicate_issuer": {
+          "authority_id": "generic-goal-authority",
+          "authority_ref": "{{ROOT}}/goal-authority.json",
+          "authority_sha256": "{{SHA256:goal-authority.json}}"
+        }
+      }
+    },
+    "authority_variants": {
+      "trusted": {
+        "state_authority_root_id": "trusted-goal-authority-root-v1",
+        "predicate_issuer_id": "generic-goal-authority",
+        "expected_result": "trusted chain eligible for predicate evaluation"
+      },
+      "parallel_self_signed": {
+        "parallel_authority_root_id": "parallel-self-signed-root",
+        "parallel_issuer_id": "producer-self-signed-authority",
+        "rule": "the producer may construct an internally consistent parallel issuer, predicate and root, but the gate still receives the original caller-pinned trusted root and must reject the parallel chain",
+        "expected_reason_code": "UNTRUSTED_COMPLETION_PREDICATE_ISSUER"
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "continue",
+      "overlay": [
+        {
+          "op": "replace",
+          "path": "/completion/original_must_haves/0/must_have_id",
+          "value": "MH-next"
+        },
+        {
+          "op": "replace",
+          "path": "/completion/original_must_haves/0/status",
+          "value": "pending"
+        },
+        {
+          "op": "replace",
+          "path": "/completion/remaining_must_have_ids",
+          "value": [
+            "MH-next"
+          ]
+        },
+        {
+          "op": "replace",
+          "path": "/next_work_unit",
+          "value": {
+            "work_unit_id": "work-1",
+            "work_unit_type": "milestone",
+            "ready": true,
+            "entry_materialized": true,
+            "dependency_ids": [
+              "work-current"
+            ],
+            "blocked_by_decision_id": null
+          }
+        }
+      ],
+      "expected": {
+        "exit_code": 0,
+        "receipt_status": "valid",
+        "verdict": "CONTINUE",
+        "reason_codes": [
+          "PARENT_GOAL_ACTIVE",
+          "NEXT_WORK_READY"
+        ],
+        "final_allowed": false,
+        "message_class": "PROGRESS_ONLY",
+        "next_action": "DISPATCH_NEXT_WORK"
+      }
+    },
+    {
+      "id": "complete",
+      "overlay": [
+        {
+          "op": "replace",
+          "path": "/goal/goal_terminal",
+          "value": true
+        }
+      ],
+      "expected": {
+        "exit_code": 0,
+        "receipt_status": "valid",
+        "verdict": "GOAL_COMPLETE",
+        "reason_codes": [
+          "ORIGINAL_COMPLETION_RULE_SATISFIED",
+          "ALL_MUST_HAVES_ACCOUNTED_FOR",
+          "FINAL_EVIDENCE_BOUND",
+          "FINAL_STATE_CONSISTENT"
+        ],
+        "final_allowed": true,
+        "message_class": "FINAL_CLOSEOUT",
+        "next_action": "EMIT_FINAL_CLOSEOUT"
+      }
+    }
+  ]
+}

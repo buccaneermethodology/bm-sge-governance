@@ -348,7 +348,7 @@ def load(source_root: Path | str | None = None) -> dict[str, Any]:
     return data
 
 
-def _validate_manifest_shape(data: dict[str, Any]) -> list[dict[str, Any]]:
+def _validate_manifest_shape(data: dict[str, Any], source_root: Path) -> list[dict[str, Any]]:
     if not isinstance(data.get("files"), list) or not data["files"]:
         _fail("manifest_invalid", "files")
     layers = data.get("layer_contract", {})
@@ -382,6 +382,26 @@ def _validate_manifest_shape(data: dict[str, Any]) -> list[dict[str, Any]]:
             _fail("layer_dependency_unknown", path)
         normalized.append(item)
     runtime_dependencies = data.get("runtime_dependencies", [])
+    stop_gate_required = {
+        _SKILL_PREFIX + "scripts/stop_gate.py",
+        _SKILL_PREFIX + "schemas/loop_state_v1.schema.json",
+        _SKILL_PREFIX + "schemas/stop_gate_receipt_v1.schema.json",
+        _SKILL_PREFIX + "requirements.txt",
+        _SKILL_PREFIX + "fixtures/stop-gate-v1/smoke.json",
+        "tools/stop_gate_smoke.py",
+        "kb/data/strategy/strategy_stop_gate_v1.json",
+        "kb/docs/strategy/Strategy_Stop_Gate_V1.md",
+    }
+    # Apply when the exported Skill declares the Stop Gate entry. Minimal test
+    # manifests and unrelated packages retain their own closure contracts.
+    skill_entry = source_root / (_SKILL_PREFIX + "SKILL.md")
+    if skill_entry.is_file() and "scripts/stop_gate.py" in skill_entry.read_text(encoding="utf-8"):
+        declared_stop_gate = data.get("stop_gate_runtime_dependencies", [])
+        if not isinstance(declared_stop_gate, list) or set(declared_stop_gate) != stop_gate_required:
+            _fail("stop_gate_runtime_contract_invalid")
+        for dependency in stop_gate_required:
+            if dependency not in seen or dependency not in runtime_dependencies:
+                _fail("stop_gate_runtime_dependency_missing", dependency)
     if not isinstance(runtime_dependencies, list) or not runtime_dependencies:
         _fail("runtime_dependency_manifest_missing")
     for dependency in runtime_dependencies:
@@ -433,7 +453,7 @@ def validate(data: dict[str, Any], source_root: Path | str | None = None) -> set
     if not root.is_dir() or root.is_symlink():
         _fail("source_root_invalid", root.as_posix())
     _validate_boundary_policies(data)
-    items = _validate_manifest_shape(data)
+    items = _validate_manifest_shape(data, root)
     allowlisted = {item["path"] for item in items}
     _validate_skill_runtime_closure(data, root, allowlisted)
     inventory, nested_repos = _walk_inventory(root, allowlisted)

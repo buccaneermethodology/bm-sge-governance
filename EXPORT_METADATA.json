@@ -2,12 +2,12 @@
   "schema_version": "sge_projection_metadata_v1",
   "claim_ceiling": "仅支持 maintainer local deterministic projection candidate evidence；不支持独立 Validation、批准、公开仓、远端 mutation、release 或 production。",
   "identity": {
-    "source_revision": "dd76f310ba20b55caeea1706f89a920514efbc4e",
-    "manifest_revision": "7c0654b2f3b506a580dcb1f361a8b805a63688cf4e35dd548e6f3e5fd4d404ab",
-    "export_tool_revision": "a1888bf2ac5aee1e07cb9a5aabb0100436a2cedaf26ffae19c406431cd2a96a3",
-    "export_run_id": "run-20260922T090447434629Z-9867e4e5613e",
-    "candidate_id": "sge-governance-public-candidate-v1.1.1",
-    "candidate_fingerprint": "8590a403b44742009ff09e5625c017086f96c50335359541fa3fef5073049755",
+    "source_revision": "6320ce560393316ef9d36eb9dd418744fbe03085",
+    "manifest_revision": "4d292bc31bdb7de940e4771aa8fbe0e47874cb07bcbca03c971428d6f7b92480",
+    "export_tool_revision": "4164606588250cddfeea9f613bc607c3a7bc8dd8d4b1d0843cbb1058399ea945",
+    "export_run_id": "run-20260922T152806649188Z-3285da90a189",
+    "candidate_id": "sge-governance-public-candidate-v1.1.2",
+    "candidate_fingerprint": "20e82a8196fd655f27f13d8d87e03cee9894bbe0341011e893afb483b488d832",
     "projection_commit": null,
     "release_tag": null
   },
@@ -28,8 +28,8 @@
       "license": "MIT",
       "provenance": "SGE core",
       "execution_context": false,
-      "bytes": 10091,
-      "sha256": "6fad0c3e36c1543aac7266a4c0f8ff4ce26ccd6591a24d3ba3bf5da052622fdd"
+      "bytes": 11389,
+      "sha256": "65e0f15dac7fb1dba19e53e916db31c9247c2a49d18fbbbf5055ba486f7cbf4d"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/agents/openai.yaml",
@@ -104,13 +104,22 @@
       "sha256": "e111e43d53c7309c180d53bad7261f1fe0be1e19eaa24113aa850e19e52e7d4f"
     },
     {
+      "path": ".codex/skills/sge-governed-checkpoints/fixtures/stop-gate-v1/smoke.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generic Stop Gate runtime and policy",
+      "execution_context": false,
+      "bytes": 12561,
+      "sha256": "a7ec5c3f4f18f2f3f9baec713473184e44b11561f7cbfa529057d6713fe63f9e"
+    },
+    {
       "path": ".codex/skills/sge-governed-checkpoints/references/checklists.md",
       "source": "repository",
       "license": "MIT",
       "provenance": "SGE core reference",
       "execution_context": false,
-      "bytes": 76998,
-      "sha256": "24fffc584d41cc6010c887790098db033a9ded1eda78709f7ae5c249b6f4c484"
+      "bytes": 77941,
+      "sha256": "c12362e98083ea764a37fe6708ee26c0c3ca4f0373f9c32156efe5970d9b9a3c"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
@@ -127,8 +136,8 @@
       "license": "MIT",
       "provenance": "machine-readable Skill routing closure",
       "execution_context": false,
-      "bytes": 6979,
-      "sha256": "e36b896a08b9902cef2ba2c1e95218219709643ddb4e1ec21c4d3216db58860f"
+      "bytes": 7159,
+      "sha256": "1f3e80109f31ea996da2c03e392c03546cc6dc40ab137f19015c9688a2a1dfda"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/references/initial-kb-bootstrap.md",
@@ -172,8 +181,8 @@
       "license": "MIT",
       "provenance": "routed Goal and Loop recipe",
       "execution_context": false,
-      "bytes": 827,
-      "sha256": "99ad215fcd698740a0584b014fd26756f61dbd71d0e90b18ca06d590449c7e56"
+      "bytes": 2441,
+      "sha256": "65f774dfcb783a0aea12e965bde9bc2fc641583782c4ddb8d80dfb7b873b5d48"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/references/recipes/intake-and-first-task.md",
@@ -201,6 +210,15 @@
       "execution_context": false,
       "bytes": 941,
       "sha256": "ac52cf56cc6644742f743da7c01c1056a40bce4bdd0b44d3382ec07819b7e860"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/requirements.txt",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generic Stop Gate runtime and policy",
+      "execution_context": false,
+      "bytes": 19,
+      "sha256": "756cc9e506ae4ee1a6f6c0507088b5cfc0dc8ba350fb2d2d46f1ffa72033adb6"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/schemas/capability_preflight_v1.schema.json",
@@ -284,6 +302,15 @@
       "sha256": "086c9e47880dc295fea964fb8c9a11bb304d44e7aef59832865e8472393d120a"
     },
     {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/loop_state_v1.schema.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generic Stop Gate runtime and policy",
+      "execution_context": false,
+      "bytes": 9380,
+      "sha256": "cab4e2cf076b14ef32a28993396a3e306b3019cc2034431932c45fe68fd0b712"
+    },
+    {
       "path": ".codex/skills/sge-governed-checkpoints/schemas/managed_activation_v1.schema.json",
       "source": "repository",
       "license": "MIT",
@@ -291,6 +318,15 @@
       "execution_context": false,
       "bytes": 2525,
       "sha256": "578f22326e6bdd062a86bc71bd8b4f488427d9bd625acb0ba406d74fb99e0839"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/stop_gate_receipt_v1.schema.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generic Stop Gate runtime and policy",
+      "execution_context": false,
+      "bytes": 3179,
+      "sha256": "f380b482ed1e35994d6e6cbec0a930e4debfb6848a9d18acbbac1fb9a32a0604"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/schemas/task_classification_v2.schema.json",
@@ -437,6 +473,15 @@
       "sha256": "e6d4e4d52d6caab0909ce327b85e997d9949c9f2e79cf80e83f1133f2b75ce08"
     },
     {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/stop_gate.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generic Stop Gate runtime and policy",
+      "execution_context": false,
+      "bytes": 21285,
+      "sha256": "e4dcd3ec0744e74486c5884d09a3c2021a1e50f51c0317525c4f69c00ef69448"
+    },
+    {
       "path": ".codex/skills/sge-governed-checkpoints/scripts/task_classifier.py",
       "source": "repository",
       "license": "MIT",
@@ -469,8 +514,8 @@
       "license": "MIT",
       "provenance": "dependency-free hosted CI for the exact public package",
       "execution_context": false,
-      "bytes": 544,
-      "sha256": "8d7f0bf0b70ab01e19f9a14398886a600dc9c74f7a8f0702cec0f38801d2864f"
+      "bytes": 682,
+      "sha256": "d553de21854519419106239bbb95ea50ab8aaf2e2846021bad9414c04cb4c637"
     },
     {
       "path": "LICENSE",
@@ -523,8 +568,8 @@
       "license": "MIT",
       "provenance": "newcomer companion",
       "execution_context": false,
-      "bytes": 2109,
-      "sha256": "0083ed5a1e66a47bf352e4825d127990736652178e1331fe74b8ceabe6a96892"
+      "bytes": 2532,
+      "sha256": "b13b2ab3291b632e1228a178d65032e9ae33ead47e56c939d9b974d842ae2f5a"
     },
     {
       "path": "examples/minimal-project/AGENTS.md",
@@ -550,8 +595,8 @@
       "license": "MIT",
       "provenance": "project-neutral orchestrator profile and hook contract",
       "execution_context": false,
-      "bytes": 594,
-      "sha256": "68ac7e55a9c88505c5024ce20db2d2705399347badbb1268f85de5aa7ed2949f"
+      "bytes": 897,
+      "sha256": "2c22eef20f988134c3f0fd4a28031c2ff458db53522e346d9434a1f6ff2503d4"
     },
     {
       "path": "extensions/registry_v1.json",
@@ -662,6 +707,15 @@
       "sha256": "a2da0b7edd85a8ad35f6e55cfb660d363d86f1f4bbea58a0c6018c5dcb39f31c"
     },
     {
+      "path": "kb/data/strategy/strategy_stop_gate_v1.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generic Stop Gate runtime and policy",
+      "execution_context": false,
+      "bytes": 3697,
+      "sha256": "43355381334b8a8937620f13e4f8276a94ea2cb43eb7bdf213bfe0cac30e19d4"
+    },
+    {
       "path": "kb/docs/Glossary.md",
       "source": "repository",
       "license": "MIT",
@@ -716,13 +770,22 @@
       "sha256": "4770bbc3daed5004e672425d9755e8e7aa65dcd79448dfd0e1167d295435e085"
     },
     {
+      "path": "kb/docs/strategy/Strategy_Stop_Gate_V1.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generic Stop Gate runtime and policy",
+      "execution_context": false,
+      "bytes": 2723,
+      "sha256": "1df9b4dced1ff32a1f9824aaaaadb49e92057f98d6be33d5245348371fa8b09b"
+    },
+    {
       "path": "kb/render_manifest_v1.json",
       "source": "repository",
       "license": "MIT",
       "provenance": "deterministic KB projection manifest",
       "execution_context": false,
-      "bytes": 2459,
-      "sha256": "ff7ddd926a7452c83a95129e273afba7d8fe33def095564cbb0c1491de1bb23e"
+      "bytes": 2597,
+      "sha256": "a8f7cac1802146d5df4f332ddc5cb7147c288e220a3f6adc2911adeadfa04591"
     },
     {
       "path": "kb/tools/render_kb.py",
@@ -739,8 +802,8 @@
       "license": "MIT",
       "provenance": "default-deny public file inventory",
       "execution_context": false,
-      "bytes": 26522,
-      "sha256": "7c0654b2f3b506a580dcb1f361a8b805a63688cf4e35dd548e6f3e5fd4d404ab"
+      "bytes": 29441,
+      "sha256": "4d292bc31bdb7de940e4771aa8fbe0e47874cb07bcbca03c971428d6f7b92480"
     },
     {
       "path": "tools/public_ci_smoke.py",
@@ -748,8 +811,8 @@
       "license": "MIT",
       "provenance": "self-contained public package layout, compile and v1.1 runtime smoke gate",
       "execution_context": false,
-      "bytes": 4499,
-      "sha256": "803eb3a2f52cc484390feec4e9ba0f628f51192fbb880f06897eac19b9c5f279"
+      "bytes": 4553,
+      "sha256": "12a645ab621a0eef7418c758a503c34a658222243e4bc26333537a0521b7f342"
     },
     {
       "path": "tools/run_sge_loop_goal_cycle.py",
@@ -757,8 +820,8 @@
       "license": "MIT",
       "provenance": "profile-driven optional orchestrator",
       "execution_context": false,
-      "bytes": 1516,
-      "sha256": "5763b2d2af83ab2d5518724091b94b64d1d3a5241e7cab329af0bc45a22a67ef"
+      "bytes": 1672,
+      "sha256": "37380c7a25255c2ff912b085056260f1828e95c05e8a353883d83a7f4a3a4ef4"
     },
     {
       "path": "tools/sge_public.py",
@@ -766,19 +829,28 @@
       "license": "MIT",
       "provenance": "public lifecycle utility",
       "execution_context": false,
-      "bytes": 42801,
-      "sha256": "a1888bf2ac5aee1e07cb9a5aabb0100436a2cedaf26ffae19c406431cd2a96a3"
+      "bytes": 44034,
+      "sha256": "4164606588250cddfeea9f613bc607c3a7bc8dd8d4b1d0843cbb1058399ea945"
+    },
+    {
+      "path": "tools/stop_gate_smoke.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generic Stop Gate runtime and policy",
+      "execution_context": false,
+      "bytes": 4401,
+      "sha256": "f7aafa7a3b7669235a9ba001486d48fcb9e5b0f8bb4588444eadc1723d685c15"
     }
   ],
-  "file_set_sha256": "cfb7ee95769135bb2bc934cb34fc0f4dd747025e45620e4b0a1e624488d77b80",
-  "tree_sha256": "e9d88db179cf691346e8a3ed9a1449aa483beea73a53bf0415644fcbc8edb6bb",
+  "file_set_sha256": "7397320e845fbe3ef4000533ac2c249a3ffb76ebcd20a66f018391a2a99a0483",
+  "tree_sha256": "36cbd29135e7d40f30d854cea4b3cfdd55d56f784c4a3997cb11836236949559",
   "source_inventory": {
     "complete": true,
-    "entry_count": 904,
-    "allowlisted_entry_count": 83,
-    "excluded_entry_count": 821,
+    "entry_count": 1076,
+    "allowlisted_entry_count": 91,
+    "excluded_entry_count": 985,
     "excluded_counts": {
-      "default_deny": 820,
+      "default_deny": 984,
       "source_control_metadata": 1
     },
     "private_paths_omitted_from_public_metadata": true

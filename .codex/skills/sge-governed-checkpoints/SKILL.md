@@ -64,7 +64,11 @@ Machine mapping：`references/context-routing-manifest-v1.json`。G01..G12 必�
 
 ## Loop continuation
 
-每个 Session closeout 记录 `goal_terminal`、`next_session`、`next_session_ready`、`human_decision_required`。当 Goal 未终止、下一 Session ready 且无需人类决定时，Session boundary 不是停止点；同一回合自动进入下一 Session。恢复或 context compaction 后，从 Goal、Dashboard 与最近 closeout 找到第一个 ready 且未完成 Session。
+Milestone、Session closeout、恢复和每次 final 前，必须运行 `scripts/stop_gate.py`，输入 `schemas/loop_state_v1.schema.json`，保存符合 `schemas/stop_gate_receipt_v1.schema.json` 的 durable receipt。调用方显式提供独立固定的 Goal authority root 和预期摘要；不得从 state 自动发现或生成 root。
+
+`CONTINUE` 只允许进度消息并立即执行 next_action；`PAUSE_ALLOWED` 只允许真实决策/阻断请求；只有 `GOAL_COMPLETE` 且 `final_allowed=true` 才能最终收口并引用最新 receipt。无效状态退出非零、verdict=null、final_allowed=false，Orchestrator 补齐或重建后重试。Session 边界、可修复失败和缺下一入口都必须继续；瞬时网络/工具失败先恢复，同 fingerprint 默认连续达到 3 次才可暂停。已有有效授权不得重复询问。
+
+receipt 在 state 或任一引用文件变化后失效，final 前必须重新运行 Gate。无宿主 pre-final hook 时，这是可审计、fail-closed 协议；只有宿主实际校验最新 receipt 才能声称自动强制拦截。恢复后从 Goal、Dashboard、最近状态与 receipt 继续第一个未完成工作。
 
 ## Recipe selector 与 conditional reads
 
@@ -83,7 +87,10 @@ Machine mapping：`references/context-routing-manifest-v1.json`。G01..G12 必�
 
 ## Deterministic entry points
 
+Stop Gate 依赖 `requirements.txt` 中的 Python 包；在当前 Python 环境执行 `python3 -m pip install -r .codex/skills/sge-governed-checkpoints/requirements.txt`。独立安装时使用安装目录下的同名文件。
+
 ```bash
+python3 .codex/skills/sge-governed-checkpoints/scripts/stop_gate.py <state.json> --allowed-root <evidence-root> --authority-source-root <caller-authority-root> --authority-root <trusted-root.json> --expected-authority-root-sha256 <pinned-sha256> --receipt-out <receipt.json>
 python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode <mode>
 python3 .codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py validate <packet.json>
 python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate <card.json> --repo . --expected-card-sha256 <sha256>

@@ -3,12 +3,14 @@
   "profile_id":"project-neutral-default",
   "project_binding":null,
   "extension_registry":"extensions/registry_v1.json",
+  "stop_gate":{"delegate":"skill_core","trust_channel":"caller_explicit"},
+  "verdict_hooks":{"CONTINUE":"dispatch_next_action","PAUSE_ALLOWED":"request_single_human_decision","GOAL_COMPLETE":"enter_completion_audit"},
   "decision_hooks":{
     "continue_session_route":"dispatch_next_ready_session",
     "reported_terminal_route":"enter_completion_audit",
     "human_authority_route":"request_single_human_decision",
     "not_ready_route":"record_dependency_blocker"
   },
-  "required_terminal_evidence":["authority_ref","validation_verdict"],
-  "claim_ceiling":"routing decisions over supplied governed state; never completion evidence"
+  "required_terminal_evidence":["latest_valid_stop_gate_receipt","exact_state_and_reference_digests","independent_final_validation"],
+  "claim_ceiling":"auditable fail-closed protocol; automatic final-response blocking requires an actual host hook"
 }

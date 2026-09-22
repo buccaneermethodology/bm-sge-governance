@@ -27,3 +27,12 @@ python3 .codex/skills/sge-governed-checkpoints/scripts/initial_kb_bootstrap.py b
 ```
 
 Goal 缺失或冲突时不会启动 Builder；optional adapter 缺失时明确使用 core recipe。recipe 只生成交接包，不实现产品 KB，也不证明独立 Validation、发布或生产就绪。
+# Stop Gate 运行依赖
+
+使用当前 Python 环境（推荐独立虚拟环境）安装依赖后，直接检查 Stop Gate。此 smoke 使用合成证据，只证明安装包可执行，不代表真实 Goal 已完成。
+
+```bash
+python3 -m pip install -r .codex/skills/sge-governed-checkpoints/requirements.txt
+python3 .codex/skills/sge-governed-checkpoints/scripts/stop_gate.py --help
+python3 tools/stop_gate_smoke.py
+```

@@ -1,24 +1,23 @@
 #!/usr/bin/env python3
-"""Generic, profile-and-hook-driven Loop Goal routing helper."""
+"""Thin profile-validated delegation wrapper for the single Skill Stop Gate core."""
 from __future__ import annotations
-import argparse, json
+import argparse, json, subprocess, sys
 from pathlib import Path
 
+ROOT=Path(__file__).resolve().parents[1]
+CORE=ROOT/".codex/skills/sge-governed-checkpoints/scripts/stop_gate.py"
+
 def main() -> int:
-    p=argparse.ArgumentParser(); p.add_argument("state", type=Path); p.add_argument("--profile", type=Path, required=True); a=p.parse_args()
-    data=json.loads(a.state.read_text(encoding="utf-8"))
+    p=argparse.ArgumentParser(); p.add_argument("state", type=Path); p.add_argument("--profile", type=Path, required=True)
+    p.add_argument("--allowed-root",type=Path,required=True); p.add_argument("--authority-source-root",type=Path,required=True)
+    p.add_argument("--authority-root",type=Path,required=True); p.add_argument("--expected-authority-root-sha256",required=True)
+    p.add_argument("--receipt-out",type=Path); a=p.parse_args()
     profile=json.loads(a.profile.read_text(encoding="utf-8"))
     if profile.get("schema_version")!="sge_orchestrator_profile_v1" or profile.get("project_binding") is not None: raise SystemExit("profile_contract_invalid")
-    hooks=profile.get("decision_hooks", {})
-    required={"goal_terminal","next_session","next_session_ready","human_decision_required","authority_ref","validation_verdict"}
-    if set(data) != required: raise SystemExit("state_contract_invalid")
-    if data["goal_terminal"]:
-        if not data["authority_ref"] or data["validation_verdict"]!="pass": raise SystemExit("terminal_evidence_invalid")
-        route="reported_terminal_route"
-    elif data["human_decision_required"]: route="human_authority_route"
-    elif data["next_session_ready"] and data["next_session"]: route="continue_session_route"
-    else: route="not_ready_route"
-    if route not in hooks: raise SystemExit("hook_missing")
-    print(json.dumps({"route":route,"hook":hooks[route],"next_session":data["next_session"],"completion_evidence":False}, ensure_ascii=False))
-    return 0
+    if profile.get("stop_gate",{}).get("delegate")!="skill_core": raise SystemExit("profile_stop_gate_delegate_invalid")
+    cmd=[sys.executable,str(CORE),str(a.state),"--allowed-root",str(a.allowed_root),"--authority-source-root",str(a.authority_source_root),"--authority-root",str(a.authority_root),"--expected-authority-root-sha256",a.expected_authority_root_sha256]
+    if a.receipt_out: cmd.extend(["--receipt-out",str(a.receipt_out)])
+    result=subprocess.run(cmd,cwd=ROOT,capture_output=True)
+    sys.stdout.buffer.write(result.stdout); sys.stderr.buffer.write(result.stderr)
+    return result.returncode
 if __name__ == "__main__": raise SystemExit(main())

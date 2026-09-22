@@ -1,6 +1,6 @@
 {
   "schema_version": "sge_public_export_manifest_v1",
-  "candidate_id": "sge-governance-public-candidate-v1.1.1",
+  "candidate_id": "sge-governance-public-candidate-v1.1.2",
   "identity_contract": {
     "private_source_id": "sge-governance-skill",
     "public_project_id": "bm-sge-governance",
@@ -106,7 +106,15 @@
     {"path":"kb/docs/strategy/Strategy_SGC_Structural_Contract_V1.md","source":"repository","license":"MIT","provenance":"generated canonical projection","public":true,"execution_context":false},
     {"path":"tools/sge_public.py","source":"repository","license":"MIT","provenance":"public lifecycle utility","public":true,"execution_context":false},
     {"path":"tools/public_ci_smoke.py","source":"repository","license":"MIT","provenance":"self-contained public package layout, compile and v1.1 runtime smoke gate","public":true,"execution_context":false},
-    {"path":"tools/run_sge_loop_goal_cycle.py","source":"repository","license":"MIT","provenance":"profile-driven optional orchestrator","public":true,"execution_context":false}
+    {"path":"tools/run_sge_loop_goal_cycle.py","source":"repository","license":"MIT","provenance":"profile-driven optional orchestrator","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/scripts/stop_gate.py","source":"repository","license":"MIT","provenance":"generic Stop Gate runtime and policy","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/schemas/loop_state_v1.schema.json","source":"repository","license":"MIT","provenance":"generic Stop Gate runtime and policy","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/schemas/stop_gate_receipt_v1.schema.json","source":"repository","license":"MIT","provenance":"generic Stop Gate runtime and policy","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/requirements.txt","source":"repository","license":"MIT","provenance":"generic Stop Gate runtime and policy","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/fixtures/stop-gate-v1/smoke.json","source":"repository","license":"MIT","provenance":"generic Stop Gate runtime and policy","public":true,"execution_context":false},
+    {"path":"kb/data/strategy/strategy_stop_gate_v1.json","source":"repository","license":"MIT","provenance":"generic Stop Gate runtime and policy","public":true,"execution_context":false},
+    {"path":"kb/docs/strategy/Strategy_Stop_Gate_V1.md","source":"repository","license":"MIT","provenance":"generic Stop Gate runtime and policy","public":true,"execution_context":false},
+    {"path":"tools/stop_gate_smoke.py","source":"repository","license":"MIT","provenance":"generic Stop Gate runtime and policy","public":true,"execution_context":false}
   ],
   "runtime_dependencies": [
     ".github/workflows/candidate-checks.yml",
@@ -150,14 +158,22 @@
     ".codex/skills/sge-governed-checkpoints/scripts/managed_activation.py",
     ".codex/skills/sge-governed-checkpoints/schemas/task_classification_v2.schema.json",
     ".codex/skills/sge-governed-checkpoints/schemas/topology_gate_v1.schema.json",
-    ".codex/skills/sge-governed-checkpoints/schemas/managed_activation_v1.schema.json"
-    ,".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/authority-root.json"
-    ,".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/digest-manifest.json"
-    ,".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/frozen-goal.md"
-    ,".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/goal-obligation-inventory.json"
-    ,".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/issuer-provenance.json"
-    ,".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/positive-terminal-payload.template.json"
-    ,".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/trusted-authority-boundary.json"
+    ".codex/skills/sge-governed-checkpoints/schemas/managed_activation_v1.schema.json",
+    ".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/authority-root.json",
+    ".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/digest-manifest.json",
+    ".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/frozen-goal.md",
+    ".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/goal-obligation-inventory.json",
+    ".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/issuer-provenance.json",
+    ".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/positive-terminal-payload.template.json",
+    ".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/trusted-authority-boundary.json",
+    ".codex/skills/sge-governed-checkpoints/scripts/stop_gate.py",
+    ".codex/skills/sge-governed-checkpoints/schemas/loop_state_v1.schema.json",
+    ".codex/skills/sge-governed-checkpoints/schemas/stop_gate_receipt_v1.schema.json",
+    ".codex/skills/sge-governed-checkpoints/requirements.txt",
+    ".codex/skills/sge-governed-checkpoints/fixtures/stop-gate-v1/smoke.json",
+    "kb/data/strategy/strategy_stop_gate_v1.json",
+    "kb/docs/strategy/Strategy_Stop_Gate_V1.md",
+    "tools/stop_gate_smoke.py"
   ],
   "hosted_ci": {
     "workflow": ".github/workflows/candidate-checks.yml",
@@ -188,7 +204,9 @@
       ".codex/skills/sge-governed-checkpoints/schemas/lane_lifecycle_v1.schema.json",
       ".codex/skills/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json",
       ".codex/skills/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json",
+      ".codex/skills/sge-governed-checkpoints/schemas/loop_state_v1.schema.json",
       ".codex/skills/sge-governed-checkpoints/schemas/managed_activation_v1.schema.json",
+      ".codex/skills/sge-governed-checkpoints/schemas/stop_gate_receipt_v1.schema.json",
       ".codex/skills/sge-governed-checkpoints/schemas/task_classification_v2.schema.json",
       ".codex/skills/sge-governed-checkpoints/schemas/topology_gate_v1.schema.json",
       ".codex/skills/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json",
@@ -203,6 +221,7 @@
       ".codex/skills/sge-governed-checkpoints/scripts/lane_lifecycle.py",
       ".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
       ".codex/skills/sge-governed-checkpoints/scripts/managed_activation.py",
+      ".codex/skills/sge-governed-checkpoints/scripts/stop_gate.py",
       ".codex/skills/sge-governed-checkpoints/scripts/task_classifier.py",
       ".codex/skills/sge-governed-checkpoints/scripts/topology_gate.py",
       ".codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py"
@@ -226,4 +245,15 @@
     "rule":"first matching prefix wins; every allowlisted file resolves to one declared layer"
   },
   "claim_ceiling": "仅支持声明范围内的 public candidate export 与 clean-room 工具验收；不代表发布、生产或任意仓库适用"
+,
+  "stop_gate_runtime_dependencies": [
+    ".codex/skills/sge-governed-checkpoints/scripts/stop_gate.py",
+    ".codex/skills/sge-governed-checkpoints/schemas/loop_state_v1.schema.json",
+    ".codex/skills/sge-governed-checkpoints/schemas/stop_gate_receipt_v1.schema.json",
+    ".codex/skills/sge-governed-checkpoints/requirements.txt",
+    ".codex/skills/sge-governed-checkpoints/fixtures/stop-gate-v1/smoke.json",
+    "kb/data/strategy/strategy_stop_gate_v1.json",
+    "kb/docs/strategy/Strategy_Stop_Gate_V1.md",
+    "tools/stop_gate_smoke.py"
+  ]
 }

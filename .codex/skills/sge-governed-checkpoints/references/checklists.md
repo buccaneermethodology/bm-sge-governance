@@ -206,17 +206,25 @@ The Goal Agent is responsible for turning user intent plus current repo truth in
 ### Loop Continuation Contract
 
 - Loop Goal 的执行单位是整个 Goal，不是单个 Session。Session 的 `done/pass`、closeout 或 post-closeout reconciliation 只触发 next-session scan。
-- 每次 scan 必须明确：`goal_terminal`、`next_session`、`next_session_ready`、`human_decision_required`。
+- 每次 scan 必须使用完整 loop_state_v1 调用 `scripts/stop_gate.py`；保存 stop_gate_receipt_v1、输入摘要、重算的引用摘要、时间与版本。旧四字段摘要仅供阅读，不能作为判定 authority。
 - 当 `goal_terminal=false`、`next_session_ready=true`、`human_decision_required=false` 时，禁止输出 final answer 或“如果需要我可以继续”；必须直接开始下一 Session。
-- 只有 Goal 完成、用户明确暂停、真正的人类 authority/destructive decision、明示资源阈值、网络/工具中断或连续恢复失败超过 3 次可以终止当前 Loop 回合。
+- 只有 Goal 完成、用户明确暂停、真正的人类 authority/destructive decision、Goal 明示资源阈值或相同网络/工具 fingerprint 连续恢复失败达到默认 3 次可以终止当前 Loop 回合；瞬时中断先恢复。
 - 普通测试失败、lane card/digest drift、需要创建下一 Session artifact 或可重建 baseline 都由 Orchestrator 自行处理，不得转化为“请回复继续”。
 - 人类完成必要决策后，Orchestrator 自动恢复，不再额外索取“继续”。Context compaction 后从 Goal、Dashboard 和最新 closeout 恢复 continuation state。
 
 建议在 Loop Goal 中使用：
 
 ```text
-Continuous execution contract：本 Goal 默认连续执行整个 Session DAG。任何单个 Session、lane、closeout 或 post-closeout pass 都不是停止条件。每个 Session closeout 后运行 loop-continuation gate；若 Goal 未完成、下一 Session ready 且无必须由人类决定的事项，则禁止发送 final answer，必须直接进入下一 Session。只有 Goal completion、用户显式暂停、真实 human-authority/destructive decision、明示资源阈值、网络/工具中断或连续恢复失败超过 3 次允许暂停。人类决策返回后自动续跑，不再要求“继续”。
+Continuous execution contract：本 Goal 默认连续执行整个 Session DAG。任何单个 Session、lane、closeout 或 post-closeout pass 都不是停止条件。Milestone、Session closeout、恢复和 final 前运行核心 Stop Gate，保存最新 receipt。CONTINUE 后直接执行 next_action；invalid 状态自行重建。只有 GOAL_COMPLETE、用户显式暂停、真实人类权限、Goal 明示资源阈值或相同网络/工具 fingerprint 连续失败达到默认 3 次允许暂停。人类决策返回后自动续跑，不再要求“继续”。
 ```
+
+### 三种消息模板
+
+- `PROGRESS_ONLY`：已完成〈当前工作〉；Stop Gate 为 CONTINUE，继续〈next_action〉。随后执行下一步，不结束回合。
+- `DECISION_REQUEST`：需要你决定〈真实权限事项〉；推荐〈选项〉，影响〈范围〉；未决定时〈阻断〉。只在 PAUSE_ALLOWED 使用；有效授权仍覆盖时不得重问。
+- `FINAL_CLOSEOUT`：仅在最新 GOAL_COMPLETE receipt 允许时使用最终六问：完成了什么？证据是什么？如何验证？还有什么限制？KB/Dashboard 如何更新？后续是什么？附 receipt 与独立验收源文件链接。中间里程碑不用这套最终模板。
+
+receipt 只证明当前输入与证据绑定；state 或引用文件变化后须重跑。无真实宿主 pre-final hook 时不得声称自动强制阻止模型 final。
 
 Required handoff layers:
 

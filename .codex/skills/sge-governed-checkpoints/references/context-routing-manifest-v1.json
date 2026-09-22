@@ -49,6 +49,9 @@
     },
     {
       "id": "G06",
+      "deterministic_entry": "scripts/stop_gate.py",
+      "state_schema": "schemas/loop_state_v1.schema.json",
+      "receipt_schema": "schemas/stop_gate_receipt_v1.schema.json",
       "gate": "Loop Continuation",
       "kernel_anchor": "G06",
       "kernel_recipe_route": "goal recipe",

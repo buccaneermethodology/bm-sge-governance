@@ -1,6 +1,7 @@
 {
   "schema_version": "kb_render_manifest_v1",
   "documents": [
+    {"source":"data/strategy/strategy_stop_gate_v1.json","output":"docs/strategy/Strategy_Stop_Gate_V1.md","adapter":"sectioned_doc_v1"},
     {"source": "data/glossary_v1.json", "output": "docs/Glossary.md", "adapter": "sectioned_doc_v1"},
     {"source": "data/strategy/strategy_open_source_dual_repo_distribution_v1.json", "output": "docs/strategy/Open_Source_Dual_Repo_Distribution.md", "adapter": "sectioned_doc_v1"},
     {

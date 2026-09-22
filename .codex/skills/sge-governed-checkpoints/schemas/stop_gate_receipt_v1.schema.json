@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "stop_gate_receipt_v1", "type": "object",
+  "required": ["schema_version", "receipt_id", "gate_version", "evaluated_at", "input_state_ref", "input_state_sha256", "receipt_status", "verdict", "reason_codes", "final_allowed", "message_class", "next_action", "input_state_summary", "referenced_files"],
+  "properties": {
+    "schema_version": {"const": "stop_gate_receipt_v1"}, "receipt_id": {"type": "string", "minLength": 1}, "gate_version": {"const": "1.0.0"}, "evaluated_at": {"type": "string", "format": "date-time"}, "input_state_ref": {"type": "string", "minLength": 1}, "input_state_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+    "receipt_status": {"enum": ["valid", "invalid"]}, "verdict": {"enum": ["CONTINUE", "PAUSE_ALLOWED", "GOAL_COMPLETE", null]}, "reason_codes": {"type": "array", "minItems": 1, "items": {"type": "string"}}, "final_allowed": {"type": "boolean"}, "message_class": {"enum": ["PROGRESS_ONLY", "DECISION_REQUEST", "FINAL_CLOSEOUT"]}, "next_action": {"enum": ["DISPATCH_NEXT_WORK", "MATERIALIZE_NEXT_ENTRY", "REPAIR", "RETRY_RECOVERY", "COMPLETE_FINAL_EVIDENCE", "REBUILD_STATE", "REQUEST_DECISION", "WAIT_FOR_USER_RESUME", "EMIT_FINAL_CLOSEOUT"]},
+    "input_state_summary": {"type": "object", "required": ["state_id", "goal_id", "goal_terminal", "completion_predicate_id", "completion_predicate_satisfied"], "properties": {"state_id": {"type": ["string", "null"]}, "goal_id": {"type": ["string", "null"]}, "goal_terminal": {"type": ["boolean", "null"]}, "completion_predicate_id": {"type": ["string", "null"]}, "completion_predicate_satisfied": {"type": ["boolean", "null"]}}, "additionalProperties": false},
+    "referenced_files": {"type": "array", "items": {"type": "object", "required": ["path", "sha256", "observed_sha256", "digest_match", "evidence_kind"], "properties": {"path": {"type": "string"}, "sha256": {"type": ["string", "null"]}, "observed_sha256": {"type": ["string", "null"]}, "digest_match": {"type": "boolean"}, "evidence_kind": {"type": "string"}}, "additionalProperties": false}}
+  },
+  "oneOf": [
+    {"properties": {"receipt_status": {"const": "invalid"}, "verdict": {"const": null}, "final_allowed": {"const": false}, "message_class": {"const": "PROGRESS_ONLY"}, "next_action": {"const": "REBUILD_STATE"}}},
+    {"properties": {"receipt_status": {"const": "valid"}, "verdict": {"const": "CONTINUE"}, "final_allowed": {"const": false}, "message_class": {"const": "PROGRESS_ONLY"}, "next_action": {"enum": ["DISPATCH_NEXT_WORK", "MATERIALIZE_NEXT_ENTRY", "REPAIR", "RETRY_RECOVERY", "COMPLETE_FINAL_EVIDENCE"]}}},
+    {"properties": {"receipt_status": {"const": "valid"}, "verdict": {"const": "PAUSE_ALLOWED"}, "final_allowed": {"const": false}, "message_class": {"const": "DECISION_REQUEST"}, "next_action": {"enum": ["REQUEST_DECISION", "WAIT_FOR_USER_RESUME"]}}},
+    {"properties": {"receipt_status": {"const": "valid"}, "verdict": {"const": "GOAL_COMPLETE"}, "final_allowed": {"const": true}, "message_class": {"const": "FINAL_CLOSEOUT"}, "next_action": {"const": "EMIT_FINAL_CLOSEOUT"}}}
+  ],
+  "additionalProperties": false
+}

@@ -19,6 +19,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - name: Install Stop Gate dependency
+        run: python3 -m pip install -r .codex/skills/sge-governed-checkpoints/requirements.txt
       - name: Public candidate doctor
         run: python3 tools/sge_public.py doctor
       - name: Public package CI smoke

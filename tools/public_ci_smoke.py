@@ -10,6 +10,7 @@ import tempfile
 from pathlib import Path
 
 import sge_public
+import stop_gate_smoke
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,6 +35,7 @@ def run_json(*args: str, expected_codes: tuple[int, ...] = (0,)) -> dict[str, ob
 
 
 def main() -> None:
+    stop_gate_smoke.run(SKILL)
     manifest = sge_public.load(ROOT)
     sge_public.validate(manifest, ROOT)
     closure = sge_public.skill_runtime_closure(ROOT)
