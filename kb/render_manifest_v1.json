@@ -27,6 +27,13 @@
       "source": "data/strategy/strategy_sgc_structural_contract_v1.json",
       "output": "docs/strategy/Strategy_SGC_Structural_Contract_V1.md",
       "adapter": "sectioned_doc_v1"
-    }
+    },
+    {"source":"data/strategy/strategy_first_task_routing_v1.json","output":"docs/strategy/Strategy_First_Task_Routing_V1.md","adapter":"sectioned_doc_v1"},
+    {"source":"data/strategy/strategy_capability_preflight_v1.json","output":"docs/strategy/Strategy_Capability_Preflight_V1.md","adapter":"sectioned_doc_v1"},
+    {"source":"data/strategy/strategy_lane_lifecycle_v1.json","output":"docs/strategy/Strategy_Lane_Lifecycle_V1.md","adapter":"sectioned_doc_v1"},
+    {"source":"data/strategy/strategy_conformance_receipt_v1.json","output":"docs/strategy/Strategy_Conformance_Receipt_V1.md","adapter":"sectioned_doc_v1"},
+    {"source":"data/strategy/strategy_initial_kb_bootstrap_v1.json","output":"docs/strategy/Strategy_Initial_KB_Bootstrap_V1.md","adapter":"sectioned_doc_v1"},
+    {"source":"data/strategy/strategy_visible_checkpoint_contract_v1.json","output":"docs/strategy/Strategy_Visible_Checkpoint_Contract_V1.md","adapter":"sectioned_doc_v1"},
+    {"source":"data/strategy/strategy_context_layering_v1.json","output":"docs/strategy/Strategy_Context_Layering_V1.md","adapter":"sectioned_doc_v1"}
   ]
 }

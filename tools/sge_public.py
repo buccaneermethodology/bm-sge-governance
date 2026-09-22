@@ -272,6 +272,26 @@ def _validate_manifest_shape(data: dict[str, Any]) -> list[dict[str, Any]]:
         if any(dep not in allowed_layers for dep in mapping.get("requires", [])):
             _fail("layer_dependency_unknown", path)
         normalized.append(item)
+    runtime_dependencies = data.get("runtime_dependencies", [])
+    if not isinstance(runtime_dependencies, list) or not runtime_dependencies:
+        _fail("runtime_dependency_manifest_missing")
+    for dependency in runtime_dependencies:
+        dependency = _safe_relative(dependency, "runtime_dependency")
+        if dependency not in seen:
+            _fail("runtime_dependency_missing", dependency)
+    hosted_ci = data.get("hosted_ci")
+    if not isinstance(hosted_ci, dict):
+        _fail("hosted_ci_contract_missing")
+    workflow = _safe_relative(hosted_ci.get("workflow"), "hosted_ci_workflow")
+    entrypoints = hosted_ci.get("entrypoints")
+    if not isinstance(entrypoints, list) or not entrypoints:
+        _fail("hosted_ci_contract_invalid", "entrypoints")
+    hosted_paths = [workflow, *[_safe_relative(path, "hosted_ci_entrypoint") for path in entrypoints]]
+    for path in hosted_paths:
+        if path not in seen:
+            _fail("hosted_ci_dependency_missing", path)
+        if path not in runtime_dependencies:
+            _fail("hosted_ci_runtime_dependency_missing", path)
     return normalized
 
 
@@ -704,6 +724,16 @@ def install(source: Path | None, target: Path, *, upgrade: bool = False) -> None
         _fail("upgrade_requires_install_record" if upgrade else "unmanaged_skill_exists")
     if upgrade and not skill_dir.exists():
         _fail("upgrade_requires_installed_skill")
+    if upgrade and existing_record:
+        observed = _directory_records(skill_dir)
+        expected = []
+        for item in existing_record.get("files", []):
+            path = item.get("path", "")
+            if not path.startswith(CORE_SKILL_PREFIX):
+                _fail("install_record_invalid", "managed_file_path")
+            expected.append({**item, "path": path[len(CORE_SKILL_PREFIX):]})
+        if observed != sorted(expected, key=lambda item: item["path"]):
+            _fail("unknown_target_content")
     stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
     backup_root: Path | None = None
     backup_records: list[dict[str, Any]] = []

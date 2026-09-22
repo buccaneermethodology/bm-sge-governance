@@ -52,7 +52,7 @@ _Owner: sge-kb-governance | Version: v1.0 | Status: active | Updated: 2026-09-02
 - `AGENTS.md`
 - `kb/data/strategy/strategy_human_ai_development.json`
 - `kb/data/strategy/strategy_semantic_surface_engineering.json`
-- `Dashboard/Artifacts/SP001_S013_SourceAdjudication.md`
+- `Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S013_SourceAdjudication.md`
 
 ## Related Docs
 

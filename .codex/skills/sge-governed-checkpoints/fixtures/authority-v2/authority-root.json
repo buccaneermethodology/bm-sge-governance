@@ -1,0 +1,12 @@
+{
+  "schema_version":"evidence_authority_root_v2",
+  "authority_root_id":"generic-goal-authority-root",
+  "root_revision":"1",
+  "issuer":{"issuer_id":"generic-goal-owner","issuer_role":"goal_owner","provenance_ref":"issuer-provenance.json","provenance_sha256":"2d072a71098009cf32fa6cd6af44d3a08784d1427b42f490bd59cf8a26030167"},
+  "scope":{"scope_id":"generic-goal-r1","subject_kinds":["goal","goal_obligation_inventory"],"parent_identity":"generic-goal","source_revision":"generic-goal-r1"},
+  "subjects":[{"subject_id":"generic-goal","subject_kind":"goal","parent_identity":"generic-goal","revision":"generic-goal-r1","digest":"ccd451e316d8c4370f7cba5e42742c0a91127b919a3d4276be1a35366a07dbf0"},{"subject_id":"generic-goal-obligations","subject_kind":"goal_obligation_inventory","parent_identity":"generic-goal","revision":"generic-goal-r1","digest":"5d0913f31bc6a0f86d5caa6b695b5838c6bcb84948d393c5327b370d480d3031"}],
+  "source":{"source_kind":"frozen_goal","locator":"frozen-goal.md","revision":"generic-goal-r1","sha256":"ccd451e316d8c4370f7cba5e42742c0a91127b919a3d4276be1a35366a07dbf0"},
+  "issued_at":"2026-01-01T00:00:00Z",
+  "effective_before":"2026-01-01T12:00:00Z",
+  "supersedes":null
+}

@@ -116,7 +116,7 @@ For non-trivial SGE work, completion claims must still follow the existing close
 - `kb/data/strategy/strategy_human_ai_development.json`
 - `kb/data/strategy/strategy_semantic_surface_engineering.json`
 - `kb/data/strategy/strategy_kb_promotion_and_source_policy.json`
-- `Dashboard/Artifacts/SP001_SGEGovernanceMigration_LoopGoal.md`
+- `Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md`
 
 ## Related Docs
 

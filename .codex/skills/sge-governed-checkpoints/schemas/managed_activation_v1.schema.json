@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "managed_activation_v1.schema.json",
+  "$defs": {
+    "digestRef": {
+      "type": "object",
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "evidenceAuthorityRootV2": {
+      "type": "object",
+      "required": ["schema_version", "status", "authority_root_id", "issuer", "scope", "source", "subjects", "root_revision", "issued_at", "effective_before", "supersedes"],
+      "properties": {
+        "schema_version": {"const": "evidence_authority_root_v2"},
+        "status": {"const": "active"},
+        "authority_root_id": {"type": "string", "minLength": 1},
+        "issuer": {
+          "type": "object",
+          "required": ["issuer_id", "issuer_role", "provenance_ref", "provenance_sha256"],
+          "properties": {
+            "issuer_id": {"type": "string", "minLength": 1},
+            "issuer_role": {"enum": ["goal_owner", "stage_plan_owner"]},
+            "provenance_ref": {"$ref": "#/$defs/digestRef"},
+            "provenance_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+          },
+          "additionalProperties": false
+        },
+        "scope": {"type": "object"},
+        "source": {"type": "object"},
+        "subjects": {"type": "array", "minItems": 1, "items": {"type": "object"}},
+        "root_revision": {"type": "string", "minLength": 1},
+        "issued_at": {"type": "string", "minLength": 1},
+        "effective_before": {"type": "string", "minLength": 1},
+        "supersedes": {}
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "required": ["schema_version", "activation_verdict", "reason_code", "managed_install_record", "capability_state", "exception_ref", "maximum_claim"],
+  "properties": {
+    "schema_version": {"const": "sge_managed_activation_v1"},
+    "activation_verdict": {"enum": ["activated", "blocked", "exception_authorized"]},
+    "reason_code": {"type": "string", "minLength": 1},
+    "managed_install_record": {"type": "boolean"},
+    "capability_state": {"enum": ["supported", "unsupported", "unknown"]},
+    "exception_ref": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "$ref": "#/$defs/digestRef"
+        }
+      ]
+    },
+    "maximum_claim": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false
+}

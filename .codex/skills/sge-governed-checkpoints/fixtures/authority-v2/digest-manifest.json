@@ -1,0 +1,15 @@
+{
+  "schema_version":"owner_provisioned_authority_bundle_manifest_v1",
+  "bundle_id":"generic-sge-authority-bundle-r1",
+  "revision":"1",
+  "manifest_self_digest_excluded":true,
+  "files":[
+    {"path":"authority-root.json","sha256":"7a10398363486918e2e07135e4a5f5ae3d1b919cf7ee8261cc5b9c1101c1d6fd"},
+    {"path":"frozen-goal.md","sha256":"ccd451e316d8c4370f7cba5e42742c0a91127b919a3d4276be1a35366a07dbf0"},
+    {"path":"goal-obligation-inventory.json","sha256":"5d0913f31bc6a0f86d5caa6b695b5838c6bcb84948d393c5327b370d480d3031"},
+    {"path":"issuer-provenance.json","sha256":"2d072a71098009cf32fa6cd6af44d3a08784d1427b42f490bd59cf8a26030167"},
+    {"path":"positive-terminal-payload.template.json","sha256":"c092ad9acce3174d3322b6e7e6e88cf924c2cea20b9486a6a5c39a8b8aaf63ef"},
+    {"path":"trusted-authority-boundary.json","sha256":"e111e43d53c7309c180d53bad7261f1fe0be1e19eaa24113aa850e19e52e7d4f"}
+  ],
+  "copy_policy":"exact_bytes_only"
+}

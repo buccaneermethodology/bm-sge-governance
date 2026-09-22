@@ -90,3 +90,9 @@ python3 /tmp/sge-public-candidate/tools/sge_public.py uninstall --target /tmp/my
 ## 9. 边界说明
 
 本指南描述的是当前本地公开 source 的 candidate lifecycle evidence：`doctor`、安装、升级、备份、失败回滚和可恢复卸载。它不证明 GitHub 公开仓已创建或发布，不授予 push/tag/release 权限，也不证明跨平台兼容、license 再分发权或 production readiness。
+
+## 10. 不依赖外部 Skill 的初始 KB 路径
+
+core 内的 `initial_kb_bootstrap.py` 会把原始目标、authority、Goal route、canonical JSON、reader projection、provenance、lanes、Validation 与 closeout 组合成可校验 packet。默认只输出到屏幕；指定 `--output` 时也拒绝覆盖已有文件。
+
+先运行 `first_task_router.py`：若没有 Goal，结果为 `goal_required`，此时先写 Goal，不能直接开始 Builder；若声称已有 Goal，必须提供唯一的 Goal ID 与仓库相对路径，否则按 authority conflict 停止。再运行 `capability_preflight.py`：`doc-system-kb-builder` 等 adapter 是 optional；明确不可用时继续 core recipe，unknown 或非法状态则失败关闭。此路径只证明本地 core recipe 可运行，不证明产品事实已生成、KB 已完成或不同 Agent 行为一致。

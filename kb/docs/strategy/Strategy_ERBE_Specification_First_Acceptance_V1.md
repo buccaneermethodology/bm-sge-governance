@@ -64,6 +64,6 @@ Builder write scope excludes frozen contract, cases, expected values, RED eviden
 
 ## Source Scope
 
-- `Dashboard/Artifacts/SP001_S002_SGECore_Design.md`
+- `Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S002_SGECore_Design.md`
 - `.codex/skills/sge-governed-checkpoints/SKILL.md`
-- `Dashboard/Artifacts/SP001_S002_SGECore_ERBE_Contract.json`
+- `Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S002_SGECore_ERBE_Contract.json`

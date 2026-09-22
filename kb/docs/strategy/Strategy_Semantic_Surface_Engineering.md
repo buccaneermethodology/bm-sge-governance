@@ -70,7 +70,7 @@ _Owner: sge-semantic-governance | Version: v1.0 | Status: active | Updated: 2026
 ## Source Scope
 
 - `kb/data/strategy/strategy_human_ai_development.json`
-- `Dashboard/Artifacts/SP001_S013_SourceAdjudication.md`
+- `Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S013_SourceAdjudication.md`
 - `kb/data/strategy/sge_strategy_source_manifest_v1.json`
 
 ## Related Docs

@@ -1,6 +1,6 @@
 {
   "schema_version": "sge_public_export_manifest_v1",
-  "candidate_id": "sge-governance-public-candidate-v1",
+  "candidate_id": "sge-governance-public-candidate-v1.1.0",
   "identity_contract": {
     "private_source_id": "sge-governance-skill",
     "public_project_id": "bm-sge-governance",
@@ -27,6 +27,7 @@
     {"path":"LICENSE","source":"repository","license":"MIT","provenance":"repo-local public candidate","public":true,"execution_context":false},
     {"path":"NOTICE","source":"repository","license":"MIT","provenance":"repo-local public candidate","public":true,"execution_context":false},
     {"path":"README.md","source":"repository","license":"MIT","provenance":"repo-local public candidate","public":true,"execution_context":false},
+    {"path":".github/workflows/candidate-checks.yml","source":"repository","license":"MIT","provenance":"dependency-free hosted CI for the exact public package","public":true,"execution_context":false},
     {"path":"public_export_manifest_v1.json","source":"repository","license":"MIT","provenance":"default-deny public file inventory","public":true,"execution_context":false},
     {"path":"docs/Beginner_Guide_CN.md","source":"repository","license":"MIT","provenance":"newcomer companion","public":true,"execution_context":false},
     {"path":"docs/Quick_Start_CN.md","source":"repository","license":"MIT","provenance":"newcomer companion","public":true,"execution_context":false},
@@ -37,6 +38,13 @@
     {"path":"extensions/orchestrator_profile_v1.json","source":"repository","license":"MIT","provenance":"project-neutral orchestrator profile and hook contract","public":true,"execution_context":false},
     {"path":".codex/skills/sge-governed-checkpoints/SKILL.md","source":"repository","license":"MIT","provenance":"SGE core","public":true,"execution_context":false},
     {"path":".codex/skills/sge-governed-checkpoints/agents/openai.yaml","source":"repository","license":"MIT","provenance":"Skill interface metadata","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/authority-root.json","source":"owner-provisioned bundle","license":"MIT","provenance":"exact-copy generic authority root fixture","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/digest-manifest.json","source":"owner-provisioned bundle","license":"MIT","provenance":"exact-copy authority bundle manifest","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/frozen-goal.md","source":"owner-provisioned bundle","license":"MIT","provenance":"exact-copy generic frozen Goal fixture","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/goal-obligation-inventory.json","source":"owner-provisioned bundle","license":"MIT","provenance":"exact-copy deterministic obligation inventory","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/issuer-provenance.json","source":"owner-provisioned bundle","license":"MIT","provenance":"exact-copy issuer provenance fixture","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/positive-terminal-payload.template.json","source":"owner-provisioned bundle","license":"MIT","provenance":"exact-copy positive terminal template","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/trusted-authority-boundary.json","source":"owner-provisioned bundle","license":"MIT","provenance":"exact-copy managed authority boundary","public":true,"execution_context":false},
     {"path":".codex/skills/sge-governed-checkpoints/references/checklists.md","source":"repository","license":"MIT","provenance":"SGE core reference","public":true,"execution_context":false},
     {"path":".codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md","source":"repository","license":"MIT","provenance":"SGE core reference","public":true,"execution_context":false},
     {"path":".codex/skills/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json","source":"repository","license":"MIT","provenance":"SGE core schema","public":true,"execution_context":false},
@@ -44,6 +52,9 @@
     {"path":".codex/skills/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json","source":"repository","license":"MIT","provenance":"SGE core schema","public":true,"execution_context":false},
     {"path":".codex/skills/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json","source":"repository","license":"MIT","provenance":"SGE core schema","public":true,"execution_context":false},
     {"path":".codex/skills/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json","source":"repository","license":"MIT","provenance":"SGE core schema","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/schemas/task_classification_v2.schema.json","source":"repository","license":"MIT","provenance":"SGE v1.1 task classification schema","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/schemas/topology_gate_v1.schema.json","source":"repository","license":"MIT","provenance":"SGE v1.1 topology evidence schema","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/schemas/managed_activation_v1.schema.json","source":"repository","license":"MIT","provenance":"SGE v1.1 managed activation schema","public":true,"execution_context":false},
     {"path":".codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py","source":"repository","license":"MIT","provenance":"SGE core script","public":true,"execution_context":false},
     {"path":".codex/skills/sge-governed-checkpoints/scripts/context_efficiency_pilot.py","source":"repository","license":"MIT","provenance":"SGE core script","public":true,"execution_context":false},
     {"path":".codex/skills/sge-governed-checkpoints/scripts/context_state.py","source":"repository","license":"MIT","provenance":"SGE core script","public":true,"execution_context":false},
@@ -52,6 +63,9 @@
     {"path":".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py","source":"repository","license":"MIT","provenance":"SGE core script","public":true,"execution_context":false},
     {"path":".codex/skills/sge-governed-checkpoints/scripts/profile_validator.py","source":"repository","license":"MIT","provenance":"SGE core script","public":true,"execution_context":false},
     {"path":".codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py","source":"repository","license":"MIT","provenance":"SGE core script","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/scripts/task_classifier.py","source":"repository","license":"MIT","provenance":"SGE v1.1 fact classifier","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/scripts/topology_gate.py","source":"repository","license":"MIT","provenance":"SGE v1.1 lane plan and topology gate","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/scripts/managed_activation.py","source":"repository","license":"MIT","provenance":"SGE v1.1 managed activation gate","public":true,"execution_context":false},
     {"path":"kb/data/glossary_v1.json","source":"repository","license":"MIT","provenance":"SGE glossary v1 canonical candidate","public":true,"execution_context":false},
     {"path":"kb/docs/Glossary.md","source":"repository","license":"MIT","provenance":"generated from glossary_v1.json","public":true,"execution_context":false},
     {"path":"kb/README.md","source":"repository","license":"MIT","provenance":"public canonical KB guide","public":true,"execution_context":false},
@@ -72,8 +86,32 @@
     {"path":"kb/docs/strategy/Strategy_Semantic_Surface_Engineering.md","source":"repository","license":"MIT","provenance":"generated canonical projection","public":true,"execution_context":false},
     {"path":"kb/docs/strategy/Strategy_SGC_Structural_Contract_V1.md","source":"repository","license":"MIT","provenance":"generated canonical projection","public":true,"execution_context":false},
     {"path":"tools/sge_public.py","source":"repository","license":"MIT","provenance":"public lifecycle utility","public":true,"execution_context":false},
+    {"path":"tools/public_ci_smoke.py","source":"repository","license":"MIT","provenance":"self-contained public package layout, compile and v1.1 runtime smoke gate","public":true,"execution_context":false},
     {"path":"tools/run_sge_loop_goal_cycle.py","source":"repository","license":"MIT","provenance":"profile-driven optional orchestrator","public":true,"execution_context":false}
   ],
+  "runtime_dependencies": [
+    ".github/workflows/candidate-checks.yml",
+    "tools/sge_public.py",
+    "tools/public_ci_smoke.py",
+    ".codex/skills/sge-governed-checkpoints/scripts/task_classifier.py",
+    ".codex/skills/sge-governed-checkpoints/scripts/topology_gate.py",
+    ".codex/skills/sge-governed-checkpoints/scripts/managed_activation.py",
+    ".codex/skills/sge-governed-checkpoints/schemas/task_classification_v2.schema.json",
+    ".codex/skills/sge-governed-checkpoints/schemas/topology_gate_v1.schema.json",
+    ".codex/skills/sge-governed-checkpoints/schemas/managed_activation_v1.schema.json"
+    ,".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/authority-root.json"
+    ,".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/digest-manifest.json"
+    ,".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/frozen-goal.md"
+    ,".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/goal-obligation-inventory.json"
+    ,".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/issuer-provenance.json"
+    ,".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/positive-terminal-payload.template.json"
+    ,".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/trusted-authority-boundary.json"
+  ],
+  "hosted_ci": {
+    "workflow": ".github/workflows/candidate-checks.yml",
+    "entrypoints": ["tools/sge_public.py", "tools/public_ci_smoke.py"],
+    "claim_ceiling": "workflow definition and local equivalent gates only; hosted run must bind the exact remote commit"
+  },
   "content_policy": {
     "reject_absolute_home_paths": true,
     "reject_private_execution_directories": true,

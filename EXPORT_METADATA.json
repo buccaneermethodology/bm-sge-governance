@@ -1,0 +1,615 @@
+{
+  "schema_version": "sge_projection_metadata_v1",
+  "claim_ceiling": "仅支持 maintainer local deterministic projection candidate evidence；不支持独立 Validation、批准、公开仓、远端 mutation、release 或 production。",
+  "identity": {
+    "source_revision": "fce0859912701dff39f87ce7d6acc300dc353e0a",
+    "manifest_revision": "f22248d104abce925f8a76c401a4af659b7c95f0a52ab079206da593567b4ad2",
+    "export_tool_revision": "c75a3b0e075fdb83c034aa5ab96b9bb9c2f5688de408f7bd436325cc55a7b7f8",
+    "export_run_id": "run-20260922T081700709703Z-b23341732978",
+    "candidate_id": "sge-governance-public-candidate-v1.1.0",
+    "candidate_fingerprint": "7f7788adb3756ca81476284b62e3581db5fc4dbbb5f7f64c5e3bc66c19a75345",
+    "projection_commit": null,
+    "release_tag": null
+  },
+  "state": {
+    "candidate": true,
+    "validated": false,
+    "approved": false,
+    "published": false,
+    "production_ready": false,
+    "git_mutation": false,
+    "license_authorized": null
+  },
+  "manifest_status": "candidate_not_approved",
+  "files": [
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/SKILL.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE core",
+      "execution_context": false,
+      "bytes": 10091,
+      "sha256": "6fad0c3e36c1543aac7266a4c0f8ff4ce26ccd6591a24d3ba3bf5da052622fdd"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/agents/openai.yaml",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "Skill interface metadata",
+      "execution_context": false,
+      "bytes": 416,
+      "sha256": "7ec75686e3dd51ff9cd5061e09dba198afd3a6d706a8c30420ab23add8cd0a53"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/authority-root.json",
+      "source": "owner-provisioned bundle",
+      "license": "MIT",
+      "provenance": "exact-copy generic authority root fixture",
+      "execution_context": false,
+      "bytes": 1202,
+      "sha256": "7a10398363486918e2e07135e4a5f5ae3d1b919cf7ee8261cc5b9c1101c1d6fd"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/digest-manifest.json",
+      "source": "owner-provisioned bundle",
+      "license": "MIT",
+      "provenance": "exact-copy authority bundle manifest",
+      "execution_context": false,
+      "bytes": 944,
+      "sha256": "2febfe9a5e4df6280e5645b37dbce64d17c9f969d28901bc9e9194f1ee57dce3"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/frozen-goal.md",
+      "source": "owner-provisioned bundle",
+      "license": "MIT",
+      "provenance": "exact-copy generic frozen Goal fixture",
+      "execution_context": false,
+      "bytes": 438,
+      "sha256": "ccd451e316d8c4370f7cba5e42742c0a91127b919a3d4276be1a35366a07dbf0"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/goal-obligation-inventory.json",
+      "source": "owner-provisioned bundle",
+      "license": "MIT",
+      "provenance": "exact-copy deterministic obligation inventory",
+      "execution_context": false,
+      "bytes": 419,
+      "sha256": "5d0913f31bc6a0f86d5caa6b695b5838c6bcb84948d393c5327b370d480d3031"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/issuer-provenance.json",
+      "source": "owner-provisioned bundle",
+      "license": "MIT",
+      "provenance": "exact-copy issuer provenance fixture",
+      "execution_context": false,
+      "bytes": 235,
+      "sha256": "2d072a71098009cf32fa6cd6af44d3a08784d1427b42f490bd59cf8a26030167"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/positive-terminal-payload.template.json",
+      "source": "owner-provisioned bundle",
+      "license": "MIT",
+      "provenance": "exact-copy positive terminal template",
+      "execution_context": false,
+      "bytes": 455,
+      "sha256": "c092ad9acce3174d3322b6e7e6e88cf924c2cea20b9486a6a5c39a8b8aaf63ef"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/trusted-authority-boundary.json",
+      "source": "owner-provisioned bundle",
+      "license": "MIT",
+      "provenance": "exact-copy managed authority boundary",
+      "execution_context": false,
+      "bytes": 547,
+      "sha256": "e111e43d53c7309c180d53bad7261f1fe0be1e19eaa24113aa850e19e52e7d4f"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/checklists.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE core reference",
+      "execution_context": false,
+      "bytes": 76998,
+      "sha256": "24fffc584d41cc6010c887790098db033a9ded1eda78709f7ae5c249b6f4c484"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE core reference",
+      "execution_context": false,
+      "bytes": 12591,
+      "sha256": "a6fabcc27cd36333290c27d92a8164a4525c6236e4463144bc84a708894cb152"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE core schema",
+      "execution_context": false,
+      "bytes": 9408,
+      "sha256": "87ceeda6e0d53946170f401e61dbb9aa08c8d720ad7903d1f4811b2efce7d565"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_patch_v1.schema.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE core schema",
+      "execution_context": false,
+      "bytes": 3993,
+      "sha256": "0b3040f16cbc3c95d108892c307a9f9c2c0aac383afb1485fe6855bbbdc457e8"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE core schema",
+      "execution_context": false,
+      "bytes": 1285,
+      "sha256": "9a4904c1884e2dab6f44186b53e2b649e5e67ae14c8f860b725c11092986bb26"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE core schema",
+      "execution_context": false,
+      "bytes": 5192,
+      "sha256": "086c9e47880dc295fea964fb8c9a11bb304d44e7aef59832865e8472393d120a"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/managed_activation_v1.schema.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE v1.1 managed activation schema",
+      "execution_context": false,
+      "bytes": 2525,
+      "sha256": "578f22326e6bdd062a86bc71bd8b4f488427d9bd625acb0ba406d74fb99e0839"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/task_classification_v2.schema.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE v1.1 task classification schema",
+      "execution_context": false,
+      "bytes": 880,
+      "sha256": "29c372f1934516e0cfec74bb2d2ed224ee0492644272cfdb8b6df9d61b173e5f"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/topology_gate_v1.schema.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE v1.1 topology evidence schema",
+      "execution_context": false,
+      "bytes": 1110,
+      "sha256": "d1373a2e898173bc0e39e00f922c96d3406eba9b167bb645fbd46589aad72ff0"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE core schema",
+      "execution_context": false,
+      "bytes": 8281,
+      "sha256": "7bf99314f198d3930b72603bc4f247a1cf472d0f1bdaa94f2b49ba22b27d264e"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE core script",
+      "execution_context": false,
+      "bytes": 10047,
+      "sha256": "6189a068457762ebf146e85c0233da4e41c48134381b88205e166d7bbb31ca41"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/context_efficiency_pilot.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE core script",
+      "execution_context": false,
+      "bytes": 17148,
+      "sha256": "78dc6a10010b155c60d7d0551bc8cb84e078da1e0de0099a71eeec753df73c20"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/context_state.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE core script",
+      "execution_context": false,
+      "bytes": 47805,
+      "sha256": "c002c7b5801cbecabd1a813a5e3a4b0c9c4817a438ba1ff6d43f3cd530bd3030"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/goal_patch.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE core script",
+      "execution_context": false,
+      "bytes": 50252,
+      "sha256": "732e5695ed1e948bd744fdc593fe4c1950a137c3998fcad9c484e0513d38291e"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE core script",
+      "execution_context": false,
+      "bytes": 43507,
+      "sha256": "d67b4b7b9f22f901c2a15b5b86878f526370bee469eac27e57a7303758314a01"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE core script",
+      "execution_context": false,
+      "bytes": 24659,
+      "sha256": "6a26de820a1ef2439dbae13f6e5ac2d8b5eee1c850aa4cd5342bc3cba457ed5a"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/managed_activation.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE v1.1 managed activation gate",
+      "execution_context": false,
+      "bytes": 16871,
+      "sha256": "f0e3e27965eab7de516836dd0c49ee08f889545b7a2495a94d7ce0df2c2e2f79"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/profile_validator.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE core script",
+      "execution_context": false,
+      "bytes": 2660,
+      "sha256": "e6d4e4d52d6caab0909ce327b85e997d9949c9f2e79cf80e83f1133f2b75ce08"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/task_classifier.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE v1.1 fact classifier",
+      "execution_context": false,
+      "bytes": 3260,
+      "sha256": "1b84bf99fe5e2af34388a55322cff9cdcaf11e9457fbed7f6a7e7005d61f2276"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/topology_gate.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE v1.1 lane plan and topology gate",
+      "execution_context": false,
+      "bytes": 7279,
+      "sha256": "529fa8066cc89b12563e1d849ee8dfea2554f6e9c6befe7a6403d625b8422abd"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE core script",
+      "execution_context": false,
+      "bytes": 1637,
+      "sha256": "34e01d56dcc5c222d8965781410e6a5905a12d51a01f1af53c842211cf996c79"
+    },
+    {
+      "path": ".github/workflows/candidate-checks.yml",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "dependency-free hosted CI for the exact public package",
+      "execution_context": false,
+      "bytes": 544,
+      "sha256": "8d7f0bf0b70ab01e19f9a14398886a600dc9c74f7a8f0702cec0f38801d2864f"
+    },
+    {
+      "path": "LICENSE",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "repo-local public candidate",
+      "execution_context": false,
+      "bytes": 1084,
+      "sha256": "4572972dea724a82a7b73968bf05f7c607272a1bab5fa420faa2d216c6e20efb"
+    },
+    {
+      "path": "NOTICE",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "repo-local public candidate",
+      "execution_context": false,
+      "bytes": 311,
+      "sha256": "5dae6d435e2e349d407580bcd6f6baa76a1323791f1e5281579f46fb7d78c02a"
+    },
+    {
+      "path": "README.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "repo-local public candidate",
+      "execution_context": false,
+      "bytes": 4570,
+      "sha256": "03e29a899935bfd2c1b1fe99dd19a0aeb0b2f486c634a37a172e246246b09284"
+    },
+    {
+      "path": "docs/Agent_Setup_Prompt_CN.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "cross-agent and product-neutral setup prompt",
+      "execution_context": false,
+      "bytes": 4894,
+      "sha256": "62cf638126caf8948ad7b617d21b7d19720c324a06e0c77791dc9e22039f4ee0"
+    },
+    {
+      "path": "docs/Beginner_Guide_CN.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "newcomer companion",
+      "execution_context": false,
+      "bytes": 5820,
+      "sha256": "b4ab2b9e9fbccc40b5305ebc40ea5a7eca06aa1e56601e0132a68b7a239f999e"
+    },
+    {
+      "path": "docs/Quick_Start_CN.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "newcomer companion",
+      "execution_context": false,
+      "bytes": 2109,
+      "sha256": "0083ed5a1e66a47bf352e4825d127990736652178e1331fe74b8ceabe6a96892"
+    },
+    {
+      "path": "examples/minimal-project/AGENTS.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "minimal consumer example",
+      "execution_context": false,
+      "bytes": 263,
+      "sha256": "2ba2b197b3258cc5c91647b6a78dc038fee17ddded1004652e15a0efe6f9c049"
+    },
+    {
+      "path": "examples/minimal-project/README.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "minimal consumer example",
+      "execution_context": false,
+      "bytes": 196,
+      "sha256": "c9ca9e8accbfd4d2b50e04e08cfd2d3ba2b58422f0e8d396d9be63505beae145"
+    },
+    {
+      "path": "extensions/orchestrator_profile_v1.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "project-neutral orchestrator profile and hook contract",
+      "execution_context": false,
+      "bytes": 594,
+      "sha256": "68ac7e55a9c88505c5024ce20db2d2705399347badbb1268f85de5aa7ed2949f"
+    },
+    {
+      "path": "extensions/registry_v1.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "optional extension contract",
+      "execution_context": false,
+      "bytes": 1547,
+      "sha256": "512aac3c9e5033b98556eb413670647775d098c944bef0f0d87d0162f036264e"
+    },
+    {
+      "path": "kb/README.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "public canonical KB guide",
+      "execution_context": false,
+      "bytes": 1414,
+      "sha256": "e6bc2a484d162b12c92147ec0c3918d49a4104da3249e63ea153323251870928"
+    },
+    {
+      "path": "kb/data/glossary_v1.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE glossary v1 canonical candidate",
+      "execution_context": false,
+      "bytes": 9963,
+      "sha256": "4a22263d4063fed67f53a1cabfd5d3cd386463ea2f9920ef3bc7f4cdbe4bd7db"
+    },
+    {
+      "path": "kb/data/strategy/sge_project_profile_v1.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generic project profile",
+      "execution_context": false,
+      "bytes": 1279,
+      "sha256": "f0f746539bb2bc4d46915b3981cc42d93e75d51bda7f71e4efc72606012d6ad3"
+    },
+    {
+      "path": "kb/data/strategy/sge_strategy_canonical_mapping_v1.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "reviewed canonical mapping",
+      "execution_context": false,
+      "bytes": 3042,
+      "sha256": "8f6f0e21fc6e4cce4277d191ae29a55e238de935003d5c7879e71e01ad2532d2"
+    },
+    {
+      "path": "kb/data/strategy/sge_strategy_source_manifest_v1.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "source adjudication manifest",
+      "execution_context": false,
+      "bytes": 2290,
+      "sha256": "0572f4fbb9c77be02c5d392398a80fcc37450253fb90fe06dc53e9cb08f4dabf"
+    },
+    {
+      "path": "kb/data/strategy/sge_workflow_registry_v1.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generic workflow registry",
+      "execution_context": false,
+      "bytes": 1093,
+      "sha256": "43c0950d36b8307753650986a9bab066a913701b35735c3c0a2d3bc0b6a086fa"
+    },
+    {
+      "path": "kb/data/strategy/strategy_erbe_specification_first_acceptance_v1.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "canonical SGE strategy",
+      "execution_context": false,
+      "bytes": 2007,
+      "sha256": "a0ab0ce7cf08a21deca18441662b90ddd57a63a85867b68a644f51dc8189ef27"
+    },
+    {
+      "path": "kb/data/strategy/strategy_human_ai_development.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "canonical SGE strategy",
+      "execution_context": false,
+      "bytes": 4348,
+      "sha256": "fbbc9f4ff48b3e26876655d969090cb05de417dd28fcc15874211ea1e9924131"
+    },
+    {
+      "path": "kb/data/strategy/strategy_kb_promotion_and_source_policy.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "canonical SGE strategy",
+      "execution_context": false,
+      "bytes": 3421,
+      "sha256": "b50f47cb6a1404d282de157436bcf7132abf8c3918a0248672514fb1af241539"
+    },
+    {
+      "path": "kb/data/strategy/strategy_semantic_surface_engineering.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "canonical SGE strategy",
+      "execution_context": false,
+      "bytes": 5039,
+      "sha256": "b1e4b0d6b1d16ed55943ee963f43da75c58e28ceca3f07c3ab4bbe40e3bbce3f"
+    },
+    {
+      "path": "kb/data/strategy/strategy_sgc_structural_contract_v1.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "canonical SGE strategy",
+      "execution_context": false,
+      "bytes": 17880,
+      "sha256": "a2da0b7edd85a8ad35f6e55cfb660d363d86f1f4bbea58a0c6018c5dcb39f31c"
+    },
+    {
+      "path": "kb/docs/Glossary.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generated from glossary_v1.json",
+      "execution_context": false,
+      "bytes": 8267,
+      "sha256": "be7f2888b1be55dc3ed1b7dd489c9bf4ef03f41598bfa7f0ae1ee1c244936f16"
+    },
+    {
+      "path": "kb/docs/strategy/Strategy_ERBE_Specification_First_Acceptance_V1.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generated canonical projection",
+      "execution_context": false,
+      "bytes": 1743,
+      "sha256": "8ce5ca463c6bc9a4b1730bda1dcd6109f69a08adf11bdb62b6d34edfbdb5bd2a"
+    },
+    {
+      "path": "kb/docs/strategy/Strategy_Human_AI_Development.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generated canonical projection",
+      "execution_context": false,
+      "bytes": 3030,
+      "sha256": "8b204660b23fe218ef71923bad3475b6d1e99abd8beb81be4bbc51e1b53f1f9a"
+    },
+    {
+      "path": "kb/docs/strategy/Strategy_KB_Promotion_and_Source_Policy.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generated canonical projection",
+      "execution_context": false,
+      "bytes": 2519,
+      "sha256": "f9d5c95f5b5f123e32f59aee4a2847b6f709fef7933bc8c0dd35e692a458d2f6"
+    },
+    {
+      "path": "kb/docs/strategy/Strategy_SGC_Structural_Contract_V1.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generated canonical projection",
+      "execution_context": false,
+      "bytes": 13764,
+      "sha256": "d53001265e9a4bbcb23f03e3e43dd914c92bd3105ce6b9753e7c4542430f068e"
+    },
+    {
+      "path": "kb/docs/strategy/Strategy_Semantic_Surface_Engineering.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generated canonical projection",
+      "execution_context": false,
+      "bytes": 3939,
+      "sha256": "4770bbc3daed5004e672425d9755e8e7aa65dcd79448dfd0e1167d295435e085"
+    },
+    {
+      "path": "kb/render_manifest_v1.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "deterministic KB projection manifest",
+      "execution_context": false,
+      "bytes": 2459,
+      "sha256": "ff7ddd926a7452c83a95129e273afba7d8fe33def095564cbb0c1491de1bb23e"
+    },
+    {
+      "path": "kb/tools/render_kb.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "deterministic KB renderer",
+      "execution_context": false,
+      "bytes": 16765,
+      "sha256": "9c16a69eb9df2ba14dfa9c78131945e37e9776b38afbb3cbee88c7489aa2dcc5"
+    },
+    {
+      "path": "public_export_manifest_v1.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "default-deny public file inventory",
+      "execution_context": false,
+      "bytes": 16236,
+      "sha256": "f22248d104abce925f8a76c401a4af659b7c95f0a52ab079206da593567b4ad2"
+    },
+    {
+      "path": "tools/public_ci_smoke.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "self-contained public package layout, compile and v1.1 runtime smoke gate",
+      "execution_context": false,
+      "bytes": 4319,
+      "sha256": "d248f17aa94b4cf806905161e57ab30f2bebcdebfebf5eac844bb9f916ede215"
+    },
+    {
+      "path": "tools/run_sge_loop_goal_cycle.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "profile-driven optional orchestrator",
+      "execution_context": false,
+      "bytes": 1516,
+      "sha256": "5763b2d2af83ab2d5518724091b94b64d1d3a5241e7cab329af0bc45a22a67ef"
+    },
+    {
+      "path": "tools/sge_public.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "public lifecycle utility",
+      "execution_context": false,
+      "bytes": 37847,
+      "sha256": "c75a3b0e075fdb83c034aa5ab96b9bb9c2f5688de408f7bd436325cc55a7b7f8"
+    }
+  ],
+  "file_set_sha256": "a8b18a5b6e99c613da1157ee45e10a8dd0a9e6498ab9f39ff21fa62d5fda7761",
+  "tree_sha256": "da172ce159e3e30c0fde4a612fcacb2e050633d98e1d61c5eca2f086e1c7453e",
+  "source_inventory": {
+    "complete": true,
+    "entry_count": 890,
+    "allowlisted_entry_count": 64,
+    "excluded_entry_count": 826,
+    "excluded_counts": {
+      "default_deny": 825,
+      "source_control_metadata": 1
+    },
+    "private_paths_omitted_from_public_metadata": true
+  }
+}

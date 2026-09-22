@@ -56,5 +56,5 @@ SGE 交付以用户原始意图和冻结合同为起点，以 kb/data 中的稳�
 - `.codex/skills/sge-governed-checkpoints/SKILL.md`
 - `Dashboard/Rules.md`
 - `Dashboard/Methodology.md`
-- `Dashboard/Artifacts/SP001_S013_SourceAdjudication.md`
+- `Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S013_SourceAdjudication.md`
 - `kb/data/strategy/sge_strategy_source_manifest_v1.json`

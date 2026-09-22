@@ -1,0 +1,6 @@
+{
+  "schema_version":"goal_obligation_inventory_v2",
+  "producer":"deterministic_final_goal_ledger_producer",
+  "source_revision":"generic-goal-r1",
+  "obligation_ids":["MH-01","MH-02","AC-01","terminal:release","terminal:remote_readback","terminal:clean_install","terminal:managed_sync","terminal:independent_validation","terminal:final_reconciliation","terminal:closeout_language","terminal:dashboard_kb_registry"]
+}

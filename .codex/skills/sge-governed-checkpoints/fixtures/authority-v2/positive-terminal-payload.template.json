@@ -1,0 +1,8 @@
+{
+  "schema_version":"sge_terminal_evidence_input_v1",
+  "authority_root_id":"generic-goal-authority-root",
+  "authority_root_revision":"1",
+  "evaluated_at":"2026-01-03T00:00:00Z",
+  "required_runtime_refs":["producer_identity_ref","validation_review_ref","contract_ref","cases_ref","actual_diff_ref","remote_readback_ref"],
+  "note":"Runtime evidence locators are supplied by the evaluated run; trust-anchor selection is not present in this payload."
+}

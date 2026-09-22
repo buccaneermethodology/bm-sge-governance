@@ -73,3 +73,5 @@
 ## 这段 Prompt 的能力边界
 
 它只能建立治理骨架并完成有界的本地安装检查。它不证明具体产品正确、不替代独立 Validation、不授予发布权限，也不保证所有操作系统和所有 Agent 产品的兼容性。公开仓地址已经固定为本 Prompt 中列出的官方地址；Agent 不应自行猜测或替换为其他仓库。
+
+初始化后的第一个 governed task 必须先运行 core 的 `first_task_router.py` 与 `capability_preflight.py`。Goal 缺失时先生成并审查 Goal，不得直接进入 Builder；optional adapter 缺失时继续 `initial_kb_bootstrap.py` 的 core-only recipe。Agent 应把 classifier、preflight 与 recipe 输出作为可定位的 candidate evidence；这些输出不是产品实现、独立 Validation 或完成证明。

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "topology_gate_v1.schema.json",
+  "type": "object",
+  "required": ["schema_version", "checkpoint", "topology_state", "reason_codes", "required_lanes", "observed_identities", "evidence_digests", "recomputed_from_durable_evidence", "maximum_claim"],
+  "properties": {
+    "schema_version": {"const": "sge_topology_gate_v1"},
+    "checkpoint": {"enum": ["pre_builder", "pre_validation", "pre_closeout", "final"]},
+    "topology_state": {"enum": ["conformant", "nonconformant", "exception_authorized"]},
+    "reason_codes": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "required_lanes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "observed_identities": {"type": "object", "additionalProperties": {"type": "string"}},
+    "evidence_digests": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+    "recomputed_from_durable_evidence": {"type": "boolean"},
+    "maximum_claim": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false
+}

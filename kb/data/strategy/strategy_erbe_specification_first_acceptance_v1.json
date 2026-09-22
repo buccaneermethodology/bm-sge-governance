@@ -5,7 +5,7 @@
   "version": "v1.0",
   "status": "active",
   "output_path": "docs/strategy/Strategy_ERBE_Specification_First_Acceptance_V1.md",
-  "metadata": {"owner": "sge-core", "updated_at": "2026-07-26", "source_scope": ["Dashboard/Artifacts/SP001_S002_SGECore_Design.md", ".codex/skills/sge-governed-checkpoints/SKILL.md", "Dashboard/Artifacts/SP001_S002_SGECore_ERBE_Contract.json"]},
+  "metadata": {"owner": "sge-core", "updated_at": "2026-07-26", "source_scope": ["Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S002_SGECore_Design.md", ".codex/skills/sge-governed-checkpoints/SKILL.md", "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S002_SGECore_ERBE_Contract.json"]},
   "authority": {"stable_method": "kb strategy JSON", "per_goal_acceptance": "Dashboard frozen ERBE Contract/Cases", "execution_gate": "independent ERBE runner and maintained tests", "readable_projection": "tests/bdd/readable_cards/; projection-only"},
   "applicability": ["required", "proportional", "not_applicable", "blocked_oracle"],
   "lifecycle": ["candidate", "reviewed", "frozen", "red_verified", "builder_locked", "green_candidate", "independently_validated", "absorbed"],

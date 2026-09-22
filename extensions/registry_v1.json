@@ -2,6 +2,7 @@
   "schema_version": "sge_extension_registry_v1",
   "core_requires_extensions": false,
   "extensions": [
+    {"id":"doc-system-kb-builder","kind":"optional-adapter","contract_version":"1","enabled_by_default":false,"entrypoint":null,"interface_schema":"optional initial KB builder adapter","core_compatibility":">=1.0.0","provenance_ref":"public_export_manifest_v1.json#optional-domain-contract","missing_behavior":"core initial_kb_bootstrap recipe continues without the adapter","claim_ceiling":"optional adapter registration only; absence does not block the core recipe"},
     {"id":"build-kym","kind":"domain","contract_version":"1","enabled_by_default":false,"entrypoint":null,"interface_schema":"candidate input/output + provenance manifest","core_compatibility":">=1.0.0","provenance_ref":"public_export_manifest_v1.json#optional-domain-contract","missing_behavior":"core continues; extension request fails closed as unavailable","claim_ceiling":"registered optional interface only; candidate knowledge model is not approval or factual completeness"},
     {"id":"build-tco-coverage","kind":"domain","contract_version":"1","enabled_by_default":false,"entrypoint":null,"interface_schema":"candidate profile/coverage + verification evidence","core_compatibility":">=1.0.0","provenance_ref":"public_export_manifest_v1.json#optional-domain-contract","missing_behavior":"core continues; extension request fails closed as unavailable","claim_ceiling":"registered optional interface only; candidate coverage is not production applicability"}
   ]

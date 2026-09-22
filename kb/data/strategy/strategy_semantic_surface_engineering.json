@@ -8,7 +8,7 @@
   "metadata": {
     "owner": "sge-semantic-governance",
     "updated_at": "2026-09-02",
-    "source_scope": ["kb/data/strategy/strategy_human_ai_development.json", "Dashboard/Artifacts/SP001_S013_SourceAdjudication.md", "kb/data/strategy/sge_strategy_source_manifest_v1.json"],
+    "source_scope": ["kb/data/strategy/strategy_human_ai_development.json", "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S013_SourceAdjudication.md", "kb/data/strategy/sge_strategy_source_manifest_v1.json"],
     "depends_on_docs": ["sge-strategy-human-ai-development"],
     "tags": ["strategy", "semantic-surface", "diagnosis", "meaning-flow"]
   },

@@ -8,7 +8,7 @@
   "metadata": {
     "owner": "sge-kb-governance",
     "updated_at": "2026-09-02",
-    "source_scope": ["AGENTS.md", "kb/data/strategy/strategy_human_ai_development.json", "kb/data/strategy/strategy_semantic_surface_engineering.json", "Dashboard/Artifacts/SP001_S013_SourceAdjudication.md"],
+    "source_scope": ["AGENTS.md", "kb/data/strategy/strategy_human_ai_development.json", "kb/data/strategy/strategy_semantic_surface_engineering.json", "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S013_SourceAdjudication.md"],
     "depends_on_docs": ["sge-strategy-human-ai-development", "sge-strategy-semantic-surface-engineering"],
     "tags": ["strategy", "kb", "promotion", "source-policy", "truth-placement"]
   },

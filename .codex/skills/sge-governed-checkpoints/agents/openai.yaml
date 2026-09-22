@@ -1,6 +1,6 @@
 interface:
   display_name: "SGE Governed Checkpoints"
   short_description: "Apply SGE governance gates to complex repo work"
-  default_prompt: "Use $sge-governed-checkpoints to run a governed intake, validation, and closeout for this task."
+  default_prompt: "Use $sge-governed-checkpoints to classify task and Goal state, read the matching recipe and evidence-triggered references, then run governed implementation, independent validation, and closeout within the evidence claim ceiling."
 policy:
   allow_implicit_invocation: true

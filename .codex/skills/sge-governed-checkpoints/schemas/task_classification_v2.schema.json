@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "task_classification_v2.schema.json",
+  "type": "object",
+  "required": ["schema_version", "classification", "route", "reason_code", "hard_triggers", "unknown_facts", "maximum_claim"],
+  "properties": {
+    "schema_version": {"const": "sge_task_classification_v2"},
+    "classification": {"enum": ["trivial", "read_only", "governed_implementation", "unknown"]},
+    "route": {"enum": ["proportional_direct", "read_only_workflow", "governed_workflow", "blocked_pending_facts"]},
+    "reason_code": {"type": "string", "minLength": 1},
+    "hard_triggers": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "unknown_facts": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "maximum_claim": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false
+}
