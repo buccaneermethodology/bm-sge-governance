@@ -1,6 +1,6 @@
 {
   "schema_version": "sge_public_export_manifest_v1",
-  "candidate_id": "sge-governance-public-candidate-v1.1.2",
+  "candidate_id": "sge-governance-public-candidate-v1.1.3",
   "identity_contract": {
     "private_source_id": "sge-governance-skill",
     "public_project_id": "bm-sge-governance",
@@ -45,6 +45,8 @@
     {"path":".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/issuer-provenance.json","source":"owner-provisioned bundle","license":"MIT","provenance":"exact-copy issuer provenance fixture","public":true,"execution_context":false},
     {"path":".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/positive-terminal-payload.template.json","source":"owner-provisioned bundle","license":"MIT","provenance":"exact-copy positive terminal template","public":true,"execution_context":false},
     {"path":".codex/skills/sge-governed-checkpoints/fixtures/authority-v2/trusted-authority-boundary.json","source":"owner-provisioned bundle","license":"MIT","provenance":"exact-copy managed authority boundary","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/references/implementation-delta-template.md","source":"repository","license":"MIT","provenance":"Implementation Delta reference","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/references/implementation-delta-examples.md","source":"repository","license":"MIT","provenance":"Implementation Delta reference","public":true,"execution_context":false},
     {"path":".codex/skills/sge-governed-checkpoints/references/checklists.md","source":"repository","license":"MIT","provenance":"SGE core reference","public":true,"execution_context":false},
     {"path":".codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md","source":"repository","license":"MIT","provenance":"SGE core reference","public":true,"execution_context":false},
     {"path":".codex/skills/sge-governed-checkpoints/references/context-routing-manifest-v1.json","source":"repository","license":"MIT","provenance":"machine-readable Skill routing closure","public":true,"execution_context":false},
@@ -173,7 +175,9 @@
     ".codex/skills/sge-governed-checkpoints/fixtures/stop-gate-v1/smoke.json",
     "kb/data/strategy/strategy_stop_gate_v1.json",
     "kb/docs/strategy/Strategy_Stop_Gate_V1.md",
-    "tools/stop_gate_smoke.py"
+    "tools/stop_gate_smoke.py",
+    ".codex/skills/sge-governed-checkpoints/references/implementation-delta-template.md",
+    ".codex/skills/sge-governed-checkpoints/references/implementation-delta-examples.md"
   ],
   "hosted_ci": {
     "workflow": ".github/workflows/candidate-checks.yml",
@@ -187,6 +191,8 @@
       ".codex/skills/sge-governed-checkpoints/references/checklists.md",
       ".codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
       ".codex/skills/sge-governed-checkpoints/references/context-routing-manifest-v1.json",
+      ".codex/skills/sge-governed-checkpoints/references/implementation-delta-examples.md",
+      ".codex/skills/sge-governed-checkpoints/references/implementation-delta-template.md",
       ".codex/skills/sge-governed-checkpoints/references/initial-kb-bootstrap.md",
       ".codex/skills/sge-governed-checkpoints/references/recipes/closeout.md",
       ".codex/skills/sge-governed-checkpoints/references/recipes/delta-validation.md",

@@ -78,7 +78,7 @@ receipt 在 state 或任一引用文件变化后失效，final 前必须重新�
 - 独立 Validation：`references/recipes/validation.md`
 - delta repair/reconciliation：`references/recipes/delta-validation.md`
 - Semantic Review：`references/recipes/semantic-review.md`
-- Closeout、KB/Dashboard、BDD：`references/recipes/closeout.md`
+- Closeout、KB/Dashboard、BDD 与 Implementation Delta 适用性/追溯：`references/recipes/closeout.md`
 - core-only 初始 KB：`references/initial-kb-bootstrap.md`
 
 只读命中的 recipe。需要固定 prompt/template、完整 output shape、semantic taxonomy 或特殊 approval wording时扩读 `references/checklists.md`。需要 Goal Patch resolution、Validation State Snapshot、Delta Read Set/rebaseline、lane-card/prompt/duplication audit 或 convergence 轮次管理时扩读 `references/context-efficient-goal-validation.md`。

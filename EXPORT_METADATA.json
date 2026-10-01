@@ -2,12 +2,12 @@
   "schema_version": "sge_projection_metadata_v1",
   "claim_ceiling": "仅支持 maintainer local deterministic projection candidate evidence；不支持独立 Validation、批准、公开仓、远端 mutation、release 或 production。",
   "identity": {
-    "source_revision": "6320ce560393316ef9d36eb9dd418744fbe03085",
-    "manifest_revision": "4d292bc31bdb7de940e4771aa8fbe0e47874cb07bcbca03c971428d6f7b92480",
+    "source_revision": "cbd963b09fb115aa35ba430bfd9e57cee58766a5",
+    "manifest_revision": "4f15fba62b6c0cd9abcf3325347e1cbc9899881e26d21790ecbfe65b7374189c",
     "export_tool_revision": "4164606588250cddfeea9f613bc607c3a7bc8dd8d4b1d0843cbb1058399ea945",
-    "export_run_id": "run-20260922T152806649188Z-3285da90a189",
-    "candidate_id": "sge-governance-public-candidate-v1.1.2",
-    "candidate_fingerprint": "20e82a8196fd655f27f13d8d87e03cee9894bbe0341011e893afb483b488d832",
+    "export_run_id": "run-20261001T074317189314Z-1d5685b2143f",
+    "candidate_id": "sge-governance-public-candidate-v1.1.3",
+    "candidate_fingerprint": "af34e2f4e292140f1ae923904083741618a2bd90ea4e804fae11d1905f80ecdd",
     "projection_commit": null,
     "release_tag": null
   },
@@ -28,8 +28,8 @@
       "license": "MIT",
       "provenance": "SGE core",
       "execution_context": false,
-      "bytes": 11389,
-      "sha256": "65e0f15dac7fb1dba19e53e916db31c9247c2a49d18fbbbf5055ba486f7cbf4d"
+      "bytes": 11431,
+      "sha256": "490c7d13772adc8ac811636204369b0bd92ff2278099fa0d245a23572ce0441b"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/agents/openai.yaml",
@@ -118,8 +118,8 @@
       "license": "MIT",
       "provenance": "SGE core reference",
       "execution_context": false,
-      "bytes": 77941,
-      "sha256": "c12362e98083ea764a37fe6708ee26c0c3ca4f0373f9c32156efe5970d9b9a3c"
+      "bytes": 80391,
+      "sha256": "427ca1a1d5edc1a144ae3345a82149c148be4293197f05af32792c2b3cf99c24"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
@@ -140,6 +140,24 @@
       "sha256": "1f3e80109f31ea996da2c03e392c03546cc6dc40ab137f19015c9688a2a1dfda"
     },
     {
+      "path": ".codex/skills/sge-governed-checkpoints/references/implementation-delta-examples.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "Implementation Delta reference",
+      "execution_context": false,
+      "bytes": 7760,
+      "sha256": "18a88d3bc6e68eabd6f131118a92edec3bcc2f7f34e7ec1c9e27e4ff62b96222"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/implementation-delta-template.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "Implementation Delta reference",
+      "execution_context": false,
+      "bytes": 3059,
+      "sha256": "a91776f765ee72058d2b6641c115cd8028681184b0efda460bfc89dcb11c86ef"
+    },
+    {
       "path": ".codex/skills/sge-governed-checkpoints/references/initial-kb-bootstrap.md",
       "source": "repository",
       "license": "MIT",
@@ -154,8 +172,8 @@
       "license": "MIT",
       "provenance": "routed closeout recipe",
       "execution_context": false,
-      "bytes": 933,
-      "sha256": "7272cf11c8c9564687d222c139b18f69e26cd95a310f302e6126bdcf68c0bb0e"
+      "bytes": 1902,
+      "sha256": "28d92d74a5a6eb2d65c55179945212597d81650d5221820cbd506722ad746300"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/references/recipes/delta-validation.md",
@@ -424,8 +442,8 @@
       "license": "MIT",
       "provenance": "SGE core script",
       "execution_context": false,
-      "bytes": 43507,
-      "sha256": "d67b4b7b9f22f901c2a15b5b86878f526370bee469eac27e57a7303758314a01"
+      "bytes": 44139,
+      "sha256": "727c9d5236593f91f48598bc750707611464f5bf9e308000f42a3a37a19e554f"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/scripts/initial_kb_bootstrap.py",
@@ -676,8 +694,8 @@
       "license": "MIT",
       "provenance": "canonical SGE strategy",
       "execution_context": false,
-      "bytes": 4348,
-      "sha256": "fbbc9f4ff48b3e26876655d969090cb05de417dd28fcc15874211ea1e9924131"
+      "bytes": 7376,
+      "sha256": "213a986c7e5b1e9f03d6d3e9ba3b7c4c62415ec469cf867b0b166381f6170c5c"
     },
     {
       "path": "kb/data/strategy/strategy_kb_promotion_and_source_policy.json",
@@ -739,8 +757,8 @@
       "license": "MIT",
       "provenance": "generated canonical projection",
       "execution_context": false,
-      "bytes": 3030,
-      "sha256": "8b204660b23fe218ef71923bad3475b6d1e99abd8beb81be4bbc51e1b53f1f9a"
+      "bytes": 5813,
+      "sha256": "991e3dec19d16da61d0bc920db611180cd883306c697a5cec1ba50e77a6702a5"
     },
     {
       "path": "kb/docs/strategy/Strategy_KB_Promotion_and_Source_Policy.md",
@@ -802,8 +820,8 @@
       "license": "MIT",
       "provenance": "default-deny public file inventory",
       "execution_context": false,
-      "bytes": 29441,
-      "sha256": "4d292bc31bdb7de940e4771aa8fbe0e47874cb07bcbca03c971428d6f7b92480"
+      "bytes": 30251,
+      "sha256": "4f15fba62b6c0cd9abcf3325347e1cbc9899881e26d21790ecbfe65b7374189c"
     },
     {
       "path": "tools/public_ci_smoke.py",
@@ -842,15 +860,15 @@
       "sha256": "f7aafa7a3b7669235a9ba001486d48fcb9e5b0f8bb4588444eadc1723d685c15"
     }
   ],
-  "file_set_sha256": "7397320e845fbe3ef4000533ac2c249a3ffb76ebcd20a66f018391a2a99a0483",
-  "tree_sha256": "36cbd29135e7d40f30d854cea4b3cfdd55d56f784c4a3997cb11836236949559",
+  "file_set_sha256": "cd5c7921677e455bd2d6be65a1a49f1cbc22ae08b0b64a300aeb16e9e2716ac9",
+  "tree_sha256": "59965653417f7230f5f819e2603cb3023098b83aeb95a9a379b841d580248ec4",
   "source_inventory": {
     "complete": true,
-    "entry_count": 1076,
-    "allowlisted_entry_count": 91,
-    "excluded_entry_count": 985,
+    "entry_count": 1287,
+    "allowlisted_entry_count": 93,
+    "excluded_entry_count": 1194,
     "excluded_counts": {
-      "default_deny": 984,
+      "default_deny": 1193,
       "source_control_metadata": 1
     },
     "private_paths_omitted_from_public_metadata": true

@@ -51,6 +51,21 @@
       "content": {"bullets": ["schema-valid、trial pass 或 producer status 不等于 semantic acceptance。", "Validation Handoff 说明任务声称什么、不证明什么、证据层和已知风险。", "最终 closeout 使用中文解释英文 verdict/status 的含义、影响、边界和下一步。", "只有 completion rule 的全部谓词同时成立，才允许 done/complete。"]}
     },
     {
+      "section_id": "implementation-delta-traceability",
+      "heading": "实现变更追溯与验收边界",
+      "kind": "narrative",
+      "content": {
+        "paragraphs": [
+          "所有 Goal closeout 必须声明 Implementation Delta 适用性。按实际行为影响判断：runtime、工具、配置、脚本、schema、Provider 路由等改变行为均适用，不能按扩展名豁免。适用时使用中文标题“实现变更（Implementation Delta）”，按可独立解释和验证的变更项记录。纯文档或导航可标 not_applicable（不适用），但必须说明未发生代码行为变化的依据；其他治理审查仍须执行。",
+          "每项必须包含六字段：①模块与行为：链接实际源文件，解释前后行为，不能只有文件清单；②Git 与定位：所属仓库、已提交部分对应提交，未提交部分明确标注并链接基线、固定快照与文件清单；③验证证据：逐项关联实际测试结果、运行收据或独立审查，并说明支持范围，未运行、失败、缺失与失效如实记录；④目标影响：关联原 Goal must-have/AC 编号并解释如何支持目标，提交不是达成；⑤未覆盖边界：剩余缺口、未验证场景与 claim ceiling，无已知缺口也限定适用范围；⑥独立性：区分提交、Builder 自检、测试与独立验收，链接独立 verdict 或明确尚无。",
+          "未提交验收允许固定快照。快照须可重建：固定基线提交、tracked/untracked 文件清单、新增/删除/重命名清单及内容；可用基线加完整 tracked patch、untracked 原文和 manifest。删除须定位基线内容，重命名保留 old/new 路径与实际内容。仅路径、摘要或遗漏新增文件的 diff 不足以定位验收对象。混合状态分别标明已提交与未提交部分，不得混称已提交。",
+          "验收对象变化后不得自动沿用原证据；更新快照或重新绑定，说明哪些测试/审查仍适用、哪些须重跑或重审。多 Session Goal 最终 closeout 汇总实际实现变化、目标影响、剩余缺口和最终对象证据，可复用子 Session 证据，不能仅列子 closeout 链接。",
+          "Reviewer 从 closeout 本文应能说明变化、影响、缺口和声明上限，再通过可点击 Markdown 源链接核查。表格完整不等于通过，Git 提交、自检和测试通过不能替代独立验收。Validation Handoff 必须携带适用性依据、六字段、定位快照、证据绑定及父面汇总，供独立 reviewer 对原始目标与最终对象核验。",
+          "本规则采用清单加独立审查；现有 closeout 提示输出仅提醒，不自动检测遗漏，closeout-language 只检查既有语言约束。不得将模板、示例、打印成功或语言检查当作 Implementation Delta 结构或语义通过。规则适用于采用该版本的后续 closeout；仓库落地不证明其他项目已经采用。"
+        ]
+      }
+    },
+    {
       "section_id": "automation-boundary",
       "heading": "自动化边界",
       "kind": "narrative",

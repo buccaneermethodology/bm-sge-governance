@@ -347,6 +347,8 @@ I am applying the fixed Validation Agent Prompt: building the Read Manifest, exp
 
 ## Validation Handoff Checklist
 
+- 交接 Implementation Delta 适用性及依据；适用时包含六字段、固定验收对象和逐项证据，按[实现变更人工核验清单](#实现变更人工核验清单)复核原 Goal 与最终对象。多 Session 交接父面汇总；标明尚无独立验收时不能用本交接包替代 verdict。
+
 Use before final validation of every non-trivial task. Agent Logs may be default for the task, but the handoff packet remains the concise validation input rather than a verdict.
 
 - Storage: write the packet into the current Dashboard closeout artifact under `## 验证交接包`; use `Dashboard/Artifacts/<SessionID>_<ShortTopic>_Closeout.md` for a tracked session or `Dashboard/Artifacts/<StageID>_<ShortTopic>_Closeout.md` for a Stage Plan / multi-session batch. When Agent Log default applies, copy or link the packet from the relevant `Dashboard/Agent_Logs/` lane log.
@@ -678,6 +680,8 @@ Before final completion I am running the closeout-language gate against the Dash
 
 ## Closeout Deferred-Scan Checklist
 
+- 所有 Goal closeout 是否声明 Implementation Delta 适用性，并完成[实现变更人工核验清单](#实现变更人工核验清单)？模板与示例仅帮助编写，不能证明独立通过。
+
 Use before the final summary of any non-trivial task.
 
 - Did I create or update the Dashboard closeout artifact?
@@ -764,3 +768,16 @@ The reviewed seed now looks stable and the remaining drift is mostly canonical-f
 | Semantic Reviewer keeps adding fields/status/provenance to a flawed object | Run the Semantic Architecture Review checklist; God Object drift, semantic bureaucracy, schema-but-not-schema, misplaced truth carrier, label-only invariant, or intuition-only family becomes a finding. |
 | Dashboard Agent advice becomes ordinary backlog sorting or automatic row mutation | Run the Dashboard Agent Mode checklist, rebuild the Dashboard/KB panorama, give three next-step candidates, and keep updates proposal-first until the human approves them. |
 | Closeout evidence only appears in the final chat | Create or update the Dashboard closeout artifact and reference it from the changed session or stage row. |
+
+## 实现变更人工核验清单
+
+采用[模板](implementation-delta-template.md)与[正反例](implementation-delta-examples.md)。这是清单加独立审查，不是自动结构检测。
+
+- 适用性是否按实际行为判断？runtime、工具、配置、脚本、schema、Provider 路由的行为变化均须记录；纯文档/导航 not_applicable 必须解释无行为变化且不豁免其他治理。
+- 是否按可独立解释和验证的变更项覆盖所有模块，标题为“实现变更（Implementation Delta）”？不能只列文件或只挑有测试的项。
+- 六字段逐项检查：模块及前后行为和实际源链接；仓库及提交/未提交快照定位；真实证据及支持范围；原 Goal must-have/AC 影响；剩余缺口、未验证场景及 claim ceiling；独立验收链接或明确暂无。任何一字段缺失均不满足追溯合同。
+- 未提交快照是否可从固定基线加 tracked patch/untracked 原文重建？是否包含 tracked/untracked、新增/删除/重命名的完整清单与内容，删除可读基线、重命名有 old/new 和内容？路径或摘要清单、遗漏新增文件的 diff 均不足。混合状态必须分别标注。
+- 每项证据是否对应实际验收对象和行为？未运行、失败、缺证据、失效是否如实写出？对象变化后是否更新快照或明确重新绑定、重跑/重审，而非自动继承旧通过？
+- 是否解释目标影响而非用提交代替达成；无已知缺口时是否仍限定适用范围？Git、自检、测试与独立 verdict 是否分开，表格完整是否被误称通过？
+- 多 Session 父 closeout 是否汇总变化、目标影响、剩余缺口和最终对象证据，而非只链接子 closeout？
+- Reviewer 能否仅从正文复述变化、影响、缺口与声明上限，再点击真实来源核对？打印提醒、语言检查与教学示例不能代替这一判断。

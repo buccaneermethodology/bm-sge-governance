@@ -191,6 +191,9 @@ LANE_TASK_CARD_LINES = [
 
 CALLOUT_LINES = [
     "Closeout Deferred-Scan Guard",
+    "- Implementation Delta: 所有 Goal closeout 声明实际行为适用性；适用时写模块前后行为、仓库提交/完整固定快照、真实证据、Goal/AC 影响、未覆盖边界与独立验收状态。",
+    "- 混合状态分列，快照含 tracked/untracked/add/delete/rename 清单与内容；对象变化重新绑定，多 Session 父面汇总。参阅 references/implementation-delta-template.md 与 references/implementation-delta-examples.md。",
+    "- 本输出仅是提醒清单，不自动检测 Implementation Delta 遗漏；表格、提交、自检、测试与语言检查均不替代独立审查。",
     "- Create or update the Dashboard closeout artifact for non-trivial governed work.",
     "- Use Dashboard/Artifacts/<SessionID>_<ShortTopic>_Closeout.md for a tracked session or Dashboard/Artifacts/<StageID>_<ShortTopic>_Closeout.md for a Stage Plan / multi-session batch.",
     "- Include Chinese headings by default: 关键结论中文展开, 落地范围, 原始目标覆盖矩阵, 范围变更复核, Lane 启动与例外, 设计交接, 验证交接包, 验证结论, 明确非目标, 证据, 运行的门禁, 语义复核, 延后范围, KB/Dashboard 复核, and 后续候选.",
