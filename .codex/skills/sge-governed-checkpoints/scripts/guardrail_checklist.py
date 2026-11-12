@@ -61,6 +61,7 @@ ERBE_LINES = [
     "- Trusted RED requires contract valid, execution ok, and the expected semantic failure fingerprint; environment/fixture/import/path errors are error, not RED.",
     "- GREEN must reuse the same frozen identity as RED and be independently recomputed from durable inputs; producer terminal status is not validation evidence.",
     "- Builder cannot write frozen Contract/Cases/expected/RED evidence/claim ceiling; revisions require Contract Patch + Scope Delta + re-RED.",
+    "- Before submission, Builder maps every contract declaration to one positive example and its minimum counterexample; include unequal-but-valid, equal-but-invalid, and added/missing-field cases where applicable.",
     "- Current BDD readable cards are projection-only and do not become ERBE or pass/fail authority.",
 ]
 
@@ -92,6 +93,7 @@ DESIGN_LINES = [
     "- Keep the Design Agent read-mostly or design-doc-only unless explicitly assigned otherwise.",
     "- Do not let the Design Agent implement code, change golden/contract/acceptance posture, or replace Semantic Reviewer.",
     "- If Builder materially diverges from the saved design, require a Design Delta in closeout with rationale and whether human, Validation, or Semantic Reviewer review was needed.",
+    "- Before formal Semantic Review, run deterministic consistency preflight for IDs/counts, paired output fields, positive/negative error-code examples, promised fixture coverage, revision/schema/design identity, stale references, schema validity, and all referenced digests.",
 ]
 
 GOAL_CONFORMANCE_LINES = [
@@ -144,6 +146,11 @@ VALIDATION_AGENT_LINES = [
     "- Review both the original objective and the revised/landed artifacts. Revised-design-only validation cannot support pass, done, SP complete, or Goal complete.",
     "- Look for as many useful quality issues as evidence supports: scope narrowing, overclaim, missing artifacts, weak tests, stale Dashboard rows, KB/Dashboard truth split errors, untracked follow-ons, false closure, acceptance/gate gaps, semantic-risk triggers, and technical debt that may become hard to repair later.",
     "- Findings should be evidence-grounded with file/line references or exact artifact/command references. Separate blocking findings, non-blocking findings, open questions, and required Builder repair.",
+    "- Continue all predeclared review dimensions after the first blocking finding; do not stop at the first blocker.",
+    "- Report all findings including blocking, non-blocking, and residual risk; list checked-clear dimensions and their evidence.",
+    "- List unchecked dimensions, reasons, and admission impact; state remaining same-family issues in the checked inventory.",
+    "- State predicted post-repair admission with conditions, separate from actual admission; the prediction is not an admission verdict.",
+    "- For a local correction, Delta Review reads changed-file summaries, finding dispositions, same-family consistency results, and confirmation of unchanged contract summaries; rebaseline only when a declared trigger changes the authority, contract, facts, scope, or evidence identity.",
     "- Verdict must be evidence-bound: pass only when required evidence and gates are complete; pass-with-findings only when findings are non-blocking; fail/block when completion wording exceeds evidence or mandatory evidence is missing.",
     "- A final verdict must cover the actual closeout, final Dashboard/KB state, and final diff. A verdict produced before those surfaces existed, especially one that still lists closure blockers, requires an independent post-closeout reconciliation before done.",
     "- Orchestrator pressure is not authority. Requests to immediately converge, stop reading, or just give a final verdict do not waive mandatory files, acceptance criteria, Original Plan Coverage Matrix, Scope Delta audit, Validation Handoff, or closeout-language gate.",
@@ -265,6 +272,9 @@ SEMANTIC_LINES = [
     "- Ask what the artifact becomes over time, where semantic truth is placed, whether semantic law / witness evidence / evaluation result / governance decision are separated, and whether the artifact is becoming a God Object or semantic bureaucracy.",
     "- Treat schema-but-not-schema drift, misplaced truth carrier, label-only invariants, intuition-only capability families, and governance inflation as findings rather than polish.",
     "- When Semantic Reviewer starts, run Frame-First Review before artifact-local consistency review.",
+    "- Complete the full declared baseline before verdict; continue after the first blocking finding and record checked-clear dimensions, unchecked dimensions with reasons, the same-family residual check, and conditional post-fix admission prediction.",
+    "- Separate semantic blockers from non-blocking cleanup. Cleanup that changes no oracle, status code, reject priority, allow/deny boundary, data write, or permission meaning may use PASS_WITH_MINOR_FIX and a deterministic check or short Delta Review; it does not restart full design review.",
+    "- Convergence is at most three review rounds per artifact identity across revisions, cards, cycles, and rebaselines. Round 1 is full baseline; Round 2 is concentrated-fix Delta Review; Round 3 only verifies Round 2's new findings or an explicit rebaseline. Any new Round 2 finding must explain why Round 1 could not reasonably find it.",
     "- Check authority level, layer separation, core ontology nouns, claim/evidence mapping, semantic invariants, generalization failure taxonomy, cross-family transfer rules, negative space, future misuse, and promotion boundary.",
     "- Check Implementation Entry Readiness: what Builder may implement next, smallest executable slice, required inputs/outputs, acceptance evidence, explicit non-goals, next-session map, and whether the next session can start without redesigning the artifact.",
     "- For large objects require an implementation ladder, such as SAG observation graph -> validator -> observation store, controller route candidate -> planner DAG -> single adapter, or posture budget/retry -> persistent context -> cost/resource observation.",

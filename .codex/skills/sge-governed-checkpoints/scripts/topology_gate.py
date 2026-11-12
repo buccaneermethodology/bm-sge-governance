@@ -72,6 +72,18 @@ def evaluate(payload: dict[str, Any]) -> dict[str, Any]:
     root = Path(payload.get("repo_root", ".")).resolve()
     if not isinstance(snapshot_id, str) or not snapshot_id or not isinstance(required, list) or not isinstance(evidence, dict):
         raise ValueError("TOPOLOGY_INPUT_INVALID")
+    if not payload.get("execution_admission_ref"):
+        return {
+            "schema_version": SCHEMA_VERSION,
+            "checkpoint": checkpoint,
+            "topology_state": "nonconformant",
+            "reason_codes": ["TOPOLOGY_EXECUTION_ADMISSION_MISSING"],
+            "required_lanes": required,
+            "observed_identities": {},
+            "evidence_digests": {},
+            "recomputed_from_durable_evidence": False,
+            "maximum_claim": "topology evidence at one checkpoint only",
+        }
     failures: list[str] = []
     identities: dict[str, str] = {}
     evidence_digests: dict[str, str] = {}

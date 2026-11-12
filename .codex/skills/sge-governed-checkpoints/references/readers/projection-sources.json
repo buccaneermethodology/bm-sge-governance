@@ -1,0 +1,72 @@
+{
+  "purpose": "本版Skill阅读投影来源映射；不是公共schema、授权接口或通用解释器",
+  "canonical_truth": "发行source仓kb/data/；本文件及Skill内reader/sources均为只读派生，不接收独立编辑或覆盖项目authority",
+  "canonical_source_revision": "e127b029956f1d6935ae74fe6664439936c372fb",
+  "records": [
+    {
+      "output_path": ".codex/skills/sge-governed-checkpoints/references/readers/user-oriented-acceptance-case-quality.md",
+      "canonical_path": "kb/data/strategy/strategy_user_oriented_acceptance_case_quality_v1.json",
+      "canonical_sha256": "a478d0395dc7ee21f1a1280d9fbb27eb84b6013f5ab9a5790f5df0bb5fe3e597",
+      "canonical_blob": "03b5d0bf064acc0801d9e9546c77830bf234a03a",
+      "reader_source_path": "kb/docs/strategy/Strategy_User_Oriented_Acceptance_Case_Quality_V1.md",
+      "reader_source_sha256": "e36e0f521bf819f55dcf1744bde470280061c1fe65c47d2baed34a43fece2454",
+      "prefix_utf8": "> 本文件是随 Skill 分发的只读阅读投影，唯一 canonical 规范仍位于发行 source 仓的 kb/data/。不得直接编辑本投影或将其作为目标项目的独立真源；项目既有 authority 不由此变更。来源与精确派生映射见 [来源记录](projection-sources.json)。\n\n",
+      "literal_rewrites": [
+        {
+          "from_label": "ERBE canonical",
+          "from_target": "../../data/strategy/strategy_erbe_specification_first_acceptance_v1.json",
+          "to_label": "ERBE canonical 的只读来源快照",
+          "to_target": "sources/strategy_erbe_specification_first_acceptance_v1.json",
+          "expected_occurrences": 1
+        },
+        {
+          "from_label": "SGC canonical",
+          "from_target": "../../data/strategy/strategy_sgc_structural_contract_v1.json",
+          "to_label": "SGC canonical 的只读来源快照",
+          "to_target": "sources/strategy_sgc_structural_contract_v1.json",
+          "expected_occurrences": 1
+        }
+      ],
+      "expected_output_sha256": "184141cd46fbc132a32d4764d210922f8f3defb8d1d9949a730d31ef353a2cd3",
+      "expected_output_bytes": 22151,
+      "source_body_policy": "完整原reader，除prefix及精确literal_rewrites不增删规范或教学段落"
+    },
+    {
+      "output_path": ".codex/skills/sge-governed-checkpoints/references/readers/context-layering.md",
+      "canonical_path": "kb/data/strategy/strategy_context_layering_v1.json",
+      "canonical_sha256": "be4c1620314e80f567961f47e96bc8b5392e4331f8a502eb2a5aef0aea5f953a",
+      "canonical_blob": "12d4ac2a5323bd0ae09569b71db09de244739b7b",
+      "reader_source_path": "kb/docs/strategy/Strategy_Context_Layering_V1.md",
+      "reader_source_sha256": "7393a1f4662ce07fe8549f476d17e0d7323f5bcbc37ef688be95fcf4151a950d",
+      "prefix_utf8": "> 本文件是随 Skill 分发的只读阅读投影，唯一 canonical 规范仍位于发行 source 仓的 kb/data/。不得直接编辑本投影或将其作为目标项目的独立真源；项目既有 authority 不由此变更。来源与精确派生映射见 [来源记录](projection-sources.json)。\n\n",
+      "literal_rewrites": [],
+      "expected_output_sha256": "4a3879e439ca55b01ee96b5169a8795f11afab0791c9fe91fe429520a7585dfa",
+      "expected_output_bytes": 3780,
+      "source_body_policy": "完整原reader，除prefix及精确literal_rewrites不增删规范或教学段落"
+    },
+    {
+      "output_path": ".codex/skills/sge-governed-checkpoints/references/readers/sources/strategy_erbe_specification_first_acceptance_v1.json",
+      "canonical_path": "kb/data/strategy/strategy_erbe_specification_first_acceptance_v1.json",
+      "canonical_sha256": "a0ab0ce7cf08a21deca18441662b90ddd57a63a85867b68a644f51dc8189ef27",
+      "canonical_blob": "0e50e01b9bd79162628854f88cf1cdb2011de524",
+      "reader_source_path": null,
+      "prefix_utf8": "",
+      "literal_rewrites": [],
+      "expected_output_sha256": "a0ab0ce7cf08a21deca18441662b90ddd57a63a85867b68a644f51dc8189ef27",
+      "expected_output_bytes": 2007,
+      "source_body_policy": "原canonical JSON精确字节只读快照，不是新的canonical或目标项目authority"
+    },
+    {
+      "output_path": ".codex/skills/sge-governed-checkpoints/references/readers/sources/strategy_sgc_structural_contract_v1.json",
+      "canonical_path": "kb/data/strategy/strategy_sgc_structural_contract_v1.json",
+      "canonical_sha256": "a2da0b7edd85a8ad35f6e55cfb660d363d86f1f4bbea58a0c6018c5dcb39f31c",
+      "canonical_blob": "462d6e9587ceaf341a2bd456422e3860ea375a02",
+      "reader_source_path": null,
+      "prefix_utf8": "",
+      "literal_rewrites": [],
+      "expected_output_sha256": "a2da0b7edd85a8ad35f6e55cfb660d363d86f1f4bbea58a0c6018c5dcb39f31c",
+      "expected_output_bytes": 17880,
+      "source_body_policy": "原canonical JSON精确字节只读快照，不是新的canonical或目标项目authority"
+    }
+  ]
+}

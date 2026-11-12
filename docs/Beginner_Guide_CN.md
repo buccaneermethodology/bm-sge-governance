@@ -35,7 +35,8 @@ python3 tools/sge_public.py bootstrap /tmp/my-sge-project
 ```bash
 cd /tmp/sge-public-candidate
 python3 tools/sge_public.py install \
-  --target /tmp/my-sge-project
+  --target /tmp/my-sge-project \
+  --admission /path/to/execution-admission.json
 ```
 
 成功输出形如 `installed:17:/tmp/my-sge-project`。普通用户不需要指定 `--source`：命令从当前公开仓目录读取 source；`--source` 只用于维护者、高级诊断或测试 alternate source。安装只复制 manifest 允许的 `.codex/skills/sge-governed-checkpoints/` 文件，并写入包含 candidate、source/manifest identity、文件摘要、写入范围和 target 路径的 install record。目标项目自己的 `AGENTS.md`、`kb/`、`Dashboard/`、Goal 和 Session 仍是该项目的 authority，安装不会覆盖这些表面。
@@ -46,7 +47,8 @@ python3 tools/sge_public.py install \
 
 ```bash
 python3 tools/sge_public.py upgrade \
-  --target /tmp/my-sge-project
+  --target /tmp/my-sge-project \
+  --admission /path/to/upgrade-admission.json
 find /tmp/my-sge-project/.sge-backups -name SKILL.md -print
 ```
 

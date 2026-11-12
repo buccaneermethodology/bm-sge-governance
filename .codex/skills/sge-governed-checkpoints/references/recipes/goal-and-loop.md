@@ -21,3 +21,5 @@ Goal Patch、OPCM、duplication 或 snapshot 细则扩读 `../context-efficient-
 中间工作尚有 must-have 时，不要求预造最终证据。下一入口缺失由 Orchestrator 创建。最终报告的语言和格式不是人类权限 checkpoint。普通测试失败继续修复；单次网络/工具中断先自动恢复。
 
 final 前重新评估当前输入与所有引用文件，任何状态或文件变化都使旧 receipt 失效。没有宿主 pre-final hook 时只提供协议和审计证据，不能声称绝对阻止模型 final。
+
+Goal/Design建立原始义务、场景、系统行为、任务及关键连接的稳定ID关联；按[行为进度模板](../behavior-progress-template.md)比例化复用原OPCM。任务下发引用相关ID，milestone更新贡献，最终回到原始AC；不要把分解数量当完成率。

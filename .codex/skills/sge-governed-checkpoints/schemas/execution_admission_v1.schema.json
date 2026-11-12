@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "execution_admission_v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "admission_id", "action", "target", "goal", "completion_contract", "context", "design_review", "topology", "issued_at", "status"],
+  "properties": {"schema_version": {"const": "execution_admission_v1"}, "admission_id": {"type": "string", "minLength": 1}, "action": {"enum": ["builder", "install", "upgrade", "release", "deploy"]}, "target": {"type": "string", "minLength": 1}, "goal": {"$ref": "#/$defs/ref"}, "completion_contract": {"$ref": "#/$defs/ref"}, "context": {"$ref": "#/$defs/ref"}, "design_review": {"$ref": "#/$defs/ref"}, "topology": {"$ref": "#/$defs/ref"}, "issued_at": {"type": "string", "format": "date-time"}, "status": {"const": "approved"}},
+  "$defs": {"ref": {"type": "object", "additionalProperties": false, "required": ["path", "sha256"], "properties": {"path": {"type": "string", "minLength": 1}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}}}
+}

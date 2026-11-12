@@ -12,6 +12,7 @@ import argparse
 import ast
 import datetime
 import hashlib
+import importlib.util
 import json
 import os
 import re
@@ -830,11 +831,27 @@ def _install_identity(source: Path, manifest: dict[str, Any], records: list[dict
     }
 
 
-def install(source: Path | None, target: Path, *, upgrade: bool = False) -> None:
+def _validate_install_admission(admission: Path | None, *, action: str, target: Path) -> dict[str, Any]:
+    if admission is None:
+        _fail("execution_admission_required")
+    script = ROOT / ".codex/skills/sge-governed-checkpoints/scripts/execution_admission.py"
+    spec = importlib.util.spec_from_file_location("sge_execution_admission", script)
+    if spec is None or spec.loader is None:
+        _fail("execution_admission_unavailable")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    try:
+        return module.validate(json.loads(admission.read_text(encoding="utf-8")), ROOT, expected_action=action, expected_target=str(target.resolve()))
+    except (OSError, json.JSONDecodeError, ValueError) as exc:
+        _fail("execution_admission_invalid", str(exc))
+
+
+def install(source: Path | None, target: Path, *, upgrade: bool = False, admission: Path | None = None) -> None:
     source_root = (Path.cwd() if source is None else Path(source)).resolve()
     target_input = Path(target)
     _assert_destination_path_safe(target_input)
     target_root = target_input.resolve()
+    admission_result = _validate_install_admission(admission, action="upgrade" if upgrade else "install", target=target_root)
     if source_root == target_root or source_root in target_root.parents:
         _fail("target_path_invalid")
     manifest, records = _install_source_records(source_root)
@@ -892,6 +909,8 @@ def install(source: Path | None, target: Path, *, upgrade: bool = False) -> None
             "backup": (str(backup_root) if backup_root else None),
             "backup_files": backup_records,
             "backup_tree_sha256": _tree_digest(backup_records) if backup_records else None,
+            "execution_admission_id": admission_result["admission_id"],
+            "execution_admission_sha256": _sha256_file(admission.resolve()),
             "recorded_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         }
         _write_install_record(marker, install_record)
@@ -949,9 +968,11 @@ def main() -> None:
     ins = sub.add_parser("install")
     ins.add_argument("--source", type=Path, default=None, help="高级/测试 alternate source；默认使用当前公开仓目录")
     ins.add_argument("--target", type=Path, required=True)
+    ins.add_argument("--admission", type=Path, required=True)
     up = sub.add_parser("upgrade")
     up.add_argument("--source", type=Path, default=None, help="高级/测试 alternate source；默认使用当前公开仓目录")
     up.add_argument("--target", type=Path, required=True)
+    up.add_argument("--admission", type=Path, required=True)
     rem = sub.add_parser("uninstall")
     rem.add_argument("--target", type=Path, required=True)
     args = parser.parse_args()
@@ -965,9 +986,9 @@ def main() -> None:
     elif args.command == "bootstrap":
         bootstrap(args.destination)
     elif args.command == "install":
-        install(args.source, args.target)
+        install(args.source, args.target, admission=args.admission)
     elif args.command == "upgrade":
-        install(args.source, args.target, upgrade=True)
+        install(args.source, args.target, upgrade=True, admission=args.admission)
     elif args.command == "uninstall":
         uninstall(args.target)
 

@@ -34,6 +34,10 @@ description: Govern non-trivial SGE work with intake, context bootstrap, specifi
 
 Machine mapping：`references/context-routing-manifest-v1.json`。G01..G12 必须精确覆盖；removed trigger、dangling recipe、default-read cycle 或 coverage regression 均 fail closed。
 
+### Pre-execution admission
+
+G01-G12 的文档路由不自动授权副作用。任何 Builder、install、upgrade、release 或 deploy 入口在第一次写入/外部动作前，必须消费并验证 `schemas/execution_admission_v1.schema.json` 对应的 admission；admission 必须绑定 Goal、Completion Contract、Context Bootstrap、Design/Pre-review 和实际 topology 的摘要、action 与 canonical target。缺失、过期、摘要漂移或 action/target 不匹配时，入口必须 fail closed。
+
 ## 不可违反的 execution invariants
 
 1. 每个请求先做 proportional Intake，再构造 profile-specific Context Bootstrap；digest 未变化也要 refresh objective、authority、claim ceiling 与 critical dependencies。
@@ -99,8 +103,13 @@ python3 .codex/skills/sge-governed-checkpoints/scripts/task_classifier.py <task-
 python3 .codex/skills/sge-governed-checkpoints/scripts/topology_gate.py plan <classification.json>
 python3 .codex/skills/sge-governed-checkpoints/scripts/topology_gate.py evaluate-series <topology-snapshots.json>
 python3 .codex/skills/sge-governed-checkpoints/scripts/managed_activation.py activation <activation-facts.json>
+python3 .codex/skills/sge-governed-checkpoints/scripts/execution_admission.py <admission.json> --root <repo-root> --action <action> --target <canonical-target>
 ```
 
 工具只提供 deterministic evidence，不自动证明 task quality、authority、语义正确、独立 Validation 或完成。
 
 v1.1 路由只读取通用任务事实。硬触发优先；事实缺失或冲突时 `unknown` 并 fail closed。lane plan 不是实际执行证据，必须在 `pre_builder`、`pre_validation`、`pre_closeout`、`final` 四个 checkpoint 从 identity、capability、lifecycle 与 durable output 重算。安装记录不能替代宿主 capability；缺 capability 时仅允许已存在且可定位的 topology exception，否则阻断。
+
+## 统一执行包默认路由
+
+日常准备、委派和恢复默认使用 [统一执行入口操作说明](references/workflow-entry.md) 的 `scripts/workflow_entry.py`：prepare 组包并生成原 renderer 提示，check 复验，run 只运行预声明命令，resume 重读既有现态。旧工具与独立审查、准入、Stop Gate 保留原职责。

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workflow_finding_v1.schema.json",
+  "title": "finding 来源支持投影，closed 是保留的来源生命周期",
+  "type": "object",
+  "required": [
+    "finding_id",
+    "assertion",
+    "source",
+    "observation",
+    "impact",
+    "status",
+    "producer",
+    "confirmation_ref"
+  ],
+  "properties": {
+    "finding_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "assertion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "observation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "impact": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "needs_evidence",
+        "needs_review",
+        "unsupported",
+        "confirmed",
+        "closed"
+      ]
+    },
+    "producer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "confirmation_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "confirmed_blocker": {
+      "type": "boolean"
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": true,
+  "description": "closed 保持关闭且 confirmed_blocker=false；支持判断不覆盖来源生命周期；本 schema 不认证业务语义或宿主身份。",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "closed"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "confirmed_blocker": {
+            "const": false
+          }
+        }
+      }
+    }
+  ]
+}

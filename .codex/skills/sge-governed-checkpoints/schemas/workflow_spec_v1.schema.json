@@ -1,0 +1,377 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workflow_spec_v1.schema.json",
+  "title": "统一执行包引用配置",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "task_id",
+    "task_source",
+    "card_template",
+    "context",
+    "topology",
+    "bindings",
+    "commands"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "workflow_spec_v1"
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_source": {
+      "type": "object",
+      "required": [
+        "path",
+        "pointer"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+"
+        },
+        "pointer": {
+          "type": "string",
+          "pattern": "^(/|$)"
+        }
+      },
+      "additionalProperties": false
+    },
+    "card_template": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+"
+    },
+    "context": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+"
+    },
+    "topology": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+"
+    },
+    "admission": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "bindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "serialization",
+          "role"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+"
+          },
+          "serialization": {
+            "enum": [
+              "raw_bytes",
+              "canonical_json"
+            ]
+          },
+          "role": {
+            "enum": [
+              "contract",
+              "cases",
+              "source",
+              "authority",
+              "governance",
+              "topology",
+              "background"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "commands": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "argv",
+          "cwd",
+          "action",
+          "target",
+          "checkpoint",
+          "mutating"
+        ],
+        "properties": {
+          "argv": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "cwd": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+"
+          },
+          "action": {
+            "enum": [
+              "check",
+              "builder",
+              "install",
+              "upgrade",
+              "release",
+              "deploy"
+            ]
+          },
+          "target": {
+            "type": "string",
+            "minLength": 1
+          },
+          "checkpoint": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mutating": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "action": {
+                  "const": "check"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "mutating": {
+                  "const": false
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "mutating": {
+                  "const": true
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "state_sources": {
+      "type": "object",
+      "properties": {
+        "findings": {
+          "type": "object",
+          "required": [
+            "path",
+            "pointer",
+            "expected_task_id"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+"
+            },
+            "pointer": {
+              "type": "string",
+              "pattern": "^(/|$)"
+            },
+            "expected_task_id": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        "work_units": {
+          "type": "object",
+          "required": [
+            "path",
+            "pointer",
+            "expected_task_id"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+"
+            },
+            "pointer": {
+              "type": "string",
+              "pattern": "^(/|$)"
+            },
+            "expected_task_id": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        "review_budget": {
+          "type": "object",
+          "required": [
+            "path",
+            "pointer",
+            "expected_task_id"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+"
+            },
+            "pointer": {
+              "type": "string",
+              "pattern": "^(/|$)"
+            },
+            "expected_task_id": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        "snapshot": {
+          "type": "object",
+          "required": [
+            "baseline",
+            "current",
+            "delta_read_set"
+          ],
+          "properties": {
+            "baseline": {
+              "type": "object",
+              "required": [
+                "path",
+                "pointer",
+                "expected_task_id"
+              ],
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+"
+                },
+                "pointer": {
+                  "type": "string",
+                  "pattern": "^(/|$)"
+                },
+                "expected_task_id": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            "current": {
+              "type": "object",
+              "required": [
+                "path",
+                "pointer",
+                "expected_task_id"
+              ],
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+"
+                },
+                "pointer": {
+                  "type": "string",
+                  "pattern": "^(/|$)"
+                },
+                "expected_task_id": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            "delta_read_set": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "history_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "task_id",
+          "purpose"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+"
+          },
+          "task_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "purpose": {
+            "enum": [
+              "dependency",
+              "background"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "findings": {
+      "type": "array"
+    },
+    "reviews": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "work_units": {
+      "type": "array"
+    },
+    "review_budget": {
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

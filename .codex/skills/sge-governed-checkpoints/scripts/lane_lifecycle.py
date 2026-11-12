@@ -62,6 +62,8 @@ def apply_transition(payload: dict[str, Any]) -> dict[str, Any]:
         next_state = legal.get((prior, event))
         if next_state is None:
             raise ValueError("LANE_TRANSITION_INVALID")
+        if event == "start" and not payload.get("execution_admission_ref"):
+            raise ValueError("LANE_EXECUTION_ADMISSION_MISSING")
         if event == "complete" and not payload.get("output_identity"):
             raise ValueError("LANE_OUTPUT_IDENTITY_MISSING")
         if event == "bind_evidence" and not payload.get("durable_binding_valid"):
@@ -97,6 +99,8 @@ def check_readiness(payload: dict[str, Any]) -> dict[str, Any]:
     requirements = {"builder":{"design":"evidence_bound"}, "validation":{"builder":"evidence_bound","validation_handoff":"evidence_bound"}, "closure":{"validation":"evidence_bound","blocking_findings":"zero"}}
     if phase not in requirements:
         raise ValueError("READINESS_PHASE_INVALID")
+    if phase == "builder" and not payload.get("execution_admission_ref"):
+        return {"schema_version":SCHEMA_VERSION,"target_phase":phase,"ready":False,"unmet":["execution_admission=missing"]}
     unmet = [f"{key}={value}" for key, value in requirements[phase].items() if states.get(key) != value]
     return {"schema_version":SCHEMA_VERSION,"target_phase":phase,"ready":not unmet,"unmet":unmet}
 

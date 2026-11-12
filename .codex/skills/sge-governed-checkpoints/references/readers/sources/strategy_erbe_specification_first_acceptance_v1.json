@@ -1,0 +1,17 @@
+{
+  "doc_id": "sge-strategy-erbe-specification-first-acceptance",
+  "doc_type": "strategy",
+  "title": "ERBE Specification-First Acceptance V1",
+  "version": "v1.0",
+  "status": "active",
+  "output_path": "docs/strategy/Strategy_ERBE_Specification_First_Acceptance_V1.md",
+  "metadata": {"owner": "sge-core", "updated_at": "2026-07-26", "source_scope": ["Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S002_SGECore_Design.md", ".codex/skills/sge-governed-checkpoints/SKILL.md", "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S002_SGECore_ERBE_Contract.json"]},
+  "authority": {"stable_method": "kb strategy JSON", "per_goal_acceptance": "Dashboard frozen ERBE Contract/Cases", "execution_gate": "independent ERBE runner and maintained tests", "readable_projection": "tests/bdd/readable_cards/; projection-only"},
+  "applicability": ["required", "proportional", "not_applicable", "blocked_oracle"],
+  "lifecycle": ["candidate", "reviewed", "frozen", "red_verified", "builder_locked", "green_candidate", "independently_validated", "absorbed"],
+  "required_contract_fields": ["state_axes", "terminal_predicates", "invariants", "examples", "counterexamples", "forbidden_collapses", "observable_evidence", "oracle_owner", "write_exclusions", "claim_ceiling"],
+  "invariants": ["domain terminal predicates remain separate from Goal composite verdicts", "contract/execution/behavior verdicts remain separate", "environment errors are not semantic RED", "RED and GREEN use the same frozen case identity", "producer status is not independent validation evidence"],
+  "builder_rule": "Builder write scope excludes frozen contract, cases, expected values, RED evidence and claim ceiling; any revision requires Contract Patch, Scope Delta and re-RED.",
+  "non_goals": ["finite examples are not complete semantic law", "readable BDD cards are not pass/fail authority", "ERBE does not prove general semantic correctness or automatic human approval"],
+  "claim_ceiling": "ERBE_GOVERNED_SPECIFICATION_FIRST_ACCEPTANCE_LANDED"
+}

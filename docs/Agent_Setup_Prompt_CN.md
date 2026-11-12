@@ -42,7 +42,7 @@
 4. 使用源仓库的公开工具初始化当前项目：
    `python3 tools/sge_public.py bootstrap <当前项目绝对路径>`
 5. 使用同一个源仓库安装核心治理 Skill：
-   `python3 tools/sge_public.py install --target <当前项目绝对路径>`
+   `python3 tools/sge_public.py install --target <当前项目绝对路径> --admission <owner-provisioned-execution-admission.json>`
 6. 检查以下内容存在且可读：
    - `AGENTS.md`
    - `.codex/skills/sge-governed-checkpoints/SKILL.md`

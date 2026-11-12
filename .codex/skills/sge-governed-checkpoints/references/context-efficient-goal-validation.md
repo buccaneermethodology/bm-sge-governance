@@ -141,9 +141,9 @@ Snapshot 可以放在 closeout 的短 section 中；只有预计多轮修补时�
 
 新 finding 只有在违反当前 AC/合同、original must-have、evidence integrity、authority boundary、claim ceiling 或造成 in-scope regression 时才是 blocker。
 
-默认流程：initial full validation -> blocker-fix delta validation -> final-state reconciliation。第四轮及以后必须写 blocker admissibility 或 rebaseline reason。连续两个 delta round 从同一根因产生新 blocker时，停止微补丁，升级为 rebaseline、独立 hardening Session 或人类 scope 决策。
+默认流程：initial full validation -> blocker-fix delta validation -> final-state reconciliation。实际轮次上限由适用的 Goal、AC、AGENTS 或明确用户决定约束；若工件最多三轮，执行到第三轮后必须停止该工件的 review/validation，并记录 blocker 与未完成 AC。只有适用的 authority 明确允许超过三轮时，第四轮及以后才可启动，且必须写 blocker admissibility 或 rebaseline reason。此通用收敛建议不授权突破更严格的工件预算。连续两个 delta round 从同一根因产生新 blocker 时，停止微补丁，升级为 rebaseline、独立 hardening Session 或人类 scope 决策；仍不得重置或突破当前工件预算。
 
-当 AC 全覆盖、已知 blocker 关闭、final-state reconciliation 无新 admissible blocker，剩余 finding 仅为 enhancement/future hardening 时，允许 `pass-with-findings`。这不是固定三轮上限，也不允许用 token 成本跳过 mandatory evidence。
+当 AC 全覆盖、已知 blocker 关闭、final-state reconciliation 无新 admissible blocker，剩余 finding 仅为 enhancement/future hardening 时，允许 `pass-with-findings`。此处描述的是可接受的最终 verdict，不是 review 轮次授权：任何当前 Goal、AC、AGENTS 或明确用户决定设定的工件级累计轮次上限优先；若上限为三轮，第四轮不得以 `pass-with-findings`、rebaseline、revision、card 或新 cycle 为由启动。不得用 token 成本跳过 mandatory evidence。
 
 ## Lane and Output Proportionality
 
@@ -164,3 +164,57 @@ Snapshot 可以放在 closeout 的短 section 中；只有预计多轮修补时�
 - `scripts/context_bootstrap.py validate/render`：校验 profile packet 的结构与 fail-closed 不变量，并生成不复制稳定规则正文的启动提示。它不验证路径/digest 真实性、不证明读取已发生、不授予 authority，也不输出质量 verdict。
 
 Token 对照试验必须采用 fresh independent arms、AB/BA counterbalance、相同 model/effort/base-instructions/environment、frozen oracle 和每臂独立质量通过。报告 `input/cached/uncached/output/reasoning/total`，但 reasoning 不重复加入 provider total。Payload bytes 单独标为 derived metric。
+
+## 按文件状态保全与增量复核
+
+本节在任务将修改、删除或覆盖文件时按需读取。稳定原则以 [上下文策略只读阅读投影](readers/context-layering.md#按状态保全与按职责复核)（唯一 canonical 仍在发行 source 仓 `kb/data/strategy/strategy_context_layering_v1.json`；[来源记录](readers/projection-sources.json)） 的 `preservation-and-review` 为准；本节提供操作解释和合成示例。它沿用前述 Validation State Snapshot、Core/Delta Read Sets 和 Rebaseline Triggers，不另建一套评审制度，也不豁免既有独立 Validation、实体引用、冻结输入及关闭门禁。
+
+### 分清保全、输出与阅读
+
+保全回答“写前状态以后能否恢复”，可以由工具复制必要原件或绑定可靠固定版本；工具输出回答“这次返回什么给模型”，默认只返回位置、数量、校验结果和异常；阅读回答“评审者为本次判断需要理解什么”，按有效基线、影响范围与职责选择。工具在磁盘复制文件而只返回摘要，不会因此把整份内容自动注入模型；模型重新生成、工具全文返回和重复读取才会增加相应上下文。已可靠保存内容不等于该全文输出，也不等于该跳过必要阅读。
+
+需要比较收益时，分别陈述保存字节量、重复保存字节量、工具输出字节量、重复阅读量和有来源的实际 token 用量；没有真实日志时 token 及费用收益保持未知。字节指标不能直接转换成真实 token，不能用“字节数除以四”证明收益。本节不新增强制收益报告或额外评审轮次；既有强制 gates 继续执行。
+
+### 修改前选择表
+
+选择前确认受影响路径、文件类型、提交/暂存区/工作区各版本、保留期限及交付环境。下表中的“保全”包括必要原件及足以重建状态的记录，并非复制整个仓库。
+
+| 文件状态或边界 | 默认方式与必须记录的内容 | 不满足条件时及禁止误用 |
+| --- | --- | --- |
+| 干净且已提交 | 内容确与固定 commit/blob 的原始字节相同；确认该版本在约定保留与交付环境可取回，并有所需对象、文件类型、权限及外部依赖。条件满足可免额外备份 | 只有提交号不能证明可恢复；对象丢失、错摘要、checkout 字节转换或依赖不足时保存必要原件；实体门禁仍需实体文件 |
+| 已跟踪但未提交 | 分别记录 commit、index、worktree；保存实际写前未提交版本及恢复所需元数据 | HEAD 不能冒充用户写前内容；普通文本 diff 不是所有类型的通用备份 |
+| 部分暂存 | index 与 worktree 分别保全，记录路径、类型/模式和各自版本；恢复核对 cached diff 与 unstaged diff | 只存 worktree 并记 dirty 会丢失暂存边界；不能假定复制 .git/index 可在另一仓库通用恢复 |
+| 未跟踪且即将改动 | 写前保存一次必要原件，记录未跟踪状态 | 不以 Git 未跟踪为由漏项，不把它误加成已跟踪历史 |
+| 被忽略且明确受影响 | 即使常规 status 不展示，也纳入受影响清单并保存必要原件 | 未受影响的忽略内容不因本表而全量收集；敏感真实内容不应进入示例或全文工具输出 |
+| 原先不存在的新文件 | 显式记录 absent；恢复后该路径仍不存在 | 空文件是存在的内容，不能冒充 absent；真实工作区删除恢复须先排除后续用户写入 |
+| 只读检查、不改文件 | 无需写前备份；需要固定审查对象时依现有合同绑定版本 | 不以只读名义放松审查对象身份与必要阅读 |
+| 二进制 | 保留精确字节与所需类型/元数据，核对读取转换 | 不把普通文本补丁描述成二进制完整恢复保证 |
+| 符号链接 | 保存链接本身类型、目标字符串及所需目标依赖；明确是否纳入目标，不盲目跟随链接 | 链接目标的文件字节不能替代链接本身；目标不可交付时不声称完整恢复 |
+| 权限与可执行位 | 保存平台适用的模式、可执行位及实际需要的其他元数据，恢复后核对 | Git 通常不保留所有 ACL/扩展属性；超出保证时保存必要原件/元数据并报告范围 |
+| 重命名或删除 | 记录旧/新路径、存在状态及 index/worktree 关系，保留内容和恢复所需对象 | 内容相同不足以证明路径关系与暂存状态恢复 |
+| 内容被 A/B 任务复用 | 内容可只存一份，但 A/B 分别保留来源、用途、绑定版本、评审关系及存储保留/交付条件 | 不依赖另一任务随时可清理的临时材料；合同要求独立实体则继续提供 |
+| 现有实体引用接口 | 按门禁提供合规工作区实体文件；Git 身份可以作为另列来源记录 | 不向 path-only 字段填 commit:path/blob，不用工作区外共享目录绕过路径限制 |
+| 第二轮与新独立评审者 | 原 Reviewer 仅在有效基线和影响/职责覆盖下复用；新 Reviewer 建立足够阅读基础 | hash 相同不是理解相同，不自动免除语义刷新、原始目标检查或独立判断 |
+| 已冻结输入与历史包 | 保留冻结版本、来源和评审绑定；沿用旧路径、摘要与 receipt 的原有语义 | 当前同名路径最新内容不能替换旧输入；不追溯重写历史证据或自动清理 |
+
+固定 Git 引用还应考虑 LFS 实体、submodule 固定版本、链接目标、attributes/filter 和交付时可获得的外部依赖；commit/blob 身份不自动包含这些内容。无法保证约定环境精确恢复时，在修改前回退到必要原件与元数据保全；若写前已丢失且无可靠来源，应报告缺口，不能把修改后文件称作原件。“基线＋补丁”仅在完整覆盖相关状态且经隔离恢复核对时作为可选方式，不设为默认，不新建通用工具。
+
+### 一个贯穿保存、修改与复核的合成故事
+
+以下都是虚构内容，在临时 Git 仓库进行；不复制产品源码，不恢复真实用户工作区，也不提供跨仓库通用备份保证。文档故事描述预期行为；任务中实际合成执行和独立人工判断由各自证据另行证明。
+
+**首次修改前判断。** 操作者要改 clean.txt、dirty.txt、partial.txt、draft.txt、ignored.tmp，并创建 new.txt。clean.txt 已提交，内容为 `mode=safe\n`；dirty.txt 工作区为用户未提交的 `owner=user\n`；partial.txt 的提交、暂存区和工作区分别为 `threshold=1\n`、`threshold=2\n`、`threshold=3\n`。draft.txt 为未跟踪的 `draft=user\n`，明确受影响的忽略文件 ignored.tmp 为 `secret=synthetic\n`；new.txt 原先不存在。这里的 `\n` 表示 LF 字节，不是把反斜杠文本存进配置。
+
+**保存或引用。** 在这个有明确生命周期的隔离仓库内，先固定 clean.txt 的 commit/blob，读取原始字节并核对；保留恢复需要的 Git 对象与元数据，确认在此次实验保留环境可取回，因此可以省去额外内容副本。对 dirty.txt 保全工作区用户内容；对 partial.txt 分别保全 index 的版本2与 worktree 的版本3，并记录提交版本1。draft.txt、ignored.tmp 保存必要原件及其未跟踪/忽略身份；new.txt 只记录 absent。工具返回保全位置、引用位置、5个既存受影响文件及1个不存在路径的数量、校验结果和异常摘要，不全文输出配置。该摘要不能代替评审阅读；新建文件的 absent 记录不能算一份空文件备份。
+
+实验可在**同一个临时仓库**保存并恢复原始 .git/index，其正确性依赖该仓库相同对象库与相关元数据仍在；它只用于隔离案例，不能推广成“复制 index 即可跨仓恢复”。需要跨环境交付时，应保留可取回对象、各路径的 index/worktree 内容及模式、存在性和关系，并证明目标环境可恢复；不能证明就保存必要原件，不能仅交一个 index 文件。二进制、指向 target.txt 的链接、模式0755的脚本及 old.txt→renamed.txt 暂存重命名在同一实验中分别保留精确字节、链接字符串、模式与路径/暂存关系；普通文本补丁不足以涵盖这些保证。
+
+**修改与绑定。** Builder 修改上述虚构配置并创建新文件，修改结果绑定本轮版本。任务 A 的恢复用途和任务 B 的复核用途可以引用同一份可靠内容，各自仍记录来源、用途、绑定版本和评审关系；存储不放在可能随任务 A 清理的临时目录。若现有门禁要求实体文件，仍在合规工作区实体化并核对，不将 Git 对象字符串写入实体路径字段。冻结 expected 仍绑定旧输入，不随 Builder 新内容改变；旧历史包、摘要和 receipt 不被重新解释。
+
+**同一 Reviewer 第二轮。** Reviewer 已有有效首轮基线时，先确认目标、authority、claim ceiling 和关键依赖，再按前述 snapshot/Delta Read Set 读取本轮改动、受影响调用链、未解决问题及最终状态；必要域缺口触发扩读。保全文件不必重新复制或全文输出。命中前述任一 rebaseline trigger 就重新建立相应完整基础；指纹未变也要做语义刷新，不能由工具摘要推导“无需阅读”。
+
+**新独立 Reviewer 接手。** 新 Reviewer 没有原 Reviewer 的理解基础，读取原始要求、合同/AC、有效基线、实际 diff、必要源材料与最终状态，建立足够的独立阅读基础。可以复用已保全的内容和可验证引用，但不能仅接收“hash没变”或前任结论就声称独立通过。读取范围仍由职责与影响决定，并非机械全读所有历史目录。
+
+**隔离恢复核对。** 在同一临时实验仓库恢复 clean.txt 原始字节；恢复 dirty.txt 的用户工作区内容；恢复 partial.txt 的 index=2、worktree=3，分别比较 cached/unstaged diff；恢复未跟踪与受影响忽略原件；移除实验新建的 new.txt 以恢复 absent。核对特殊文件字节、链接、0755和重命名暂存关系。另以缺对象、错误摘要和真实 CRLF checkout 转换尝试固定引用，均先拒绝可恢复声明，再从预先保全原件恢复并核对 LF 字节。任何环境、fixture、导入或路径故障均记 error（无法判定），不能当可信 RED 或成功恢复；固定案例成功也只支持合成样本，不证明产品验收或通用自动恢复。
+
+这个故事的检查点是状态和阅读责任都不丢：内容在磁盘保全、工具只出摘要、Reviewer读取必要材料是三个分别决定的动作。它不承诺 token、费用或时间收益，不启动对象库、历史清理、安装或发布任务。

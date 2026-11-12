@@ -1,6 +1,6 @@
 # Strategy Human AI Development
 
-_Owner: sge-governance-core | Version: v1.0 | Status: active | Updated: 2026-09-02_
+_Owner: sge-governance-core | Version: v1.0 | Status: active | Updated: 2026-10-22_
 
 ## 范式与权威边界
 
@@ -56,6 +56,15 @@ Reviewer 从 closeout 本文应能说明变化、影响、缺口和声明上限�
 
 本规则采用清单加独立审查；现有 closeout 提示输出仅提醒，不自动检测遗漏，closeout-language 只检查既有语言约束。不得将模板、示例、打印成功或语言检查当作 Implementation Delta 结构或语义通过。规则适用于采用该版本的后续 closeout；仓库落地不证明其他项目已经采用。
 
+## 审查收敛与集中修复
+
+- [ ] Reviewer 必须完成全量预声明基线后再给结论；发现首个阻断后仍继续检查其余维度。报告列出全部阻断/非阻断/残余发现、已检查无问题的维度及证据、未检查维度及原因与准入影响、当前输入下同类残余，以及带条件的修复后准入预测。
+- [ ] 正式 Semantic Review 前运行确定性一致性预检，覆盖身份与数量、成功/失败输出字段集合、错误码正反例、文档承诺覆盖、revision/schema/design identity、旧引用、JSON Schema 和摘要/引用 digest。机械错误先修复，不消耗语义审查轮次。
+- [ ] Builder 提交前为合同中每条声明列正例和最小反例；案例分母来自合同。修复后执行同类全集扩散检查，finding 明确要求检查的完整字段或参数 family。
+- [ ] 区分阻断缺陷与 non-blocking cleanup。整理项只有在不改变 oracle、状态码、拒绝优先级、允许/拒绝边界、数据写入或权限语义时才可非阻断；可给 PASS_WITH_MINOR_FIX，修复后使用确定性检查或短 Delta Review。
+- [ ] 局部 Delta Review 只检查修订文件摘要、finding disposition、同类一致性结果和未变化合同摘要确认；authority、合同、代码事实、范围或证据 identity 变化时必须 rebaseline。
+- [ ] 每个工件 identity 的累计 review/validation 最多三轮；revision、card、cycle、rebaseline 不重置计数。Round 1 做全基线，Round 2 做集中修复 Delta Review，Round 3 仅验证 Round 2 的新 finding 修复或执行明确 rebaseline。Round 2 新 finding 必须说明第一轮为何无法合理发现。第三轮后记录全部 blocker 和未完成 AC，继续整体 Goal 中其他已授权、行为范围独立的工作；不得把工件停止等同 Goal 停止，也不得把阻断记为通过。
+
 ## 自动化边界
 
 自动化只能在合同、authority routing、失败指纹和恢复边界冻结后扩大。自动化 runner 证明执行行为，不自动证明语义正确、公共就绪或生产成熟。
@@ -72,3 +81,5 @@ Reviewer 从 closeout 本文应能说明变化、影响、缺口和声明上限�
 - `Dashboard/Methodology.md`
 - `Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S013_SourceAdjudication.md`
 - `kb/data/strategy/sge_strategy_source_manifest_v1.json`
+- `Dashboard/Artifacts/Stage-Plan-SP-013/Execution/UserDecision-ContinueGoalAfterReviewLimit-20261022.md`
+- `Dashboard/Artifacts/Stage-Plan-SP-013/Execution/FinalGoal.md`

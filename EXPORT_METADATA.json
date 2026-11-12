@@ -2,12 +2,12 @@
   "schema_version": "sge_projection_metadata_v1",
   "claim_ceiling": "仅支持 maintainer local deterministic projection candidate evidence；不支持独立 Validation、批准、公开仓、远端 mutation、release 或 production。",
   "identity": {
-    "source_revision": "cbd963b09fb115aa35ba430bfd9e57cee58766a5",
-    "manifest_revision": "4f15fba62b6c0cd9abcf3325347e1cbc9899881e26d21790ecbfe65b7374189c",
-    "export_tool_revision": "4164606588250cddfeea9f613bc607c3a7bc8dd8d4b1d0843cbb1058399ea945",
-    "export_run_id": "run-20261001T074317189314Z-1d5685b2143f",
-    "candidate_id": "sge-governance-public-candidate-v1.1.3",
-    "candidate_fingerprint": "af34e2f4e292140f1ae923904083741618a2bd90ea4e804fae11d1905f80ecdd",
+    "source_revision": "d7dc12523e1f94023ccacb1b1aa41a3d0e683eba",
+    "manifest_revision": "71578b779df46660b893340c76f33e1e02eb355f77f8b70bcf899abfbc6832e1",
+    "export_tool_revision": "8ec70583f1357fb20c3c7d3252d7a2c8d22f6cde3aa64abbf92185dc5b9ba4be",
+    "export_run_id": "run-20261112T040459417284Z-33dac18fdf89",
+    "candidate_id": "sge-governance-public-candidate-v1.1.4",
+    "candidate_fingerprint": "a03441599b1794f7e7d22d742ef66cba7d178cea3e950ef7e2745d44668b2433",
     "projection_commit": null,
     "release_tag": null
   },
@@ -28,8 +28,8 @@
       "license": "MIT",
       "provenance": "SGE core",
       "execution_context": false,
-      "bytes": 11431,
-      "sha256": "490c7d13772adc8ac811636204369b0bd92ff2278099fa0d245a23572ce0441b"
+      "bytes": 12458,
+      "sha256": "c9a69607da593f2fcca4d3b1ed57f5f024cc7e8ab5e947d185fe72e0294cb4b6"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/agents/openai.yaml",
@@ -113,6 +113,15 @@
       "sha256": "a7ec5c3f4f18f2f3f9baec713473184e44b11561f7cbfa529057d6713fe63f9e"
     },
     {
+      "path": ".codex/skills/sge-governed-checkpoints/references/behavior-progress-template.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "existing generic governance method or deterministic read-only Skill projection; canonical authority remains source kb/data",
+      "execution_context": false,
+      "bytes": 17959,
+      "sha256": "110db6c5bfde4959d006477dd81c2ceb7bbfce3b0d58d58df0545eb07c114f79"
+    },
+    {
       "path": ".codex/skills/sge-governed-checkpoints/references/checklists.md",
       "source": "repository",
       "license": "MIT",
@@ -127,8 +136,8 @@
       "license": "MIT",
       "provenance": "SGE core reference",
       "execution_context": false,
-      "bytes": 12591,
-      "sha256": "a6fabcc27cd36333290c27d92a8164a4525c6236e4463144bc84a708894cb152"
+      "bytes": 23995,
+      "sha256": "2aab08d666ed71305e14449bd714cb9aba3c6d089001b9a5412f17d7b7b2048a"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/references/context-routing-manifest-v1.json",
@@ -167,13 +176,58 @@
       "sha256": "5a3ca72952ce2d2c8f9e1479d9711ce55d1232495717164a7c1ab778cb142691"
     },
     {
+      "path": ".codex/skills/sge-governed-checkpoints/references/readers/context-layering.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "existing generic governance method or deterministic read-only Skill projection; canonical authority remains source kb/data",
+      "execution_context": false,
+      "bytes": 3780,
+      "sha256": "4a3879e439ca55b01ee96b5169a8795f11afab0791c9fe91fe429520a7585dfa"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/readers/projection-sources.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "existing generic governance method or deterministic read-only Skill projection; canonical authority remains source kb/data",
+      "execution_context": false,
+      "bytes": 4887,
+      "sha256": "2c9fad8b60d05f5b7a9fb0600956d0e44205cf6b4d43490b22432f1b94b9cf2c"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/readers/sources/strategy_erbe_specification_first_acceptance_v1.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "existing generic governance method or deterministic read-only Skill projection; canonical authority remains source kb/data",
+      "execution_context": false,
+      "bytes": 2007,
+      "sha256": "a0ab0ce7cf08a21deca18441662b90ddd57a63a85867b68a644f51dc8189ef27"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/readers/sources/strategy_sgc_structural_contract_v1.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "existing generic governance method or deterministic read-only Skill projection; canonical authority remains source kb/data",
+      "execution_context": false,
+      "bytes": 17880,
+      "sha256": "a2da0b7edd85a8ad35f6e55cfb660d363d86f1f4bbea58a0c6018c5dcb39f31c"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/readers/user-oriented-acceptance-case-quality.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "existing generic governance method or deterministic read-only Skill projection; canonical authority remains source kb/data",
+      "execution_context": false,
+      "bytes": 22151,
+      "sha256": "184141cd46fbc132a32d4764d210922f8f3defb8d1d9949a730d31ef353a2cd3"
+    },
+    {
       "path": ".codex/skills/sge-governed-checkpoints/references/recipes/closeout.md",
       "source": "repository",
       "license": "MIT",
       "provenance": "routed closeout recipe",
       "execution_context": false,
-      "bytes": 1902,
-      "sha256": "28d92d74a5a6eb2d65c55179945212597d81650d5221820cbd506722ad746300"
+      "bytes": 2338,
+      "sha256": "5ac3edab08f04c0f98705245e7dee81b77a099fd925072e99bce88f9280425b8"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/references/recipes/delta-validation.md",
@@ -181,8 +235,8 @@
       "license": "MIT",
       "provenance": "routed delta validation recipe",
       "execution_context": false,
-      "bytes": 862,
-      "sha256": "64df136dae5698baace7924247966fa2ec2b025b3be700ada71800bdb3f69f7c"
+      "bytes": 1088,
+      "sha256": "b5c3137619620cbf7c9e2cc57b63b3ba33f5a8983cc45fea908a47667534714d"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/references/recipes/design-and-builder.md",
@@ -190,8 +244,8 @@
       "license": "MIT",
       "provenance": "routed design and builder recipe",
       "execution_context": false,
-      "bytes": 928,
-      "sha256": "d523fbe9606225062d48c607fa9857aa03c50adb17f56698d5b996e184082537"
+      "bytes": 2290,
+      "sha256": "e224d246e09c15305fa7b16363879d0fed0e094ffb3e2622d784b02e1e477dee"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/references/recipes/goal-and-loop.md",
@@ -199,8 +253,8 @@
       "license": "MIT",
       "provenance": "routed Goal and Loop recipe",
       "execution_context": false,
-      "bytes": 2441,
-      "sha256": "65f774dfcb783a0aea12e965bde9bc2fc641583782c4ddb8d80dfb7b873b5d48"
+      "bytes": 2734,
+      "sha256": "46eb4dd8c3614dfa3a4624b893ccd52c65cb006fee2fad7540046b5bc43f56bf"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/references/recipes/intake-and-first-task.md",
@@ -208,8 +262,8 @@
       "license": "MIT",
       "provenance": "routed intake recipe",
       "execution_context": false,
-      "bytes": 839,
-      "sha256": "0a6926506e1f8da86ecf9ea64f279b5d752d5d3e9e0fbc79999c0785ebb9d25d"
+      "bytes": 1035,
+      "sha256": "f62c27fcea1f1a062d0e3ff9c734e23870f63fade35df054dcb2515641bdea92"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/references/recipes/semantic-review.md",
@@ -217,8 +271,8 @@
       "license": "MIT",
       "provenance": "routed semantic review recipe",
       "execution_context": false,
-      "bytes": 778,
-      "sha256": "7f4326d3b63c128076cef4c735c9e33faa8bc7f051ba62ab8663b4f28cb409ce"
+      "bytes": 1553,
+      "sha256": "bd03ca2b682f49ff34f9c4becb2f08df8d39196a8345e35338750c2a4512f888"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/references/recipes/validation.md",
@@ -226,8 +280,26 @@
       "license": "MIT",
       "provenance": "routed validation recipe",
       "execution_context": false,
-      "bytes": 941,
-      "sha256": "ac52cf56cc6644742f743da7c01c1056a40bce4bdd0b44d3382ec07819b7e860"
+      "bytes": 1984,
+      "sha256": "1048372da0e6513a2f5fee28febdfb60801faa138e2e8ee4be11b69e519f3098"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/user-oriented-acceptance-case-quality.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "existing generic governance method or deterministic read-only Skill projection; canonical authority remains source kb/data",
+      "execution_context": false,
+      "bytes": 1705,
+      "sha256": "b06d85caf70c88eceb165a6d888bc6b9de72bb56583c795661e6d1a562c08dd3"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/workflow-entry.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generic workflow entry runtime and contract",
+      "execution_context": false,
+      "bytes": 5994,
+      "sha256": "c19af40fd48508bf394753465fd199427017c9f0a09cbc830588dee5e8f886d6"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/requirements.txt",
@@ -255,6 +327,15 @@
       "execution_context": false,
       "bytes": 1310,
       "sha256": "e4b863b21b25505ab47992f8edde12b07c6ac3978c86c94f92ae5f755a70cbf9"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/execution_admission_v1.schema.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE pre-execution admission schema",
+      "execution_context": false,
+      "bytes": 1070,
+      "sha256": "c407825121d2a29df93dee804f21ef524155846edf354a7bdf2b50b2be7704df"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/schemas/first_task_route_v1.schema.json",
@@ -374,6 +455,24 @@
       "sha256": "7bf99314f198d3930b72603bc4f247a1cf472d0f1bdaa94f2b49ba22b27d264e"
     },
     {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/workflow_finding_v1.schema.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generic workflow entry runtime and contract",
+      "execution_context": false,
+      "bytes": 1689,
+      "sha256": "24aec265783c75992ff88016d222d0ff8733f1c49f57e6694e9aec24fb13b65d"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/workflow_spec_v1.schema.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generic workflow entry runtime and contract",
+      "execution_context": false,
+      "bytes": 8887,
+      "sha256": "78d33cfe63868bc28fe14e950f8c6bd60678c272c030e07895efd4e72303642b"
+    },
+    {
       "path": ".codex/skills/sge-governed-checkpoints/scripts/capability_preflight.py",
       "source": "repository",
       "license": "MIT",
@@ -419,13 +518,22 @@
       "sha256": "c002c7b5801cbecabd1a813a5e3a4b0c9c4817a438ba1ff6d43f3cd530bd3030"
     },
     {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/execution_admission.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "SGE pre-execution admission gate",
+      "execution_context": false,
+      "bytes": 3022,
+      "sha256": "6553c01359de6327072a750488c44054f3e7c26ed4143fe7b572ca3fc996c178"
+    },
+    {
       "path": ".codex/skills/sge-governed-checkpoints/scripts/first_task_router.py",
       "source": "repository",
       "license": "MIT",
       "provenance": "Skill first-task routing entrypoint",
       "execution_context": false,
-      "bytes": 6752,
-      "sha256": "dee3daeaa93a2102fd57e94fdcc2ab2113cbf77f1a185cf49aaa947fdd018ae3"
+      "bytes": 7238,
+      "sha256": "a71080abae469c2c09eccafb537c8c94216d5a278a8cb71b90f2c804babd51b5"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/scripts/goal_patch.py",
@@ -442,8 +550,8 @@
       "license": "MIT",
       "provenance": "SGE core script",
       "execution_context": false,
-      "bytes": 44139,
-      "sha256": "727c9d5236593f91f48598bc750707611464f5bf9e308000f42a3a37a19e554f"
+      "bytes": 46341,
+      "sha256": "943f3da7f174266881a0e493d1802ae92740872b8364c5acfe8461aa9c23dc93"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/scripts/initial_kb_bootstrap.py",
@@ -460,8 +568,8 @@
       "license": "MIT",
       "provenance": "Skill hard-stop lane lifecycle entrypoint",
       "execution_context": false,
-      "bytes": 8636,
-      "sha256": "c78b7fba37fd2255f73890331b57895b656813596bfdbb9947c6044ba0601c7d"
+      "bytes": 8975,
+      "sha256": "00300f42cea4817b9ae87e696911c08e63647452d064d2f1cf4363ed6354c57a"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
@@ -491,6 +599,15 @@
       "sha256": "e6d4e4d52d6caab0909ce327b85e997d9949c9f2e79cf80e83f1133f2b75ce08"
     },
     {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/review_budget_preflight.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generic workflow entry runtime and contract",
+      "execution_context": false,
+      "bytes": 5023,
+      "sha256": "72637967c8c635d990ff5376e5b4d95723ed7bfff4cb1bc4706b3f8a0b8cc013"
+    },
+    {
       "path": ".codex/skills/sge-governed-checkpoints/scripts/stop_gate.py",
       "source": "repository",
       "license": "MIT",
@@ -514,8 +631,8 @@
       "license": "MIT",
       "provenance": "SGE v1.1 lane plan and topology gate",
       "execution_context": false,
-      "bytes": 7279,
-      "sha256": "529fa8066cc89b12563e1d849ee8dfea2554f6e9c6befe7a6403d625b8422abd"
+      "bytes": 7801,
+      "sha256": "767a0924f4ffbcae6681e73ed4ab61ffe86eef73df9b5f8d579cb867b8283d45"
     },
     {
       "path": ".codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py",
@@ -525,6 +642,15 @@
       "execution_context": false,
       "bytes": 1637,
       "sha256": "34e01d56dcc5c222d8965781410e6a5905a12d51a01f1af53c842211cf996c79"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/workflow_entry.py",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generic workflow entry runtime and contract",
+      "execution_context": false,
+      "bytes": 22333,
+      "sha256": "21177e08f93e9ccf9873d93067456284f1ae39efb9642582407c4a404bb634c8"
     },
     {
       "path": ".github/workflows/candidate-checks.yml",
@@ -568,8 +694,8 @@
       "license": "MIT",
       "provenance": "cross-agent and product-neutral setup prompt",
       "execution_context": false,
-      "bytes": 4894,
-      "sha256": "62cf638126caf8948ad7b617d21b7d19720c324a06e0c77791dc9e22039f4ee0"
+      "bytes": 4951,
+      "sha256": "e35215199adda8464e95ef44c92ca4936892fbc8af21a538481c7b066be6b78e"
     },
     {
       "path": "docs/Beginner_Guide_CN.md",
@@ -577,8 +703,8 @@
       "license": "MIT",
       "provenance": "newcomer companion",
       "execution_context": false,
-      "bytes": 5820,
-      "sha256": "b4ab2b9e9fbccc40b5305ebc40ea5a7eca06aa1e56601e0132a68b7a239f999e"
+      "bytes": 5918,
+      "sha256": "87fe7a5cb129513bd47f90aa65e4b488e78ce193676c43eb992a2657b7b43d0b"
     },
     {
       "path": "docs/Quick_Start_CN.md",
@@ -586,8 +712,8 @@
       "license": "MIT",
       "provenance": "newcomer companion",
       "execution_context": false,
-      "bytes": 2532,
-      "sha256": "b13b2ab3291b632e1228a178d65032e9ae33ead47e56c939d9b974d842ae2f5a"
+      "bytes": 2728,
+      "sha256": "7102cfbef514c58a408e537d93934670dc6b14eca53c9d1e44f07e9ce9df7912"
     },
     {
       "path": "examples/minimal-project/AGENTS.md",
@@ -680,6 +806,15 @@
       "sha256": "43c0950d36b8307753650986a9bab066a913701b35735c3c0a2d3bc0b6a086fa"
     },
     {
+      "path": "kb/data/strategy/strategy_context_layering_v1.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "existing generic governance method or deterministic read-only Skill projection; canonical authority remains source kb/data",
+      "execution_context": false,
+      "bytes": 4328,
+      "sha256": "be4c1620314e80f567961f47e96bc8b5392e4331f8a502eb2a5aef0aea5f953a"
+    },
+    {
       "path": "kb/data/strategy/strategy_erbe_specification_first_acceptance_v1.json",
       "source": "repository",
       "license": "MIT",
@@ -694,8 +829,8 @@
       "license": "MIT",
       "provenance": "canonical SGE strategy",
       "execution_context": false,
-      "bytes": 7376,
-      "sha256": "213a986c7e5b1e9f03d6d3e9ba3b7c4c62415ec469cf867b0b166381f6170c5c"
+      "bytes": 10409,
+      "sha256": "98237cd72fc9d7c8fe509dc180281cfb92f2f7a3609e0255880cfe67247ae1cc"
     },
     {
       "path": "kb/data/strategy/strategy_kb_promotion_and_source_policy.json",
@@ -734,6 +869,24 @@
       "sha256": "43355381334b8a8937620f13e4f8276a94ea2cb43eb7bdf213bfe0cac30e19d4"
     },
     {
+      "path": "kb/data/strategy/strategy_user_oriented_acceptance_case_quality_v1.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "existing generic governance method or deterministic read-only Skill projection; canonical authority remains source kb/data",
+      "execution_context": false,
+      "bytes": 25279,
+      "sha256": "a478d0395dc7ee21f1a1280d9fbb27eb84b6013f5ab9a5790f5df0bb5fe3e597"
+    },
+    {
+      "path": "kb/data/strategy/strategy_workflow_entry_v1.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generic workflow entry runtime and contract",
+      "execution_context": false,
+      "bytes": 4309,
+      "sha256": "1361a618891bd15a13c6a3623ed8cfacce0e8e388a421145d10c938a94ffda9e"
+    },
+    {
       "path": "kb/docs/Glossary.md",
       "source": "repository",
       "license": "MIT",
@@ -741,6 +894,15 @@
       "execution_context": false,
       "bytes": 8267,
       "sha256": "be7f2888b1be55dc3ed1b7dd489c9bf4ef03f41598bfa7f0ae1ee1c244936f16"
+    },
+    {
+      "path": "kb/docs/strategy/Strategy_Context_Layering_V1.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "existing generic governance method or deterministic read-only Skill projection; canonical authority remains source kb/data",
+      "execution_context": false,
+      "bytes": 3474,
+      "sha256": "7393a1f4662ce07fe8549f476d17e0d7323f5bcbc37ef688be95fcf4151a950d"
     },
     {
       "path": "kb/docs/strategy/Strategy_ERBE_Specification_First_Acceptance_V1.md",
@@ -757,8 +919,8 @@
       "license": "MIT",
       "provenance": "generated canonical projection",
       "execution_context": false,
-      "bytes": 5813,
-      "sha256": "991e3dec19d16da61d0bc920db611180cd883306c697a5cec1ba50e77a6702a5"
+      "bytes": 7867,
+      "sha256": "044385cc9b7cab65affbc3702ce51d2e7ee21952160aa1f62625e46eca2451da"
     },
     {
       "path": "kb/docs/strategy/Strategy_KB_Promotion_and_Source_Policy.md",
@@ -797,13 +959,31 @@
       "sha256": "1df9b4dced1ff32a1f9824aaaaadb49e92057f98d6be33d5245348371fa8b09b"
     },
     {
+      "path": "kb/docs/strategy/Strategy_User_Oriented_Acceptance_Case_Quality_V1.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "existing generic governance method or deterministic read-only Skill projection; canonical authority remains source kb/data",
+      "execution_context": false,
+      "bytes": 21825,
+      "sha256": "e36e0f521bf819f55dcf1744bde470280061c1fe65c47d2baed34a43fece2454"
+    },
+    {
+      "path": "kb/docs/strategy/Strategy_Workflow_Entry_V1.md",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "generic workflow entry runtime and contract",
+      "execution_context": false,
+      "bytes": 3333,
+      "sha256": "654531cf2ded10f117ace7f6cbc93d5846f8fc61c5973e2e83006854a3c7f119"
+    },
+    {
       "path": "kb/render_manifest_v1.json",
       "source": "repository",
       "license": "MIT",
       "provenance": "deterministic KB projection manifest",
       "execution_context": false,
-      "bytes": 2597,
-      "sha256": "a8f7cac1802146d5df4f332ddc5cb7147c288e220a3f6adc2911adeadfa04591"
+      "bytes": 2939,
+      "sha256": "b88fb90fde207dcbf1c98fb888da6b2e98f23151c30720814d41f7e387322fbd"
     },
     {
       "path": "kb/tools/render_kb.py",
@@ -820,8 +1000,8 @@
       "license": "MIT",
       "provenance": "default-deny public file inventory",
       "execution_context": false,
-      "bytes": 30251,
-      "sha256": "4f15fba62b6c0cd9abcf3325347e1cbc9899881e26d21790ecbfe65b7374189c"
+      "bytes": 44271,
+      "sha256": "71578b779df46660b893340c76f33e1e02eb355f77f8b70bcf899abfbc6832e1"
     },
     {
       "path": "tools/public_ci_smoke.py",
@@ -847,8 +1027,8 @@
       "license": "MIT",
       "provenance": "public lifecycle utility",
       "execution_context": false,
-      "bytes": 44034,
-      "sha256": "4164606588250cddfeea9f613bc607c3a7bc8dd8d4b1d0843cbb1058399ea945"
+      "bytes": 45351,
+      "sha256": "8ec70583f1357fb20c3c7d3252d7a2c8d22f6cde3aa64abbf92185dc5b9ba4be"
     },
     {
       "path": "tools/stop_gate_smoke.py",
@@ -860,15 +1040,15 @@
       "sha256": "f7aafa7a3b7669235a9ba001486d48fcb9e5b0f8bb4588444eadc1723d685c15"
     }
   ],
-  "file_set_sha256": "cd5c7921677e455bd2d6be65a1a49f1cbc22ae08b0b64a300aeb16e9e2716ac9",
-  "tree_sha256": "59965653417f7230f5f819e2603cb3023098b83aeb95a9a379b841d580248ec4",
+  "file_set_sha256": "b4b184e42dc1398a9c7e47a7a9b8f35e26721aa8b8fd92b835ca13656951255c",
+  "tree_sha256": "5db29f4f015f7d98e39d06864e90c5af4e3eb47e420fc7a3cccb63b85eba8d69",
   "source_inventory": {
     "complete": true,
-    "entry_count": 1287,
-    "allowlisted_entry_count": 93,
-    "excluded_entry_count": 1194,
+    "entry_count": 15458,
+    "allowlisted_entry_count": 113,
+    "excluded_entry_count": 15345,
     "excluded_counts": {
-      "default_deny": 1193,
+      "default_deny": 15344,
       "source_control_metadata": 1
     },
     "private_paths_omitted_from_public_metadata": true

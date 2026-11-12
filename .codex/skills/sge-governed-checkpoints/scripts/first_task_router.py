@@ -28,6 +28,19 @@ def _goal_identity(payload: dict[str, Any], *, allow_frozen_legacy: bool) -> str
     candidate = Path(path)
     if candidate.is_absolute() or ".." in candidate.parts:
         return None
+    if not candidate.is_file():
+        return None
+    try:
+        raw = candidate.read_text(encoding="utf-8")
+        if candidate.suffix == ".json":
+            document = json.loads(raw)
+            observed = document.get("goal_id") if isinstance(document, dict) else None
+        else:
+            observed = goal_id if goal_id in raw else None
+        if observed != goal_id:
+            return None
+    except (OSError, UnicodeError, json.JSONDecodeError):
+        return None
     return f"{goal_id}@{path}"
 
 

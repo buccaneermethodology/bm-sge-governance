@@ -6,5 +6,6 @@
 4. 默认 initial validation → blocker-fix delta validation → final-state reconciliation；第四轮起记录 blocker admissibility 或 rebaseline reason。
 5. 同一根因连续两轮新增 blocker 时升级 rebaseline、hardening Session 或人类 scope decision。
 6. 只读窄 reconciliation 可单独 Validation lane；实现、KB truth、runtime/schema、acceptance 或 semantic widening 仍启用必要 lanes。
+7. 局部 Delta Review 只读修改文件摘要、finding disposition、同类一致性结果和未变合同摘要确认；只有 authority、合同、事实、范围或证据身份变化等已声明 trigger 才 rebaseline。
 
 完整 snapshot/card/audit schema 扩读 `../context-efficient-goal-validation.md`。
