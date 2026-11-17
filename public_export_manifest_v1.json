@@ -1,6 +1,6 @@
 {
   "schema_version": "sge_public_export_manifest_v1",
-  "candidate_id": "sge-governance-public-candidate-v1.1.4",
+  "candidate_id": "sge-governance-public-candidate-v1.1.5",
   "identity_contract": {
     "private_source_id": "sge-governance-skill",
     "public_project_id": "bm-sge-governance",
@@ -650,6 +650,14 @@
       "execution_context": false
     },
     {
+      "path": "kb/public_render_manifest_v1.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "explicit public KB render mappings matching the distribution allowlist",
+      "public": true,
+      "execution_context": false
+    },
+    {
       "path": "kb/tools/render_kb.py",
       "source": "repository",
       "license": "MIT",
@@ -1025,7 +1033,9 @@
     ".codex/skills/sge-governed-checkpoints/references/readers/context-layering.md",
     ".codex/skills/sge-governed-checkpoints/references/readers/sources/strategy_erbe_specification_first_acceptance_v1.json",
     ".codex/skills/sge-governed-checkpoints/references/readers/sources/strategy_sgc_structural_contract_v1.json",
-    ".codex/skills/sge-governed-checkpoints/references/readers/projection-sources.json"
+    ".codex/skills/sge-governed-checkpoints/references/readers/projection-sources.json",
+    "kb/tools/render_kb.py",
+    "kb/public_render_manifest_v1.json"
   ],
   "hosted_ci": {
     "workflow": ".github/workflows/candidate-checks.yml",

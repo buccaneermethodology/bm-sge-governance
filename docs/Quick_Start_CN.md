@@ -36,3 +36,13 @@ python3 -m pip install -r .codex/skills/sge-governed-checkpoints/requirements.tx
 python3 .codex/skills/sge-governed-checkpoints/scripts/stop_gate.py --help
 python3 tools/stop_gate_smoke.py
 ```
+
+## 知识库维护
+
+在公共包根目录检查全部随包 KB，使用显式公共清单。
+
+```bash
+python3 kb/tools/render_kb.py --manifest kb/public_render_manifest_v1.json --check
+```
+
+完整开发源仓使用默认入口 `python3 kb/tools/render_kb.py --check`。两个入口的检查范围、显式生成方式、缺件失败和发行覆盖检查见[知识库维护说明](../kb/README.md#知识库维护)。

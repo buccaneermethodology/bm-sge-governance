@@ -34,10 +34,62 @@ def run_json(*args: str, expected_codes: tuple[int, ...] = (0,)) -> dict[str, ob
         fail(f"public_ci_non_json_output:{args[0]}:{exc}")
 
 
+def check_public_kb(root: Path, distribution: dict[str, object]) -> int:
+    """Check the complete distribution-defined KB scope, then its rendered bytes."""
+    manifest_path = "kb/public_render_manifest_v1.json"
+    renderer_path = "kb/tools/render_kb.py"
+    allowed = {item["path"] for item in distribution["files"]}
+    dependencies = set(distribution.get("runtime_dependencies", []))
+    for path in (manifest_path, renderer_path):
+        if path not in allowed or path not in dependencies:
+            fail(f"public_kb_runtime_dependency_missing:{path}")
+    try:
+        manifest = json.loads((root / manifest_path).read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        fail(f"public_kb_manifest_invalid:{manifest_path}:{exc}")
+    if manifest.get("schema_version") != "kb_render_manifest_v1":
+        fail("public_kb_manifest_invalid:schema_version")
+    documents = manifest.get("documents")
+    if not isinstance(documents, list) or not documents:
+        fail("public_kb_manifest_invalid:documents")
+
+    sources: set[str] = set()
+    outputs: set[str] = set()
+    for entry in documents:
+        if not isinstance(entry, dict):
+            fail("public_kb_manifest_invalid:document")
+        source = "kb/" + sge_public._safe_relative(entry.get("source"))
+        output = "kb/" + sge_public._safe_relative(entry.get("output"))
+        if source in sources or output in outputs:
+            fail(f"public_kb_duplicate_mapping:{source}:{output}")
+        if source not in allowed:
+            fail(f"public_kb_unexported_source:{source}")
+        if output not in allowed:
+            fail(f"public_kb_unexported_output:{output}")
+        sources.add(source)
+        outputs.add(output)
+    expected = {path for path in allowed if path.startswith("kb/docs/") and path.endswith(".md")}
+    if outputs != expected:
+        fail(
+            "public_kb_coverage_mismatch:"
+            f"missing={','.join(sorted(expected - outputs))}:"
+            f"extra={','.join(sorted(outputs - expected))}"
+        )
+    completed = subprocess.run(
+        [sys.executable, renderer_path, "--manifest", manifest_path, "--check"],
+        cwd=root, check=False, text=True, capture_output=True,
+    )
+    if completed.returncode:
+        fail(f"public_kb_render_failed:{completed.returncode}:{completed.stderr.strip()}")
+    print(completed.stdout, end="")
+    return len(outputs)
+
+
 def main() -> None:
     stop_gate_smoke.run(SKILL)
     manifest = sge_public.load(ROOT)
     sge_public.validate(manifest, ROOT)
+    public_kb_count = check_public_kb(ROOT, manifest)
     closure = sge_public.skill_runtime_closure(ROOT)
     required = [
         WORKFLOW,
@@ -115,7 +167,10 @@ def main() -> None:
         if activation.get("activation_verdict") != "blocked":
             fail("public_ci_activation_fail_closed_smoke_failed")
 
-    print(f"public_ci_smoke:pass:compiled={len(python_files)}:runtime_closure={len(closure)}")
+    print(
+        f"public_ci_smoke:pass:compiled={len(python_files)}:runtime_closure={len(closure)}"
+        f":public_kb={public_kb_count}"
+    )
 
 
 if __name__ == "__main__":

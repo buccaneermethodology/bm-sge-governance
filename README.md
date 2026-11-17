@@ -34,6 +34,16 @@ python3 tools/sge_public.py export /tmp/sge-public-candidate
 
 仅在包含私有 Dashboard 执行面的源仓库维护场景中，再运行 `python3 Dashboard/tools/doctor.py --repo .`；公共导出包不包含该内部 doctor，其自检入口始终是 `python3 tools/sge_public.py doctor`。
 
+## 知识库维护
+
+在公共包根目录检查全部随包 KB，使用显式公共清单。
+
+```bash
+python3 kb/tools/render_kb.py --manifest kb/public_render_manifest_v1.json --check
+```
+
+完整开发源仓使用默认入口 `python3 kb/tools/render_kb.py --check`。两个入口的检查范围、显式生成方式、缺件失败和发行覆盖检查见[知识库维护说明](kb/README.md#知识库维护)。
+
 ## 边界
 
 本仓库只维护通用治理能力，不包含音频转写或其他产品实现。`build-kym`、`build-tco-coverage` 和 Loop 编排器都是可选扩展，不会被核心 Skill 默认加载。公共发布、全局安装和跨仓库普遍适用性需要另行验证与授权。

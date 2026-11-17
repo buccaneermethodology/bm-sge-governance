@@ -1,0 +1,55 @@
+{
+  "schema_version": "kb_render_manifest_v1",
+  "documents": [
+    {
+      "source": "data/strategy/strategy_workflow_entry_v1.json",
+      "output": "docs/strategy/Strategy_Workflow_Entry_V1.md",
+      "adapter": "sectioned_doc_v1"
+    },
+    {
+      "source": "data/strategy/strategy_stop_gate_v1.json",
+      "output": "docs/strategy/Strategy_Stop_Gate_V1.md",
+      "adapter": "sectioned_doc_v1"
+    },
+    {
+      "source": "data/glossary_v1.json",
+      "output": "docs/Glossary.md",
+      "adapter": "sectioned_doc_v1"
+    },
+    {
+      "source": "data/strategy/strategy_human_ai_development.json",
+      "output": "docs/strategy/Strategy_Human_AI_Development.md",
+      "adapter": "sectioned_doc_v1"
+    },
+    {
+      "source": "data/strategy/strategy_kb_promotion_and_source_policy.json",
+      "output": "docs/strategy/Strategy_KB_Promotion_and_Source_Policy.md",
+      "adapter": "sectioned_doc_v1"
+    },
+    {
+      "source": "data/strategy/strategy_semantic_surface_engineering.json",
+      "output": "docs/strategy/Strategy_Semantic_Surface_Engineering.md",
+      "adapter": "sectioned_doc_v1"
+    },
+    {
+      "source": "data/strategy/strategy_erbe_specification_first_acceptance_v1.json",
+      "output": "docs/strategy/Strategy_ERBE_Specification_First_Acceptance_V1.md",
+      "adapter": "erbe_strategy_v1"
+    },
+    {
+      "source": "data/strategy/strategy_sgc_structural_contract_v1.json",
+      "output": "docs/strategy/Strategy_SGC_Structural_Contract_V1.md",
+      "adapter": "sectioned_doc_v1"
+    },
+    {
+      "source": "data/strategy/strategy_context_layering_v1.json",
+      "output": "docs/strategy/Strategy_Context_Layering_V1.md",
+      "adapter": "sectioned_doc_v1"
+    },
+    {
+      "source": "data/strategy/strategy_user_oriented_acceptance_case_quality_v1.json",
+      "output": "docs/strategy/Strategy_User_Oriented_Acceptance_Case_Quality_V1.md",
+      "adapter": "sectioned_doc_v1"
+    }
+  ]
+}

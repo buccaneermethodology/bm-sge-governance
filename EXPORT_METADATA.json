@@ -2,12 +2,12 @@
   "schema_version": "sge_projection_metadata_v1",
   "claim_ceiling": "仅支持 maintainer local deterministic projection candidate evidence；不支持独立 Validation、批准、公开仓、远端 mutation、release 或 production。",
   "identity": {
-    "source_revision": "d7dc12523e1f94023ccacb1b1aa41a3d0e683eba",
-    "manifest_revision": "71578b779df46660b893340c76f33e1e02eb355f77f8b70bcf899abfbc6832e1",
+    "source_revision": "97fdadf2571a966a371183aec17eba784dbcc38b",
+    "manifest_revision": "66d1f39ed17c990d967a0dc8c53d801fa70e27592068c777e6908f25720bfbba",
     "export_tool_revision": "8ec70583f1357fb20c3c7d3252d7a2c8d22f6cde3aa64abbf92185dc5b9ba4be",
-    "export_run_id": "run-20261112T040459417284Z-33dac18fdf89",
-    "candidate_id": "sge-governance-public-candidate-v1.1.4",
-    "candidate_fingerprint": "a03441599b1794f7e7d22d742ef66cba7d178cea3e950ef7e2745d44668b2433",
+    "export_run_id": "run-20261117T022842092979Z-0087f2fd83fe",
+    "candidate_id": "sge-governance-public-candidate-v1.1.5",
+    "candidate_fingerprint": "f967962c37b0cbaedbf9fa5ea2fed4d3222c50398dd5b2004576b679ae1b367c",
     "projection_commit": null,
     "release_tag": null
   },
@@ -685,8 +685,8 @@
       "license": "MIT",
       "provenance": "repo-local public candidate",
       "execution_context": false,
-      "bytes": 4570,
-      "sha256": "03e29a899935bfd2c1b1fe99dd19a0aeb0b2f486c634a37a172e246246b09284"
+      "bytes": 4984,
+      "sha256": "a9d6c5442ff3cf8bc87da9220c706b2b73b149890a4b7b515f6d972fe1f9dd4a"
     },
     {
       "path": "docs/Agent_Setup_Prompt_CN.md",
@@ -712,8 +712,8 @@
       "license": "MIT",
       "provenance": "newcomer companion",
       "execution_context": false,
-      "bytes": 2728,
-      "sha256": "7102cfbef514c58a408e537d93934670dc6b14eca53c9d1e44f07e9ce9df7912"
+      "bytes": 3145,
+      "sha256": "56e65ab2a04db8d2b2ed066695dbbb58e732ef3988b9fae40597d6dbeb6f80fc"
     },
     {
       "path": "examples/minimal-project/AGENTS.md",
@@ -757,8 +757,8 @@
       "license": "MIT",
       "provenance": "public canonical KB guide",
       "execution_context": false,
-      "bytes": 1414,
-      "sha256": "e6bc2a484d162b12c92147ec0c3918d49a4104da3249e63ea153323251870928"
+      "bytes": 2571,
+      "sha256": "908810cbce70697a62c0501057677a617bbc1f6aa20bf3f5588765c1b03ea2f5"
     },
     {
       "path": "kb/data/glossary_v1.json",
@@ -977,6 +977,15 @@
       "sha256": "654531cf2ded10f117ace7f6cbc93d5846f8fc61c5973e2e83006854a3c7f119"
     },
     {
+      "path": "kb/public_render_manifest_v1.json",
+      "source": "repository",
+      "license": "MIT",
+      "provenance": "explicit public KB render mappings matching the distribution allowlist",
+      "execution_context": false,
+      "bytes": 1942,
+      "sha256": "7b640b7c94d43cdd9c3deb8624f3137323576088d3ad7e98bfe8f9d54604444f"
+    },
+    {
       "path": "kb/render_manifest_v1.json",
       "source": "repository",
       "license": "MIT",
@@ -1000,8 +1009,8 @@
       "license": "MIT",
       "provenance": "default-deny public file inventory",
       "execution_context": false,
-      "bytes": 44271,
-      "sha256": "71578b779df46660b893340c76f33e1e02eb355f77f8b70bcf899abfbc6832e1"
+      "bytes": 44608,
+      "sha256": "66d1f39ed17c990d967a0dc8c53d801fa70e27592068c777e6908f25720bfbba"
     },
     {
       "path": "tools/public_ci_smoke.py",
@@ -1009,8 +1018,8 @@
       "license": "MIT",
       "provenance": "self-contained public package layout, compile and v1.1 runtime smoke gate",
       "execution_context": false,
-      "bytes": 4553,
-      "sha256": "12a645ab621a0eef7418c758a503c34a658222243e4bc26333537a0521b7f342"
+      "bytes": 7065,
+      "sha256": "34bfdc227dbfa8659d38d1f82eb56da41c98cf57bd4c3e60e81b8ea41c6c7f4f"
     },
     {
       "path": "tools/run_sge_loop_goal_cycle.py",
@@ -1040,15 +1049,15 @@
       "sha256": "f7aafa7a3b7669235a9ba001486d48fcb9e5b0f8bb4588444eadc1723d685c15"
     }
   ],
-  "file_set_sha256": "b4b184e42dc1398a9c7e47a7a9b8f35e26721aa8b8fd92b835ca13656951255c",
-  "tree_sha256": "5db29f4f015f7d98e39d06864e90c5af4e3eb47e420fc7a3cccb63b85eba8d69",
+  "file_set_sha256": "b4f7220de03771064fe4f5281c7938a5fd7fb4fcecd2e0a179eac45f972eb0f6",
+  "tree_sha256": "0e13a3ebcaed752c629cd1acc4cd4ad25a6377acc9fd81149a06b9c07ee7b20b",
   "source_inventory": {
     "complete": true,
-    "entry_count": 15458,
-    "allowlisted_entry_count": 113,
-    "excluded_entry_count": 15345,
+    "entry_count": 16314,
+    "allowlisted_entry_count": 114,
+    "excluded_entry_count": 16200,
     "excluded_counts": {
-      "default_deny": 15344,
+      "default_deny": 16199,
       "source_control_metadata": 1
     },
     "private_paths_omitted_from_public_metadata": true

@@ -19,3 +19,19 @@
 
 - `.codex/skills/sge-governed-checkpoints/`：治理 checkpoint、schema 与确定性脚本。
 - `kb/tools/render_kb.py`：从带 `doc_id`/`doc_type` 或 `kind=kb_index` 的 JSON 生成 Markdown 投影；`--check` 只验证、不写入。
+
+## 知识库维护
+
+以下命令均在完整开发源仓或公共包的根目录执行。完整开发源仓的默认清单保留十七项映射，检查命令为 `python3 kb/tools/render_kb.py --check`。公共包使用显式公共清单，当前覆盖发行清单中 `kb/docs/` 下的全部十份 Markdown，检查命令如下。
+
+```bash
+python3 kb/tools/render_kb.py --manifest kb/public_render_manifest_v1.json --check
+```
+
+`--check` 逐项核对源文件、阅读文档及渲染字节，缺件或内容不一致时以非零退出。显式再生成使用以下写入命令。
+
+```bash
+python3 kb/tools/render_kb.py --manifest kb/public_render_manifest_v1.json
+```
+
+维护公共发行范围时，同步更新静态公共清单。`python3 tools/public_ci_smoke.py` 会将其全部输出与发行清单的全部公开 KB 输出比较，拒绝漏映射、重复映射和包外源，再执行上述字节检查。其他公开 Markdown 的逐文件存在性及安全检查由 `python3 tools/sge_public.py doctor` 承担。公共包仍保留完整开发清单，维护者应按这里的显式公共入口操作。以上说明对应当前源码维护入口。
